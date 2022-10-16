@@ -137,6 +137,11 @@
 
       .name {
         margin-bottom: 8px;
+        display: flex;
+
+        div:first-child {
+          margin-right: 8px;
+        }
       }
 
       img {
@@ -224,6 +229,36 @@
 
       button {
         flex: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    .closeContainer {
+      width: 320px;
+    }
+  
+    .modal {
+      width: 320px;
+  
+      .vendor {
+        flex-direction: column-reverse;
+
+        img {
+          width: 100px;
+          margin: 0;
+          margin-bottom: 16px;
+        }
+  
+        .name {
+          flex-direction: column;
+
+          div:first-child {
+            margin-right: 0;
+          }
+        }
       }
     }
   }

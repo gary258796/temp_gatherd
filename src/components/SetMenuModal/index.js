@@ -103,7 +103,8 @@ const SetMenuModal = (props) => {
         <div className={styles.vendor}>
           <div>
             <Typography variant="h6" className={styles.name}>
-              美食創作家 {vendor.name}
+              <div>美食創作家</div>
+              <div>{vendor.name}</div>
             </Typography>
             <Typography variant="body1">{vendor.description}</Typography>
           </div>
