@@ -3,7 +3,7 @@ import { Button, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useState } from "react";
-import { PAYMENT_MOTHODS, VENDORS_DATA } from "../../constants/Vendors";
+import { PAYMENT_MOTHODS } from "../../constants/Vendors";
 import { SET_MENU_TYPES, DISH_TYPES } from "../../constants/SetMenus";
 import arrowImg from "../../images/arrow.png";
 import pinImg from "../../images/pin.png";
@@ -12,11 +12,11 @@ import jkoImg from "../../images/jko.png";
 import bankImg from "../../images/bank.png";
 import cashImg from "../../images/cash.png";
 import closeImg from "../../images/close.png";
+import moment from "moment";
 
 const SetMenuModal = (props) => {
-  const { menu, isOpen, onClose } = props;
+  const { menu, vendor, isOpen, onClose } = props;
   const [swiper, setSwiper] = useState(undefined);
-  const vendor = VENDORS_DATA.find((vendor) => vendor.id === menu.vendorId);
 
   const handleSwipe = (isNext) => {
     isNext ? swiper.slideNext() : swiper.slidePrev();
@@ -55,7 +55,34 @@ const SetMenuModal = (props) => {
     );
   };
 
-  if (!isOpen) return <></>;
+  const handleTimeDayText = (weekDay) => {
+    let d = new Date();
+    d.setDate(d.getDate() + ((weekDay + 7 - d.getDay()) % 7));
+    return moment(d).format("Y/M/D");
+  };
+
+  const handleAvailableTimesRender = (time) => {
+    let isNotAvailable = false;
+    const timeText = handleTimeDayText(time.day) + " " + time.period;
+    vendor.notAvaliableDates.forEach((date, index) => {
+      if (timeText === date) {
+        isNotAvailable = true;
+      }
+    });
+    return (
+      <div className={styles.date} key={`${time.day}${time.period}`}>
+        <Typography variant="body2">{timeText}</Typography>
+        <Typography
+          variant="overline"
+          className={isNotAvailable ? styles.notAvailable : styles.available}
+        >
+          已預訂
+        </Typography>
+      </div>
+    );
+  };
+
+  if (!isOpen || !vendor.name) return <></>;
 
   return (
     <div className={styles.container}>
@@ -157,14 +184,10 @@ const SetMenuModal = (props) => {
           <Typography variant="h5" className={styles.title}>
             可訂餐時段
           </Typography>
-          {menu.avaliableTimes.map((time) => (
-            <div className={styles.date} key={`${time.day}${time.period}`}>
-              <Typography variant="body2">
-                {time.day} {time.period}
-              </Typography>
-              <Typography variant="overline">份量：{time.amount}</Typography>
-            </div>
-          ))}
+          <Typography variant="body1" className={styles.subtitle}>
+            各時段可預訂人數：{menu.amount}
+          </Typography>
+          {vendor.avaliableTimes.map(handleAvailableTimesRender)}
           <Typography variant="body1" className={styles.lastOrderDays}>
             最晚 {menu.lastOrderDays} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
           </Typography>

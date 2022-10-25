@@ -8,7 +8,7 @@ const PasswordModal = (props) => {
   const [error, setError] = useState(false);
 
   const handleConfirmOnClick = () => {
-    if (password === "test") {
+    if (password === "gatherd") {
       setError(false);
       onCorrect();
     } else {

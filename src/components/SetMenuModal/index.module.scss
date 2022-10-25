@@ -13,7 +13,7 @@
 
   .closeContainer {
     position: absolute;
-    top: 5%;
+    top: 10%;
     width: 500px;
     z-index: 10;
 
@@ -29,7 +29,7 @@
 
   .modal {
     width: 500px;
-    height: 90%;
+    height: 80%;
     background: white;
     padding: 0 24px 0;
     box-sizing: border-box;
@@ -185,6 +185,14 @@
 
       .date:last-child {
         margin: 0;
+      }
+
+      .available {
+        color: transparent;
+      }
+
+      .notAvailable {
+        color: red;
       }
 
       .lastOrderDays {

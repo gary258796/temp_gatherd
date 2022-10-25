@@ -1,3 +1,19 @@
+export const WEEK_DAYS = {
+  MON: 1,
+  TUE: 2,
+  WED: 3,
+  THU: 4,
+  FRI: 5,
+  SAT: 6,
+  SUN: 7,
+};
+
+export const PERIODS = {
+  BREAKFAST: "09:00-11:00",
+  LUNCH: "12:00-15:00",
+  DINNER: "17:00-20:00",
+};
+
 export const PAYMENT_MOTHODS = {
   CASH: "現金",
   LINEPAY: "LinePay",
@@ -25,5 +41,13 @@ export const VENDORS_DATA = [
       PAYMENT_MOTHODS.JKO,
       PAYMENT_MOTHODS.BANK,
     ],
+    avaliableTimes: [
+      { day: WEEK_DAYS.MON, period: PERIODS.BREAKFAST, amount: 4 },
+      { day: WEEK_DAYS.TUE, period: PERIODS.LUNCH, amount: 7 },
+      { day: WEEK_DAYS.TUE, period: PERIODS.DINNER, amount: 2 },
+      { day: WEEK_DAYS.SAT, period: PERIODS.LUNCH, amount: 4 },
+      { day: WEEK_DAYS.SUN, period: PERIODS.DINNER, amount: 5 },
+    ],
+    notAvaliableDates: ["2022/10/25 12:00-15:00"],
   },
 ];
