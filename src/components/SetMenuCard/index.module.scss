@@ -27,6 +27,11 @@
     align-items: center;
     position: relative;
 
+    .swiper {
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
+    }
+
     .slide {
       height: 200px;
 

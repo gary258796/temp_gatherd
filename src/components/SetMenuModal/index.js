@@ -97,7 +97,11 @@ const SetMenuModal = (props) => {
             alt=""
             onClick={(e) => handleSwipe(false)}
           />
-          <Swiper slidesPerView={1} onSwiper={setSwiper}>
+          <Swiper
+            className={styles.swiper}
+            slidesPerView={1}
+            onSwiper={setSwiper}
+          >
             {menu.images.map((image, index) => (
               <SwiperSlide className={styles.slide} key={index}>
                 <img src={image} alt="" />

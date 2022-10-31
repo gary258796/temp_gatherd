@@ -44,6 +44,11 @@
       margin: 0 -24px 12px;
       position: relative;
 
+      .swiper {
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+      }
+
       .slide {
         height: 200px;
 
@@ -237,6 +242,8 @@
 
       button {
         flex: 1;
+        border-radius: 0 0 20px 20px;
+        overflow: hidden;
       }
     }
   }

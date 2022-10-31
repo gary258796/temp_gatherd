@@ -26,7 +26,11 @@ const SetMenuCard = (props) => {
             alt=""
             onClick={(e) => handleSwipe(e, false)}
           />
-          <Swiper slidesPerView={1} onSwiper={setSwiper}>
+          <Swiper
+            slidesPerView={1}
+            onSwiper={setSwiper}
+            className={styles.swiper}
+          >
             {menu.images.map((image, index) => (
               <SwiperSlide className={styles.slide} key={index}>
                 <img src={image} alt="" />
