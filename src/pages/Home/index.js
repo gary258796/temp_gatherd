@@ -65,7 +65,7 @@ const Home = () => {
         Gatherd
       </Typography>
       <Typography variant="subtitle1" className={styles.subtitle}>
-        在美食創作家家中，透過一道道佳餚，與您分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
+        在美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
       </Typography>
       <div className={styles.cards}>
         {menus.map((menu, index) => (
