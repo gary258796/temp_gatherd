@@ -42,12 +42,25 @@ const JoinUs = () => {
         熱愛美食創作者們，敞開你們的家門一同與你的親朋友好友們，鄰居，和其他Foodie分享你獨特的傳統和創億佳餚！
       </Typography>
       <div className={styles.joinUsInfo}>
-        <Typography variant="h3" textAlign="center" mb={8}>
-          如何成為Gatherd美食創作家
-        </Typography>
+        <div className={styles.mobileTitle}>
+          <Typography variant="h3" textAlign="center">
+            如何成為
+          </Typography>
+          <Typography variant="h3" textAlign="center">
+            Gatherd
+          </Typography>
+          <Typography variant="h3" textAlign="center">
+            美食創作家
+          </Typography>
+        </div>
+        <div className={styles.title}>
+          <Typography variant="h3" textAlign="center">
+            如何成為Gatherd美食創作家
+          </Typography>
+        </div>
         <div className={styles.section}>
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               食安字號申請
             </Typography>
             <Typography variant="body1" mb={2}>
@@ -65,7 +78,7 @@ const JoinUs = () => {
         <div className={styles.section}>
           <img src={chefImg} alt="" />
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               美食創作家帳號申請
             </Typography>
             <Typography variant="body1" mb={2}>
@@ -81,7 +94,7 @@ const JoinUs = () => {
         </div>
         <div className={styles.section}>
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               Meet & Dine 套餐申請
             </Typography>
             <Typography variant="body1" mb={2}>
@@ -99,7 +112,7 @@ const JoinUs = () => {
         <div className={styles.section}>
           <img src={profileImg} alt="" />
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               編輯個人資料
             </Typography>
             <Typography variant="body1" mb={2}>
@@ -115,7 +128,7 @@ const JoinUs = () => {
         </div>
         <div className={styles.section}>
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               編輯 Meet & Dine 套餐
             </Typography>
             <Typography variant="body1" mb={2}>
@@ -133,7 +146,7 @@ const JoinUs = () => {
         <div className={styles.section}>
           <img src={lineaccountImg} alt="" />
           <div className={styles.text}>
-            <Typography variant="h4" mb={2}>
+            <Typography variant="h5" mb={2}>
               LINE 官方帳號
             </Typography>
             <Typography variant="body1" mb={2}>

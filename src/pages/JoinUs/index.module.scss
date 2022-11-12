@@ -26,6 +26,16 @@
     box-sizing: border-box;
     background-color: #Fff4d9;
 
+    .title {
+      margin-bottom: 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mobileTitle {
+      display: none;
+    }
+
     .section {
       display: flex;
       justify-content: space-between;
@@ -67,6 +77,17 @@
   .container {
     .joinUsInfo {
       padding: 36px;
+
+      .title {
+        display: none;
+      }
+  
+      .mobileTitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 48px;
+      }
   
       .section {
         flex-direction: column;
@@ -79,7 +100,7 @@
         img {
           width: 240px;
           height: 240px;
-          margin-bottom: 24px;
+          margin: 24px 0;
         }
       }
 
