@@ -217,12 +217,25 @@ const SetMenuModal = (props) => {
           <Typography variant="h5" className={styles.title}>
             更多資訊
           </Typography>
-          <Typography variant="body2">- 過敏原: {menu.allergy}</Typography>
-          <Typography variant="body2">- {menu.memo}</Typography>
-          <Typography variant="body2">
-            -
-            若需取消或是修改訂單，會於下訂成功的郵件中附上表單，在訂單日期三天前皆可取消或修改訂單
-          </Typography>
+          <div className={styles.moreInfo}>
+            <div>
+              <Typography variant="body2">-</Typography>
+              <Typography variant="body2">-</Typography>
+              <Typography variant="body2">-</Typography>
+            </div>
+            <div>
+              <Typography variant="body2" className={styles.text}>
+                過敏原: {menu.allergy || "無"}
+              </Typography>
+              <Typography variant="body2" className={styles.text}>
+                備註：{menu.memo || "無"}
+              </Typography>
+              <Typography variant="body2" className={styles.text}>
+                若需取消或是修改訂單，會於下訂成功的郵件中附上表單，在訂單日期三天前皆可取消或修改訂單，如在訂單日期三天內取消訂單你將需支付總費用的
+                50% 。
+              </Typography>
+            </div>
+          </div>
         </div>
         <div className={styles.buttons}>
           <Button variant="contained" onClick={handleOrderButtonOnClick}>
