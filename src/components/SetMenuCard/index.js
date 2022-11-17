@@ -3,13 +3,11 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useState } from "react";
-import { VENDORS_DATA } from "../../constants/Vendors";
 import arrowImg from "../../images/arrow.png";
 
 const SetMenuCard = (props) => {
-  const { menu, onClick } = props;
+  const { menu, vendor, onClick } = props;
   const [swiper, setSwiper] = useState(undefined);
-  const vendor = VENDORS_DATA.find((vendor) => vendor.id === menu.vendorId);
 
   const handleSwipe = (e, isNext) => {
     e.stopPropagation();

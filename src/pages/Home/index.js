@@ -13,7 +13,7 @@ const Home = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(true);
   const [menus, setMenus] = useState([]);
-  const [vendor, setVendor] = useState({});
+  const [vendors, setVendors] = useState([]);
   const firebaseConfig = {
     databaseURL:
       "https://gatherd-test-default-rtdb.asia-southeast1.firebasedatabase.app/",
@@ -27,10 +27,11 @@ const Home = () => {
     // 用來寫入資料用
     // set(ref(db, "vendor"), VENDORS_DATA);
     // set(ref(db, "menu"), SET_MENUS);
-    get(child(dbRef, "menu"))
+    get(child(dbRef, "/"))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setMenus(snapshot.val());
+          setMenus(snapshot.val().menu);
+          setVendors(snapshot.val().vendor);
         } else {
           console.log("No data available");
         }
@@ -39,25 +40,6 @@ const Home = () => {
         console.error(error);
       });
   }, []);
-
-  useEffect(() => {
-    if (
-      selectedSetMenu.vendorId === undefined ||
-      vendor.id === selectedSetMenu.vendorId
-    )
-      return;
-    get(child(dbRef, `vendor/${selectedSetMenu.vendorId}`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setVendor(snapshot.val());
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [selectedSetMenu]);
 
   return (
     <div className={styles.container}>
@@ -68,20 +50,27 @@ const Home = () => {
         在美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
       </Typography>
       <div className={styles.cards}>
-        {menus.map((menu, index) => (
-          <SetMenuCard
-            key={index}
-            menu={menu}
-            onClick={() => {
-              setSelectedSetMenu(menu);
-              setModalIsOpen(true);
-            }}
-          />
-        ))}
+        {menus.map((menu, index) => {
+          const vendor = vendors.find((vendor) => vendor.id === menu.vendorId);
+          if (!vendor) return <></>;
+          return (
+            <SetMenuCard
+              key={index}
+              menu={menu}
+              vendor={vendor}
+              onClick={() => {
+                setSelectedSetMenu(menu);
+                setModalIsOpen(true);
+              }}
+            />
+          );
+        })}
       </div>
       <SetMenuModal
         menu={selectedSetMenu}
-        vendor={vendor}
+        vendor={
+          vendors.find((vendor) => vendor.id === selectedSetMenu.vendorId) || {}
+        }
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       />
