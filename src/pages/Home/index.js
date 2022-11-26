@@ -12,6 +12,57 @@ const Home = () => {
   const [selectedSetMenu, setSelectedSetMenu] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(true);
+  const mockMenu = {
+    id: 0, // Set menu ID
+    vendorId: 0, // 對應美食創作家 ID
+    name: "set menu", // 名稱
+    description: "description", // 介紹
+    images: ["", "", ""], // 照片
+    price: 100, // 售價
+    amount: 3, // 數量
+    finalOrder: 5, // 需提前幾天預定
+    menu: "dish one\ndish two\ndish three", // 菜單
+    allergy: null, // 過敏原，如有多個，用逗點隔開即可
+    memo: null,
+  };
+  const mockVnedor = {
+    id: 0, // 美食創作家 id
+    email: "email@email.com", // email
+    name: "name", // 姓名
+    image: "123", // 大頭照
+    introduction: "introduction", // 自我介紹
+    phone: "0987654321", // 手機
+    lineName: "line", // Line 名稱
+    birthday: "1999/11/11", // 生日，格式：YYYY/MM/DD
+    address: "台北市什麼路", // 地址
+    addressUrl: "www.google.com",
+    location: "大安區", // 區（地址）
+    payment: [1, 4],
+    // 付款方式（1:現金|2:轉帳|3:LinePay|4:街口支付）
+    available: [
+      {
+        day: 1, // 星期幾
+        period: 2, // 時段（1:早餐|2:午餐|3:晚餐）
+        time: "12:00-14:00", // 時間，格式：HH:MM-HH:MM
+      },
+      {
+        day: 1, // 星期幾
+        period: 3, // 時段（1:早餐|2:午餐|3:晚餐）
+        time: "19:00-21:00", // 時間，格式：HH:MM-HH:MM
+      },
+      {
+        day: 6, // 星期幾
+        period: 3, // 時段（1:早餐|2:午餐|3:晚餐）
+        time: "18:00-21:00", // 時間，格式：HH:MM-HH:MM
+      },
+      {
+        day: 7, // 星期幾
+        period: 2, // 時段（1:早餐|2:午餐|3:晚餐）
+        time: "12:00-14:00", // 時間，格式：HH:MM-HH:MM
+      },
+    ],
+    booked: ["2022/11/28/2"],
+  };
   const [menus, setMenus] = useState([]);
   const [vendors, setVendors] = useState([]);
   const firebaseConfig = {

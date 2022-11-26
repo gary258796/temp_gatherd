@@ -15,10 +15,10 @@ export const PERIODS = {
 };
 
 export const PAYMENT_MOTHODS = {
-  CASH: "現金",
-  LINEPAY: "LinePay",
-  JKO: "街口支付",
-  BANK: "轉帳",
+  CASH: 1,
+  BANK: 2,
+  LINEPAY: 3,
+  JKO: 4,
 };
 
 export const VENDORS_DATA = [

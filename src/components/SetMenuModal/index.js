@@ -38,21 +38,34 @@ const SetMenuModal = (props) => {
     switch (method) {
       case PAYMENT_MOTHODS.CASH:
         return cashImg;
+      case PAYMENT_MOTHODS.BANK:
+        return bankImg;
       case PAYMENT_MOTHODS.LINEPAY:
         return lineImg;
       case PAYMENT_MOTHODS.JKO:
         return jkoImg;
+      default:
+        return "";
+    }
+  };
+
+  const handlePaymentMethodText = (method) => {
+    switch (method) {
+      case PAYMENT_MOTHODS.CASH:
+        return "現金";
       case PAYMENT_MOTHODS.BANK:
-        return bankImg;
+        return "匯款";
+      case PAYMENT_MOTHODS.LINEPAY:
+        return "Line Pay";
+      case PAYMENT_MOTHODS.JKO:
+        return "街口支付";
       default:
         return "";
     }
   };
 
   const handleOrderButtonOnClick = () => {
-    window.open(
-      "https://docs.google.com/forms/d/1_sXY9e8RZkT4jGH89JJQoA7eN3cDhp280ZHCXEg2_0c/prefill"
-    );
+    window.open("https://forms.gle/vPoxWfHhhafXsoAR6");
   };
 
   const handleTimeDayText = (weekDay) => {
@@ -63,12 +76,26 @@ const SetMenuModal = (props) => {
 
   const handleAvailableTimesRender = (time) => {
     let isNotAvailable = false;
-    const timeText = handleTimeDayText(time.day) + " " + time.period;
-    vendor.notAvaliableDates.forEach((date, index) => {
-      if (timeText === date) {
+    let timeText = handleTimeDayText(time.day);
+    vendor.booked.forEach((date) => {
+      if (timeText + "/" + time.period === date) {
         isNotAvailable = true;
       }
     });
+    switch (time.period) {
+      case 1:
+        timeText += " 早餐 ";
+        break;
+      case 2:
+        timeText += " 午餐 ";
+        break;
+      case 3:
+        timeText += " 晚餐 ";
+        break;
+      default:
+        break;
+    }
+    timeText += time.time;
     return (
       <div className={styles.date} key={`${time.day}${time.period}`}>
         <Typography variant="body2">{timeText}</Typography>
@@ -82,7 +109,7 @@ const SetMenuModal = (props) => {
     );
   };
 
-  if (!isOpen || !vendor.name) return <></>;
+  if (!isOpen || !vendor || !menu) return <></>;
 
   return (
     <div className={styles.container}>
@@ -137,52 +164,15 @@ const SetMenuModal = (props) => {
               <div>美食創作家</div>
               <div>{vendor.name}</div>
             </Typography>
-            <Typography variant="body1">{vendor.description}</Typography>
+            <Typography variant="body1">{vendor.introduction}</Typography>
           </div>
-          <img src={vendor.profileImage} alt="" />
+          <img src={vendor.image} alt="" />
         </div>
         <div className={styles.dishes}>
           <Typography variant="h5" className={styles.title}>
             餐點
           </Typography>
-          {menu.type === SET_MENU_TYPES.SET ? (
-            <>
-              <div className={styles.part}>
-                <Typography variant="h6" className={styles.subtitle}>
-                  前菜
-                </Typography>
-                {menu.dishes
-                  .filter((dish) => dish.type === DISH_TYPES.APPETIZER)
-                  .map(handleDishRender)}
-              </div>
-              <div className={styles.part}>
-                <Typography variant="h6" className={styles.subtitle}>
-                  主餐
-                </Typography>
-                {menu.dishes
-                  .filter((dish) => dish.type === DISH_TYPES.MAIN_DISH)
-                  .map(handleDishRender)}
-              </div>
-              <div className={styles.part}>
-                <Typography variant="h6" className={styles.subtitle}>
-                  副餐
-                </Typography>
-                {menu.dishes
-                  .filter((dish) => dish.type === DISH_TYPES.SIDE_DISH)
-                  .map(handleDishRender)}
-              </div>
-              <div className={styles.part}>
-                <Typography variant="h6" className={styles.subtitle}>
-                  甜點
-                </Typography>
-                {menu.dishes
-                  .filter((dish) => dish.type === DISH_TYPES.DESSERT)
-                  .map(handleDishRender)}
-              </div>
-            </>
-          ) : (
-            <>{menu.dishes.map(handleDishRender)}</>
-          )}
+          <Typography variant="body2">{menu.menu}</Typography>
         </div>
         <div className={styles.times}>
           <Typography variant="h5" className={styles.title}>
@@ -191,9 +181,9 @@ const SetMenuModal = (props) => {
           <Typography variant="body1" className={styles.subtitle}>
             各時段可預訂人數：{menu.amount}
           </Typography>
-          {vendor.avaliableTimes.map(handleAvailableTimesRender)}
+          {vendor.available.map(handleAvailableTimesRender)}
           <Typography variant="body1" className={styles.lastOrderDays}>
-            最晚 {menu.lastOrderDays} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
+            最晚 {menu.finalOrder} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
           </Typography>
         </div>
         <div className={styles.payment}>
@@ -201,14 +191,16 @@ const SetMenuModal = (props) => {
             付款方式
           </Typography>
           <div className={styles.methods}>
-            {vendor.paymentMethods.map((method) => (
+            {vendor.payment.map((method) => (
               <Typography
                 variant="body1"
                 key={method}
                 className={styles.method}
               >
                 <img src={handlePaymentMethodImg(method)} alt="" />
-                <Typography variant="caption">{method}</Typography>
+                <Typography variant="caption">
+                  {handlePaymentMethodText(method)}
+                </Typography>
               </Typography>
             ))}
           </div>
