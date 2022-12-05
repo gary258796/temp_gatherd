@@ -9,6 +9,7 @@ import banner3 from "../../images/banner3.png";
 import docImg from "../../images/doc.png";
 import chefImg from "../../images/chef.png";
 import menuImg from "../../images/menu.png";
+import photoImg from "../../images/photo.png";
 import profileImg from "../../images/profile.png";
 import editImg from "../../images/edit.png";
 import lineaccountImg from "../../images/lineaccount.png";
@@ -68,7 +69,7 @@ const JoinUs = () => {
             </Typography>
             <Button
               variant="contained"
-              onClick={() => window.open("https://forms.gle/ZePoc8XQGEXrMkwRA")}
+              onClick={() => window.open("https://forms.gle/9dDT8j4Baospn21n6")}
             >
               馬上申請
             </Button>
@@ -82,11 +83,11 @@ const JoinUs = () => {
               美食創作家帳號申請
             </Typography>
             <Typography variant="body1" mb={2}>
-              讓我們以及熱愛美食者們可以更了解你的美食創作歷程，請提供美食創作家上路相關資訊。
+              讓我們以及熱愛美食者們可以更了解你的美食創作歷程，請提供美食創作家上路相關資訊。由於我們很重視照片的品質，因此照片會在另一個表單上傳，請注意！
             </Typography>
             <Button
               variant="contained"
-              onClick={() => window.open("https://forms.gle/F23QWHH1nPthoFN98")}
+              onClick={() => window.open("https://forms.gle/7VWm5qSBZMBQAP8m8")}
             >
               開始探索
             </Button>
@@ -98,11 +99,11 @@ const JoinUs = () => {
               Meet & Dine 套餐申請
             </Typography>
             <Typography variant="body1" mb={2}>
-              把你最拿手的傳統和創億佳餚分享給不同讓熱愛美食者們。請提供你的套餐資訊。
+              把你最拿手的傳統和創億佳餚分享給不同讓熱愛美食者們。請提供你的套餐資訊。由於我們很重視照片的品質，因此照片會在另一個表單上傳，請注意！
             </Typography>
             <Button
               variant="contained"
-              onClick={() => window.open("https://forms.gle/Lu4K9ob35zfZLeL89")}
+              onClick={() => window.open("https://forms.gle/1xz3zwDKQvbcpTgF9")}
             >
               馬上申請
             </Button>
@@ -110,7 +111,23 @@ const JoinUs = () => {
           <img src={menuImg} alt="" />
         </div>
         <div className={styles.section}>
-          <img src={profileImg} alt="" />
+          <img src={photoImg} alt="" />
+          <div className={styles.text}>
+            <Typography variant="h5" mb={2}>
+              照片上傳
+            </Typography>
+            <Typography variant="body1" mb={2}>
+              為了讓你的照片在網頁上有更好的呈現，請遵守我們規範，將你準備好的照片上傳到這裡，才算是真正成為美食創作家/完成菜單上架！
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={() => window.open("https://forms.gle/fLCWENCt2q54Jo5s8")}
+            >
+              前往上傳
+            </Button>
+          </div>
+        </div>
+        <div className={styles.section}>
           <div className={styles.text}>
             <Typography variant="h5" mb={2}>
               編輯個人資料
@@ -120,13 +137,15 @@ const JoinUs = () => {
             </Typography>
             <Button
               variant="contained"
-              onClick={() => window.open("https://forms.gle/ZkdJW2vFD4UYFgiK6")}
+              onClick={() => window.open("https://forms.gle/YocJTC12YPzndUe88")}
             >
               前往編輯
             </Button>
           </div>
+          <img src={profileImg} alt="" />
         </div>
         <div className={styles.section}>
+          <img src={editImg} alt="" />
           <div className={styles.text}>
             <Typography variant="h5" mb={2}>
               編輯 Meet & Dine 套餐
@@ -136,15 +155,13 @@ const JoinUs = () => {
             </Typography>
             <Button
               variant="contained"
-              onClick={() => window.open("https://forms.gle/zHHXwtpRb8re9mbY8")}
+              onClick={() => window.open("https://forms.gle/q5ah7SgC6cyoL9226")}
             >
               前往編輯
             </Button>
           </div>
-          <img src={editImg} alt="" />
         </div>
         <div className={styles.section}>
-          <img src={lineaccountImg} alt="" />
           <div className={styles.text}>
             <Typography variant="h5" mb={2}>
               LINE 官方帳號
@@ -159,10 +176,11 @@ const JoinUs = () => {
               立即加入
             </Button>
           </div>
+          <img src={lineaccountImg} alt="" />
         </div>
       </div>
       <div className={styles.footer}>
-        <Typography variant="body1" textAlign="center" mb={2} color="#FFFFFF">
+        <Typography variant="body1" textAlign="center" mb={2}>
           與我們聯絡
         </Typography>
         <div className={styles.contact}>
