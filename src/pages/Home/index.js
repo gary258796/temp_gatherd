@@ -7,6 +7,7 @@ import SetMenuModal from "../../components/SetMenuModal";
 import PasswordModal from "../../components/PasswordModal";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
+import logoImg from "../../images/logo.png";
 
 const Home = () => {
   const [selectedSetMenu, setSelectedSetMenu] = useState({});
@@ -94,9 +95,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <Typography variant="h2" className={styles.title}>
-        Gatherd
-      </Typography>
+      <img className={styles.logo} src={logoImg} alt="" />
       <Typography variant="subtitle1" className={styles.subtitle}>
         在美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
       </Typography>
