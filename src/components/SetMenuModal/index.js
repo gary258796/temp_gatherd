@@ -22,18 +22,6 @@ const SetMenuModal = (props) => {
     isNext ? swiper.slideNext() : swiper.slidePrev();
   };
 
-  const handleDishRender = (dish) => {
-    return (
-      <div className={styles.dish} key={dish.name}>
-        <div className={styles.bar} />
-        <div>
-          <Typography variant="body2">{dish.name}</Typography>
-          <Typography variant="caption">{dish.memo}</Typography>
-        </div>
-      </div>
-    );
-  };
-
   const handlePaymentMethodImg = (method) => {
     switch (method) {
       case PAYMENT_MOTHODS.CASH:
@@ -69,15 +57,19 @@ const SetMenuModal = (props) => {
   };
 
   const handleTimeDayText = (weekDay) => {
-    let d = new Date();
-    d.setDate(d.getDate() + ((weekDay + 7 - d.getDay()) % 7));
-    return moment(d).format("Y/M/D");
+    const dateCopy = new Date();
+    const nextWeekDay = new Date(
+      dateCopy.setDate(
+        dateCopy.getDate() + ((7 - dateCopy.getDay() + weekDay) % 7 || 7)
+      )
+    );
+    return moment(nextWeekDay).format("Y/M/D");
   };
 
   const handleAvailableTimesRender = (time) => {
     let isNotAvailable = false;
     let timeText = handleTimeDayText(time.day);
-    vendor.booked.forEach((date) => {
+    vendor.booked?.forEach((date) => {
       if (timeText + "/" + time.period === date) {
         isNotAvailable = true;
       }
@@ -172,7 +164,9 @@ const SetMenuModal = (props) => {
           <Typography variant="h5" className={styles.title}>
             餐點
           </Typography>
-          <Typography variant="body2">{menu.menu}</Typography>
+          <Typography variant="body2" className={styles.menu}>
+            {menu.menu}
+          </Typography>
         </div>
         <div className={styles.times}>
           <Typography variant="h5" className={styles.title}>
@@ -223,8 +217,8 @@ const SetMenuModal = (props) => {
                 備註：{menu.memo || "無"}
               </Typography>
               <Typography variant="body2" className={styles.text}>
-                若需取消或是修改訂單，會於下訂成功的郵件中附上表單，在訂單日期三天前皆可取消或修改訂單，如在訂單日期三天內取消訂單你將需支付總費用的
-                50% 。
+                若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，如在訂單日期三天內取消訂單你將需支付總費用的
+                50%。
               </Typography>
             </div>
           </div>

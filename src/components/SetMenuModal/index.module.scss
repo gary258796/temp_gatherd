@@ -162,19 +162,8 @@
     .dishes {
       @extend .card;
 
-      .dish {
-        display: flex;
-        margin-bottom: 8px;
-
-        .bar {
-          height: 18px;
-          border: 1px solid orange;
-          margin-right: 8px;
-        }
-      }
-
-      .dish:last-child {
-        margin: 0;
+      .menu {
+        white-space: break-spaces;
       }
     }
 
