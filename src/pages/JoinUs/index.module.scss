@@ -52,12 +52,16 @@
         height: 300px;
         object-fit: contain;
       }
+
+      button {
+        background-color: #441f1a;
+      }
     }
   }
 
   .footer {
     width: 100%;
-    background: #313715;
+    background: white;
     padding: 48px;
     box-sizing: border-box;
 
