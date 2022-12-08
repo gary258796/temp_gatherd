@@ -164,9 +164,9 @@ const SetMenuModal = (props) => {
           <Typography variant="h5" className={styles.title}>
             餐點
           </Typography>
-          <Typography variant="body2" className={styles.menu}>
-            {menu.menu}
-          </Typography>
+          {menu.menu.split("\n").map((dish) => (
+            <div className={styles.dish}>・{dish}</div>
+          ))}
         </div>
         <div className={styles.times}>
           <Typography variant="h5" className={styles.title}>
@@ -204,18 +204,20 @@ const SetMenuModal = (props) => {
             更多資訊
           </Typography>
           <div className={styles.moreInfo}>
-            <div>
+            <div className={styles.info}>
               <Typography variant="body2">-</Typography>
-              <Typography variant="body2">-</Typography>
-              <Typography variant="body2">-</Typography>
-            </div>
-            <div>
               <Typography variant="body2" className={styles.text}>
                 過敏原: {menu.allergy || "無"}
               </Typography>
+            </div>
+            <div className={styles.info}>
+              <Typography variant="body2">-</Typography>
               <Typography variant="body2" className={styles.text}>
                 備註：{menu.memo || "無"}
               </Typography>
+            </div>
+            <div className={styles.info}>
+              <Typography variant="body2">-</Typography>
               <Typography variant="body2" className={styles.text}>
                 若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，如在訂單日期三天內取消訂單你將需支付總費用的
                 50%。

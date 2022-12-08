@@ -162,8 +162,12 @@
     .dishes {
       @extend .card;
 
-      .menu {
-        white-space: break-spaces;
+      .dish {
+        margin-bottom: 8px;
+      }
+
+      .dish:last-child {
+        margin: 0;
       }
     }
 
@@ -220,10 +224,12 @@
       @extend .card;
       
       .moreInfo {
-        display: flex;
-        
-        .text {
-          margin-left: 8px;
+        .info {
+          display: flex;
+
+          .text {
+            margin-left: 8px;
+          }
         }
       }
     }
