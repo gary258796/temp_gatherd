@@ -46,9 +46,6 @@ const SetMenuCard = (props) => {
       <div className={styles.content}>
         <div className={styles.location}>{vendor.location}大安區</div>
         <div className={styles.name}>{menu.name}</div>
-        <Typography noWrap className={styles.description}>
-          {menu.description}
-        </Typography>
         <div className={styles.vendor}>美食創作家 {vendor.name}</div>
         <div className={styles.price}>${menu.price} / 人</div>
       </div>
