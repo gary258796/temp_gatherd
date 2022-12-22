@@ -12,7 +12,7 @@ import logoImg from "../../images/logo.png";
 const Home = () => {
   const [selectedSetMenu, setSelectedSetMenu] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
+  const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(true);
   const mockMenu = {
     id: 0, // Set menu ID
     vendorId: 0, // 對應美食創作家 ID
