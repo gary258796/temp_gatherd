@@ -56,48 +56,62 @@ const SetMenuModal = (props) => {
     window.open("https://forms.gle/vPoxWfHhhafXsoAR6");
   };
 
-  const handleTimeDayText = (weekDay) => {
-    const dateCopy = new Date();
-    const nextWeekDay = new Date(
-      dateCopy.setDate(
-        dateCopy.getDate() + ((7 - dateCopy.getDay() + weekDay) % 7 || 7)
-      )
-    );
-    return moment(nextWeekDay).format("Y/M/D");
-  };
+  console.log(vendor.booked);
 
-  const handleAvailableTimesRender = (time) => {
-    let isNotAvailable = false;
-    let timeText = handleTimeDayText(time.day);
-    vendor.booked?.forEach((date) => {
-      if (timeText + "/" + time.period === date) {
-        isNotAvailable = true;
+  const handleTimeRender = () => {
+    const times = [];
+    for (let index = -7; index <= 7; index++) {
+      let isAvailable = true;
+      const curr = new Date();
+      const day = curr.getDate() + index;
+      const date = new Date(curr.setDate(day));
+      if (vendor.available.find((time) => time.day === date.getDay())) {
+        const dayPeriods = vendor.available.filter(
+          (time) => time.day === date.getDay()
+        );
+        let timeText = moment(date).format("Y/MM/DD");
+        dayPeriods.forEach((period) => {
+          if (
+            vendor.booked?.find(
+              (time) => timeText + "/" + period.period === time
+            )
+          ) {
+            isAvailable = false;
+          }
+          switch (period.period) {
+            case 1:
+              timeText += " 早餐 ";
+              break;
+            case 2:
+              timeText += " 午餐 ";
+              break;
+            case 3:
+              timeText += " 晚餐 ";
+              break;
+            default:
+              break;
+          }
+          timeText += period.time;
+          times.push({ time: timeText, isAvailable });
+        });
       }
-    });
-    switch (time.period) {
-      case 1:
-        timeText += " 早餐 ";
-        break;
-      case 2:
-        timeText += " 午餐 ";
-        break;
-      case 3:
-        timeText += " 晚餐 ";
-        break;
-      default:
-        break;
     }
-    timeText += time.time;
     return (
-      <div className={styles.date} key={`${time.day}${time.period}`}>
-        <Typography variant="body2">{timeText}</Typography>
-        <Typography
-          variant="overline"
-          className={isNotAvailable ? styles.notAvailable : styles.available}
-        >
-          已預訂
-        </Typography>
-      </div>
+      <>
+        {times.map((time) => (
+          <div className={styles.date} key={`${time.time}`}>
+            <Typography variant="body2">{time.time}</Typography>
+            <Typography
+              variant="overline"
+              className={
+                time.isAvailable ? styles.available : styles.notAvailable
+              }
+            >
+              已預訂
+            </Typography>
+          </div>
+        ))}
+      </>
     );
   };
 
@@ -175,7 +189,7 @@ const SetMenuModal = (props) => {
           <Typography variant="body1" className={styles.subtitle}>
             各時段可預訂人數：{menu.amount}
           </Typography>
-          {vendor.available.map(handleAvailableTimesRender)}
+          {handleTimeRender()}
           <Typography variant="body1" className={styles.lastOrderDays}>
             最晚 {menu.finalOrder} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
           </Typography>
@@ -219,8 +233,8 @@ const SetMenuModal = (props) => {
             <div className={styles.info}>
               <Typography variant="body2">-</Typography>
               <Typography variant="body2" className={styles.text}>
-                若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，如在訂單日期三天內取消訂單你將需支付總費用的
-                50%。
+                若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，
+                <b>如在訂單日期三天內取消訂單你將需支付總費用的 50%。</b>
               </Typography>
             </div>
           </div>

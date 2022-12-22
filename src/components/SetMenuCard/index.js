@@ -14,48 +14,45 @@ const SetMenuCard = (props) => {
     isNext ? swiper.slideNext() : swiper.slidePrev();
   };
 
+  console.log(vendor);
+
   return (
-    <Card className={styles.card} onClick={onClick}>
-      <CardContent>
-        <div className={styles.swiperContainer}>
-          <img
-            className={styles.arrowBack}
-            src={arrowImg}
-            alt=""
-            onClick={(e) => handleSwipe(e, false)}
-          />
-          <Swiper
-            slidesPerView={1}
-            onSwiper={setSwiper}
-            className={styles.swiper}
-          >
-            {menu.images.map((image, index) => (
-              <SwiperSlide className={styles.slide} key={index}>
-                <img src={image} alt="" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <img
-            className={styles.arrowForward}
-            src={arrowImg}
-            alt=""
-            onClick={(e) => handleSwipe(e, true)}
-          />
-        </div>
-        <div className={styles.cardTitle}>
-          <Typography variant="h6">{menu.name}</Typography>
-          <Typography variant="caption" className={styles.location}>
-            {vendor.location}
-          </Typography>
-        </div>
-        <Typography variant="body2" noWrap className={styles.description}>
+    <div className={styles.container} onClick={onClick}>
+      <div className={styles.swiperContainer}>
+        <img
+          className={styles.arrowBack}
+          src={arrowImg}
+          alt=""
+          onClick={(e) => handleSwipe(e, false)}
+        />
+        <Swiper
+          slidesPerView={1}
+          onSwiper={setSwiper}
+          className={styles.swiper}
+        >
+          {menu.images.map((image, index) => (
+            <SwiperSlide className={styles.slide} key={index}>
+              <img src={image} alt="" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <img
+          className={styles.arrowForward}
+          src={arrowImg}
+          alt=""
+          onClick={(e) => handleSwipe(e, true)}
+        />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.location}>{vendor.location}大安區</div>
+        <div className={styles.name}>{menu.name}</div>
+        <Typography noWrap className={styles.description}>
           {menu.description}
         </Typography>
-        <div className={styles.bottom}>
-          <Typography variant="h6">${menu.price}</Typography>
-        </div>
-      </CardContent>
-    </Card>
+        <div className={styles.vendor}>美食創作家 {vendor.name}</div>
+        <div className={styles.price}>${menu.price} / 人</div>
+      </div>
+    </div>
   );
 };
 

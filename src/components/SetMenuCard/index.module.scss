@@ -1,39 +1,21 @@
-.card {
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+.container {
   cursor: pointer;
   width: calc(50% - 16px);
-  margin: 8px;
-  border-radius: 18px !important;
-
-  .cardTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .location {
-      display: flex;
-      align-items: center;
-      color: gray;
-    }
-  }
-
-  .description {
-    margin: 8px 0;
-  }
+  margin-bottom: 24px;
 
   .swiperContainer {
-    margin: -16px -16px 8px;
+    margin: 0 0 8px;
     display: flex;
     align-items: center;
     position: relative;
 
     .swiper {
-      border-radius: 20px 20px 0 0;
+      border-radius: 20px;
       overflow: hidden;
     }
 
     .slide {
-      height: 200px;
+      height: 240px;
 
       img {
         width: 100%;
@@ -54,9 +36,39 @@
     }
   }
 
-  .bottom {
-    display: flex;
-    justify-content: flex-end;
+  .content {
+    padding: 0 8px;
+    box-sizing: border-box;
+    position: relative;
+
+    .location {
+      position: absolute;
+      top: 0;
+      right: 8px;
+      font-size: 16px;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+  
+    .vendor {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: gray;
+    }
+
+    .description {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: gray;
+    }
+
+    .price {
+      font-size: 16px;
+    }
   }
 }
 
@@ -74,7 +86,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .card {
+  .container {
     width: 100%;
   }
 }
