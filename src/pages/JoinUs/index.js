@@ -3,9 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Button, Typography } from "@mui/material";
-import banner1 from "../../images/banner1.jpeg";
-import banner2 from "../../images/banner2.jpeg";
-import banner3 from "../../images/banner3.png";
+import banner1 from "../../images/banner1.jpg";
 import docImg from "../../images/doc.png";
 import chefImg from "../../images/chef.png";
 import menuImg from "../../images/menu.png";
@@ -17,7 +15,7 @@ import phoneImg from "../../images/phone.png";
 import mailImg from "../../images/mail.png";
 
 const JoinUs = () => {
-  const bannerImages = [banner1, banner2, banner3];
+  const bannerImages = [banner1];
 
   return (
     <div className={styles.container}>
