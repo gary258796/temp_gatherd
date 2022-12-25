@@ -100,7 +100,7 @@ const Home = () => {
         美食創作家體驗
       </Typography>
       <Typography variant="body2" className={styles.subtitle}>
-        在美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
+        到美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
       </Typography>
       <div className={styles.cards}>
         {menus.map((menu, index) => {

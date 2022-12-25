@@ -23,7 +23,7 @@ const JoinUs = () => {
         <Swiper
           slidesPerView={1}
           className={styles.swiper}
-          loop
+          // loop
           modules={[Autoplay, Pagination, Navigation]}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
         >
@@ -38,7 +38,7 @@ const JoinUs = () => {
         分享你的美食創作
       </Typography>
       <Typography variant="h6" textAlign="center" width={400} mb={8}>
-        熱愛美食創作者們，敞開你們的家門一同與你的親朋友好友們，鄰居，和其他Foodie分享你獨特的傳統和創億佳餚！
+        熱愛美食的創作者們，敞開你們的家門一同與你的親朋友好友們、鄰居和其他美食熱愛者分享你獨特的傳統和創意佳餚！
       </Typography>
       <div className={styles.joinUsInfo}>
         <div className={styles.mobileTitle}>

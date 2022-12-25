@@ -14,8 +14,6 @@ const SetMenuCard = (props) => {
     isNext ? swiper.slideNext() : swiper.slidePrev();
   };
 
-  console.log(vendor);
-
   return (
     <div className={styles.container} onClick={onClick}>
       <div className={styles.swiperContainer}>

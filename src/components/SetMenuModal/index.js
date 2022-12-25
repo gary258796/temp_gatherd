@@ -56,8 +56,6 @@ const SetMenuModal = (props) => {
     window.open("https://forms.gle/vPoxWfHhhafXsoAR6");
   };
 
-  console.log(vendor.booked);
-
   const handleTimeRender = () => {
     const times = [];
     for (let index = -7; index <= 7; index++) {
