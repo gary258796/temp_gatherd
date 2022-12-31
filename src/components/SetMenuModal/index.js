@@ -216,18 +216,30 @@ const SetMenuModal = (props) => {
             更多資訊
           </Typography>
           <div className={styles.moreInfo}>
-            <div className={styles.info}>
-              <Typography variant="body2">-</Typography>
-              <Typography variant="body2" className={styles.text}>
-                過敏原: {menu.allergy || "無"}
-              </Typography>
-            </div>
-            <div className={styles.info}>
-              <Typography variant="body2">-</Typography>
-              <Typography variant="body2" className={styles.text}>
-                備註：{menu.memo || "無"}
-              </Typography>
-            </div>
+            {menu.allergy && (
+              <div className={styles.info}>
+                <Typography variant="body2">-</Typography>
+                <Typography variant="body2" className={styles.text}>
+                  過敏原: {menu.allergy}
+                </Typography>
+              </div>
+            )}
+            {menu.memo && (
+              <div className={styles.info}>
+                <Typography variant="body2">-</Typography>
+                <Typography variant="body2" className={styles.text}>
+                  備註：{menu.memo}
+                </Typography>
+              </div>
+            )}
+            {menu.addressGuide && (
+              <div className={styles.info}>
+                <Typography variant="body2">-</Typography>
+                <Typography variant="body2" className={styles.text}>
+                  交通指引：{menu.addressGuide}
+                </Typography>
+              </div>
+            )}
             <div className={styles.info}>
               <Typography variant="body2">-</Typography>
               <Typography variant="body2" className={styles.text}>

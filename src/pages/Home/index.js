@@ -8,8 +8,10 @@ import PasswordModal from "../../components/PasswordModal";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import logoImg from "../../images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [selectedSetMenu, setSelectedSetMenu] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(true);
@@ -95,7 +97,12 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <img className={styles.logo} src={logoImg} alt="" />
+      <img
+        className={styles.logo}
+        src={logoImg}
+        alt=""
+        onClick={() => navigate("../joinus")}
+      />
       <Typography variant="body2" className={styles.title}>
         美食創作家體驗
       </Typography>

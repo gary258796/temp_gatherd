@@ -1,6 +1,6 @@
 .container {
   cursor: pointer;
-  width: calc(50% - 16px);
+  width: 400px;
   margin-bottom: 24px;
 
   .swiperContainer {
@@ -85,7 +85,7 @@
   object-fit: contain;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .container {
     width: 100%;
   }
