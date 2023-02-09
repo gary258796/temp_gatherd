@@ -1,13 +1,11 @@
 import styles from "./index.module.scss";
 import { Button } from "@mui/material";
-import banner1 from "../../images/banner1.jpg";
+import banner from "../../images/banner.jpg";
 import lineImg from "../../images/line.png";
 import phoneImg from "../../images/phone.png";
 import mailImg from "../../images/email.png";
 
 const JoinUs = () => {
-  const bannerImages = [banner1];
-
   return (
     <div className={styles.container}>
       <div className={styles.banner}>
@@ -18,7 +16,7 @@ const JoinUs = () => {
           </div>
         </div>
         <div className={styles.image}>
-          <img src={banner1} alt="" />
+          <img src={banner} alt="" />
         </div>
       </div>
       <div className={styles.info}>
