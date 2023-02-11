@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import JoinUs from "./pages/JoinUs";
 // import AddVendor from "./pages/AddVendor";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Explore from "./pages/Explore";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/joinus" element={<JoinUs />} />
+          <Route exact path="/explore" element={<Explore />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
         </Routes>
       </BrowserRouter>
