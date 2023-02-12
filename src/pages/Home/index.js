@@ -101,7 +101,7 @@ const Home = () => {
         className={styles.logo}
         src={logoImg}
         alt=""
-        onClick={() => navigate("../joinus")}
+        onClick={() => navigate("../explore")}
       />
       <Typography variant="body2" className={styles.title}>
         美食創作家體驗
