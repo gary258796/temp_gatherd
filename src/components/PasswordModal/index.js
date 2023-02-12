@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import logoImg from "../../images/logo.png";
 
 const PasswordModal = (props) => {
   const { isOpen, onCorrect } = props;
@@ -21,8 +22,8 @@ const PasswordModal = (props) => {
   return (
     <div className={styles.background}>
       <div className={styles.modal}>
-        <Typography variant="h3">Gatherd</Typography>
-        <TextField
+        <img className={styles.logo} src={logoImg} alt="" />
+        {/* <TextField
           value={password}
           label="密碼"
           type="password"
@@ -30,6 +31,12 @@ const PasswordModal = (props) => {
           autoComplete="current-password"
           className={styles.input}
           error={error}
+        /> */}
+        <input
+          value={password}
+          label="密碼"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button variant="contained" onClick={handleConfirmOnClick}>
           確認

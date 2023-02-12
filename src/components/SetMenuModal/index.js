@@ -113,6 +113,8 @@ const SetMenuModal = (props) => {
     );
   };
 
+  console.log(menu);
+
   if (!isOpen || !vendor || !menu) return <></>;
 
   return (
@@ -147,55 +149,44 @@ const SetMenuModal = (props) => {
           />
         </div>
         <div className={styles.menuInfo}>
-          <Typography variant="h4" className={styles.name}>
-            {menu.name}
-          </Typography>
-          <Typography variant="body1" className={styles.description}>
-            {menu.description}
-          </Typography>
-          <Typography
-            variant="caption"
+          <div className={styles.name}>{menu.name}</div>
+          <div className={styles.description}>{menu.description}</div>
+          <div
             className={styles.address}
             onClick={() => window.open(vendor.addressUrl)}
           >
             <img src={pinImg} alt="" />
             {vendor.address}
-          </Typography>
+          </div>
         </div>
         <div className={styles.vendor}>
           <div>
-            <Typography variant="h6" className={styles.name}>
+            <div className={styles.title}>
               <div>美食創作家</div>
               <div>{vendor.name}</div>
-            </Typography>
-            <Typography variant="body1">{vendor.introduction}</Typography>
+            </div>
+            <div className={styles.introduction}>{vendor.introduction}</div>
           </div>
           <img src={vendor.image} alt="" />
         </div>
         <div className={styles.dishes}>
-          <Typography variant="h5" className={styles.title}>
-            餐點
-          </Typography>
-          {menu.menu.split("\n").map((dish) => (
-            <div className={styles.dish}>・{dish}</div>
-          ))}
+          <div className={styles.title}>套餐內容</div>
+          <div className={styles.dishContainer}>
+            {menu.menu.split("\n").map((dish) => (
+              <div className={styles.dish}>・{dish}</div>
+            ))}
+          </div>
         </div>
         <div className={styles.times}>
-          <Typography variant="h5" className={styles.title}>
-            可訂餐時段
-          </Typography>
-          <Typography variant="body1" className={styles.subtitle}>
-            各時段可預訂人數：{menu.amount}
-          </Typography>
+          <div className={styles.title}>可訂餐時段</div>
+          <div className={styles.subtitle}>各時段可預訂人數：{menu.amount}</div>
           {handleTimeRender()}
           <Typography variant="body1" className={styles.lastOrderDays}>
             最晚 {menu.finalOrder} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
           </Typography>
         </div>
         <div className={styles.payment}>
-          <Typography variant="h5" className={styles.title}>
-            付款方式
-          </Typography>
+          <div className={styles.title}>付款方式</div>
           <div className={styles.methods}>
             {vendor.payment.map((method) => (
               <Typography
@@ -211,10 +202,19 @@ const SetMenuModal = (props) => {
             ))}
           </div>
         </div>
-        <div className={styles.more}>
-          <Typography variant="h5" className={styles.title}>
-            更多資訊
+        <div className={styles.addressContainer}>
+          <div className={styles.title}>地址資訊</div>
+          <Typography
+            variant="caption"
+            className={styles.address}
+            onClick={() => window.open(vendor.addressUrl)}
+          >
+            <img src={pinImg} alt="" />
+            {vendor.address}
           </Typography>
+        </div>
+        <div className={styles.more}>
+          <div className={styles.title}>更多資訊</div>
           <div className={styles.moreInfo}>
             {menu.allergy && (
               <div className={styles.info}>

@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import { Button } from "@mui/material";
-import banner from "../../images/banner.jpg";
+import banner from "../../images/banner0.jpg";
 import lineImg from "../../images/line.png";
 import phoneImg from "../../images/phone.png";
 import mailImg from "../../images/email.png";

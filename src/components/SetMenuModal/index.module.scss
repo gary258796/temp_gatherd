@@ -50,7 +50,7 @@
       }
 
       .slide {
-        height: 200px;
+        height: 281px;
 
         img {
           width: 100%;
@@ -82,16 +82,18 @@
     }
 
     .menuInfo {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgb(228, 228, 228);
 
       .name {
+        font-size: 22px;
         font-weight: bold;
-        margin-top: 8px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
 
       .description {
-        margin-bottom: 17px;
+        font-size: 16px;
+        margin-bottom: 16px;
       }
 
       .address {
@@ -100,6 +102,8 @@
         cursor: pointer;
         text-decoration: underline;
         color: blue;
+        margin-bottom: 18px;
+        font-size: 12px;
 
         img {
           width: 18px;
@@ -111,14 +115,14 @@
 
     .card {
       width: 100%;
-      margin-bottom: 16px;
-      padding: 18px;
-      box-sizing: border-box;
-      border-radius: 10px;
-      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgb(228, 228, 228);
 
       .title {
-        margin-bottom: 12px;
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 8px;
         font-weight: bold;
       }
 
@@ -141,13 +145,17 @@
       display: flex;
       justify-content: space-between;
 
-      .name {
-        margin-bottom: 8px;
+      .title {
         display: flex;
+        align-items: center;
 
         div:first-child {
           margin-right: 8px;
         }
+      }
+
+      .introduction {
+        white-space: break-spaces;
       }
 
       img {
@@ -163,8 +171,19 @@
     .dishes {
       @extend .card;
 
+      .description {
+        margin-bottom: 24px;
+      }
+
+      .dishContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
       .dish {
         margin-bottom: 8px;
+        width: 33%;
       }
 
       .dish:last-child {
@@ -221,6 +240,24 @@
       }
     }
 
+    .addressContainer {
+      @extend .card;
+
+      .address {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-decoration: underline;
+        color: blue;
+
+        img {
+          width: 18px;
+          height: 18px;
+          margin-right: 4px;
+        }
+      }
+    }
+
     .more {
       @extend .card;
       
@@ -236,18 +273,17 @@
     }
 
     .buttons {
-      position: sticky;
-      bottom: -1px;
       height: 56px;
       background-color: white;
-      margin: 0 -24px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-around;
 
       button {
-        flex: 1;
-        border-radius: 0 0 20px 20px;
+        width: 160px;
+        height: 45px;
         overflow: hidden;
+        background: #562e19;
       }
     }
   }
@@ -261,6 +297,12 @@
   
     .modal {
       width: 339px;
+
+      .swiperContainer {
+        .slide {
+          height: 190px;
+        }
+      }
   
       .vendor {
         flex-direction: column-reverse;
