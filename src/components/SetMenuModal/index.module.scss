@@ -177,13 +177,12 @@
 
       .dishContainer {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: column;
       }
 
       .dish {
         margin-bottom: 8px;
-        width: 33%;
+        width: 100%;
       }
 
       .dish:last-child {

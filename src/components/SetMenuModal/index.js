@@ -63,12 +63,13 @@ const SetMenuModal = (props) => {
       const curr = new Date();
       const day = curr.getDate() + index;
       const date = new Date(curr.setDate(day));
-      if (vendor.available.find((time) => time.day === date.getDay())) {
-        const dayPeriods = vendor.available.filter(
-          (time) => time.day === date.getDay()
-        );
+      const availablePeriods = vendor.available.filter(
+        (time) => time.day === date.getDay() + 1
+      );
+      if (availablePeriods.length > 0) {
+        date.setDate(date.getDate() + 1);
         let timeText = moment(date).format("Y/MM/DD");
-        dayPeriods.forEach((period) => {
+        availablePeriods.forEach((period) => {
           if (
             vendor.booked?.find(
               (time) => timeText + "/" + period.period === time
@@ -149,13 +150,6 @@ const SetMenuModal = (props) => {
         <div className={styles.menuInfo}>
           <div className={styles.name}>{menu.name}</div>
           <div className={styles.description}>{menu.description}</div>
-          <div
-            className={styles.address}
-            onClick={() => window.open(vendor.addressUrl)}
-          >
-            <img src={pinImg} alt="" />
-            {vendor.address}
-          </div>
         </div>
         <div className={styles.vendor}>
           <div>
@@ -183,7 +177,7 @@ const SetMenuModal = (props) => {
             最晚 {menu.finalOrder} 天前預訂，最早 7 天前預訂，最晚 3 天前取消
           </Typography>
         </div>
-        <div className={styles.payment}>
+        {/* <div className={styles.payment}>
           <div className={styles.title}>付款方式</div>
           <div className={styles.methods}>
             {vendor.payment.map((method) => (
@@ -199,7 +193,7 @@ const SetMenuModal = (props) => {
               </Typography>
             ))}
           </div>
-        </div>
+        </div> */}
         <div className={styles.addressContainer}>
           <div className={styles.title}>地址資訊</div>
           <Typography
@@ -230,21 +224,21 @@ const SetMenuModal = (props) => {
                 </Typography>
               </div>
             )}
-            {menu.addressGuide && (
+            {vendor.addressGuide && (
               <div className={styles.info}>
                 <Typography variant="body2">-</Typography>
                 <Typography variant="body2" className={styles.text}>
-                  交通指引：{menu.addressGuide}
+                  交通指引：{vendor.addressGuide}
                 </Typography>
               </div>
             )}
-            <div className={styles.info}>
+            {/* <div className={styles.info}>
               <Typography variant="body2">-</Typography>
               <Typography variant="body2" className={styles.text}>
                 若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，
                 <b>如在訂單日期三天內取消訂單你將需支付總費用的 50%。</b>
               </Typography>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={styles.buttons}>
