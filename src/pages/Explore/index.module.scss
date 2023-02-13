@@ -55,13 +55,6 @@
       font-weight: 500;
     }
   }
-
-  .logo {
-    position: absolute;
-    right: 24px;
-    top: 24px;
-    height: 24px;
-  }
 }
 
 .why {
@@ -100,7 +93,7 @@
 }
 
 .benefits {
-  padding: 120px 120px 36px;
+  padding: 120px 120px 84px;
   box-sizing: border-box;
   background-color: #f8f6eb;
 
@@ -142,7 +135,7 @@
 
 .problem {
   width: 100%;
-  padding: 48px 120px;
+  padding: 120px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -371,7 +364,7 @@
   
   .why {
     align-items: flex-start;
-    padding: 80px 24px;
+    padding: 48px 24px;
   
     .title {
       font-size: 32px;
@@ -387,7 +380,7 @@
   }
   
   .benefits {
-    padding: 96px 24px;
+    padding: 48px 24px 0;
 
     .title {
       font-size: 32px;
@@ -474,7 +467,7 @@
   }
 
   .divider {
-    padding: 48px 24px;
+    padding: 0 24px;
   }
   
   .sendEmail {

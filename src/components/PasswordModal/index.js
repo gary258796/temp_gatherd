@@ -8,7 +8,10 @@ const PasswordModal = (props) => {
   const [password, setPassword] = useState("");
 
   const handleConfirmOnClick = () => {
-    if (password === "gatherd") onCorrect();
+    if (password === "gatherd") {
+      onCorrect();
+      document.body.style.zoom = 1;
+    }
   };
 
   if (!isOpen) return <></>;

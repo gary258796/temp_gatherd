@@ -9,7 +9,6 @@ import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
-import logo from "../../images/logo.png";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -92,14 +91,10 @@ const Explore = () => {
           <div className={styles.subtitle}>
             讓每個熱愛創作料理的人，可以在自己的空間，讓來自世界各地的好友、鄰居或陌生人品嚐美食，並分享他們的故事。
           </div>
-          <button
-            className={styles.button}
-            onClick={() => navigate("../joinus")}
-          >
-            加入我們
+          <button className={styles.button} onClick={() => navigate("../")}>
+            開始探索
           </button>
         </div>
-        <img className={styles.logo} src={logo} alt="" />
       </div>
       <div className={styles.why}>
         <div className={styles.title}>
@@ -129,7 +124,7 @@ const Explore = () => {
           <div className={styles.subtitle}>
             致力於為美食愛好者創造機會，與志同道合的人們建立新的關係與交流。
           </div>
-          <button onClick={() => navigate("../joinus")}>加入我們</button>
+          <button onClick={() => navigate("../")}>開始探索</button>
         </div>
         <div className={styles.image}>
           <img src={banner2} alt="" />

@@ -38,3 +38,13 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .background {
+    .modal {
+      .logo {
+        width: 240px;
+      }
+    }
+  }
+}
