@@ -1,7 +1,5 @@
 import styles from "./index.module.scss";
 import lineImg from "../../images/line.png";
-import phoneImg from "../../images/phone.png";
-import mailImg from "../../images/email.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {

@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
 
-  img {
+  .backgroundImg {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,6 +55,13 @@
       font-weight: 500;
     }
   }
+
+  .logo {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    height: 24px;
+  }
 }
 
 .why {
@@ -93,16 +100,26 @@
 }
 
 .benefits {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   padding: 120px 120px 36px;
   box-sizing: border-box;
   background-color: #f8f6eb;
 
+  .title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 36px;
+    color: #2b403a;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
   .section {
     width: 30%;
-    margin-bottom: 80px;
+    margin-bottom: 36px;
 
     .number {
       font-size: 32px;
@@ -206,7 +223,8 @@
     justify-content: center;
     width: 100%;
     overflow: auto;
-    margin: 48px 0;
+    padding: 24px 0;
+    margin: 24px 0;
 
     .vendor {
       margin: 0 16px;
@@ -225,6 +243,20 @@
       border-radius: 10px;
       object-fit: cover;
     }
+  }
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #f8f6eb;
+  padding: 0 120px;
+  box-sizing: border-box;
+
+  div {
+    width: 100%;
+    border-bottom: 1px solid #E4E2D4;
   }
 }
 
@@ -355,9 +387,17 @@
   }
   
   .benefits {
-    flex-direction: column;
-    flex-wrap: nowrap;
     padding: 96px 24px;
+
+    .title {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+  
+    .container {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
   
     .section {
       width: 100%;
@@ -431,6 +471,10 @@
     .pictures {
       justify-content: flex-start;
     }
+  }
+
+  .divider {
+    padding: 48px 24px;
   }
   
   .sendEmail {

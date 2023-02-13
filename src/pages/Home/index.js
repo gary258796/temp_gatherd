@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import logoImg from "../../images/logo.png";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -96,35 +97,42 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <img
-        className={styles.logo}
-        src={logoImg}
-        alt=""
-        onClick={() => navigate("../explore")}
-      />
-      <Typography variant="body2" className={styles.title}>
-        美食創作家體驗
-      </Typography>
-      <Typography variant="body2" className={styles.subtitle}>
-        到美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
-      </Typography>
-      <div className={styles.cards}>
-        {menus.map((menu, index) => {
-          const vendor = vendors.find((vendor) => vendor.id === menu.vendorId);
-          if (!vendor) return <></>;
-          return (
-            <SetMenuCard
-              key={index}
-              menu={menu}
-              vendor={vendor}
-              onClick={() => {
-                setSelectedSetMenu(menu);
-                setModalIsOpen(true);
-              }}
-            />
-          );
-        })}
+    <>
+      <div className={styles.container}>
+        <div className={styles.top}>
+          <img
+            className={styles.logo}
+            src={logoImg}
+            alt=""
+            onClick={() => navigate("../explore")}
+          />
+          <Typography variant="body2" className={styles.title}>
+            美食創作家體驗
+          </Typography>
+          <Typography variant="body2" className={styles.subtitle}>
+            到美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
+          </Typography>
+          <div className={styles.cards}>
+            {menus.map((menu, index) => {
+              const vendor = vendors.find(
+                (vendor) => vendor.id === menu.vendorId
+              );
+              if (!vendor) return <></>;
+              return (
+                <SetMenuCard
+                  key={index}
+                  menu={menu}
+                  vendor={vendor}
+                  onClick={() => {
+                    setSelectedSetMenu(menu);
+                    setModalIsOpen(true);
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <Footer />
       </div>
       <SetMenuModal
         menu={selectedSetMenu}
@@ -138,7 +146,7 @@ const Home = () => {
         isOpen={passwordModalIsOpen}
         onCorrect={() => setPasswordModalIsOpen(false)}
       />
-    </div>
+    </>
   );
 };
 

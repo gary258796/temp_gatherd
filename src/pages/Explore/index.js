@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
+import logo from "../../images/logo.png";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Explore = () => {
       number: "03",
       title: "分享料理",
       subtitle:
-        "盡情發揮廚藝，讓喜愛你料理的人有機會分享給更多的人，吸引更多潛在的愛好者。",
+        "盡情發揮廚藝，讓喜愛你料理的人有機會分享給更多的人，吸引其他潛在的愛好者。",
     },
     {
       number: "04",
@@ -84,7 +85,7 @@ const Explore = () => {
   return (
     <>
       <div className={styles.banner}>
-        <img src={banner} alt="" />
+        <img className={styles.backgroundImg} src={banner} alt="" />
         <div className={styles.cover} />
         <div className={styles.text}>
           <div className={styles.title}>創造一個食物體驗</div>
@@ -98,6 +99,7 @@ const Explore = () => {
             加入我們
           </button>
         </div>
+        <img className={styles.logo} src={logo} alt="" />
       </div>
       <div className={styles.why}>
         <div className={styles.title}>
@@ -111,13 +113,16 @@ const Explore = () => {
         </div>
       </div>
       <div className={styles.benefits}>
-        {benefits.map((benefit) => (
-          <div className={styles.section} key={benefit.number}>
-            <div className={styles.number}>{benefit.number}</div>
-            <div className={styles.title}>{benefit.title}</div>
-            <div className={styles.subtitle}>{benefit.subtitle}</div>
-          </div>
-        ))}
+        <div className={styles.title}>什麼是 Gatherd</div>
+        <div className={styles.container}>
+          {benefits.map((benefit) => (
+            <div className={styles.section} key={benefit.number}>
+              <div className={styles.number}>{benefit.number}</div>
+              <div className={styles.title}>{benefit.title}</div>
+              <div className={styles.subtitle}>{benefit.subtitle}</div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.problem}>
         <div className={styles.text}>
@@ -147,11 +152,14 @@ const Explore = () => {
           開始探索
         </button>
       </div>
+      <div className={styles.divider}>
+        <div />
+      </div>
       <div className={styles.sendEmail}>
         <div className={styles.text}>
           <div className={styles.title}>了解更多</div>
           <div className={styles.subtitle}>
-            請留下電子信箱，我們將分享更多相關資訊，邀請你與其他美食創作家一同參加我們所舉辦的體驗或活動，並且解答你所有的疑問。
+            請留下電子信箱，我們將分享更多相關資訊，邀請你與其他美食創作家一同參加我們所舉辦的體驗及活動，並且解答你所有的疑問。
           </div>
         </div>
         <div className={styles.input}>

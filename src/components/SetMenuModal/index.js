@@ -113,8 +113,6 @@ const SetMenuModal = (props) => {
     );
   };
 
-  console.log(menu);
-
   if (!isOpen || !vendor || !menu) return <></>;
 
   return (

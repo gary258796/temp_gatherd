@@ -4,6 +4,7 @@ import banner from "../../images/banner0.jpg";
 import lineImg from "../../images/line.png";
 import phoneImg from "../../images/phone.png";
 import mailImg from "../../images/email.png";
+import Footer from "../../components/Footer";
 
 const JoinUs = () => {
   return (
@@ -137,29 +138,7 @@ const JoinUs = () => {
           </div>
         </div>
       </div>
-      <div className={styles.footer}>
-        <div>©2023 Gatherd, Inc</div>
-        <div className={styles.buttons}>
-          <div
-            className={styles.button}
-            onClick={() => window.open("tel:+886984499836")}
-          >
-            <img src={phoneImg} alt="" />
-          </div>
-          <div
-            className={styles.button}
-            onClick={() => window.open("mailto:eatgatherd@gmail.com")}
-          >
-            <img src={mailImg} alt="" />
-          </div>
-          <div
-            className={styles.button}
-            onClick={() => window.open("https://lin.ee/CGfqTpp")}
-          >
-            <img src={lineImg} alt="" />
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
