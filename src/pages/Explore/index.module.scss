@@ -92,6 +92,50 @@
   }
 }
 
+.creator {
+  padding: 32px 120px 84px;
+
+  .creatorTitle {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 36px;
+    color: #2b403a;
+  }
+
+  .sections {
+    display: flex;
+    justify-content: space-between;
+
+    .section {
+      width: 30%;
+      box-shadow: 0px 4px 20px rgb(0 0 0 / 10%);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .content {
+        padding: 32px 24px 24px;
+        box-sizing: border-box;
+
+        .title {
+          font-size: 24px;
+          font-weight: 800;
+          color: #2b403a;
+          margin-bottom: 8px;
+        }
+
+        .subtitle {
+          font-size: 16px;
+          font-weight: 400;
+          color: #323023;
+        }
+      }
+    }
+  }
+}
+
 .benefits {
   padding: 120px 120px 84px;
   box-sizing: border-box;
@@ -176,6 +220,57 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+.how {
+  padding: 120px;
+  box-sizing: border-box;
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #2b403a;
+    margin-bottom: 80px;
+  }
+
+  .sections {
+    display: flex;
+    justify-content: space-between;
+
+    .section {
+      width: 30%;
+      background-color: #f8f6eb;
+      padding: 32px;
+      box-sizing: border-box;
+
+      .number {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #323023;
+        font-size: 18px;
+        font-weight: bold;
+        color: #323023;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        margin-bottom: 24px;
+      }
+
+      .sectionTitle {
+        font-size: 24px;
+        font-weight: 800;
+        color: #323023;
+        margin-bottom: 16px;
+      }
+
+      .sectionSubtitle {
+        font-size: 16px;
+        font-weight: 400;
+        color: #807b67;
+      }
     }
   }
 }
@@ -378,6 +473,26 @@
       width: 100%;
     }
   }
+
+  .creator {
+    padding: 32px 24px 48px;
+  
+    .creatorTitle {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+  
+    .sections {
+      flex-direction: column;
+      align-items: center;
+  
+      .section {
+        width: 100%;
+        margin-bottom: 12px;
+        max-width: 400px;
+      }
+    }
+  }
   
   .benefits {
     padding: 48px 24px 0;
@@ -439,6 +554,25 @@
         width: 100%;
         height: 240px;
         object-fit: cover;
+      }
+    }
+  }
+
+  .how {
+    padding: 48px 0 0;
+  
+    .title {
+      margin-bottom: 32px;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+  
+    .sections {
+      flex-direction: column;
+  
+      .section {
+        width: 100%;
+        margin-bottom: 8px;
       }
     }
   }
