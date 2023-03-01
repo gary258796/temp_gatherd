@@ -93,10 +93,10 @@
 }
 
 .creator {
-  padding: 32px 120px 84px;
+  padding: 32px 180px 84px;
 
   .creatorTitle {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 800;
     margin-bottom: 36px;
     color: #2b403a;
@@ -142,7 +142,7 @@
   background-color: #f8f6eb;
 
   .title {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 800;
     margin-bottom: 36px;
     color: #2b403a;
@@ -171,7 +171,7 @@
     }
 
     .subtitle {
-      font-size: 14px;
+      font-size: 16px;
       color: #807b67;
     }
   }
@@ -191,7 +191,7 @@
     box-sizing: border-box;
 
     .subtitle {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 800;
       color: #323023;
       margin-bottom: 24px;
@@ -225,14 +225,18 @@
 }
 
 .how {
-  padding: 120px;
+  padding: 0 180px 120px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .title {
     font-size: 32px;
     font-weight: 800;
     color: #2b403a;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
+    width: 100%;
   }
 
   .sections {
@@ -240,7 +244,7 @@
     justify-content: space-between;
 
     .section {
-      width: 30%;
+      width: 32%;
       background-color: #f8f6eb;
       padding: 32px;
       box-sizing: border-box;
@@ -262,7 +266,7 @@
       .sectionTitle {
         font-size: 24px;
         font-weight: 800;
-        color: #323023;
+        color: #2b403a;
         margin-bottom: 16px;
       }
 
@@ -273,6 +277,18 @@
       }
     }
   }
+
+  button {
+    height: 56px;
+    width: 150px;
+    background-color: #2b403a;
+    border-radius: 10px;
+    border: none;
+    color: #f8f6eb;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 48px;
+  }
 }
 
 .vendors {
@@ -281,10 +297,9 @@
   align-items: center;
   padding: 120px 0px;
   box-sizing: border-box;
-  background-color: #f8f6eb;
 
   .title {
-    font-size: 60px;
+    font-size: 32px;
     font-weight: 800;
     margin-bottom: 24px;
     color: #2b403a;
@@ -316,6 +331,7 @@
 
     .vendor {
       margin: 0 16px;
+      cursor: pointer;
 
       .name {
         margin-top: 16px;
@@ -334,20 +350,6 @@
   }
 }
 
-.divider {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #f8f6eb;
-  padding: 0 120px;
-  box-sizing: border-box;
-
-  div {
-    width: 100%;
-    border-bottom: 1px solid #E4E2D4;
-  }
-}
-
 .sendEmail {
   padding: 120px 120px;
   box-sizing: border-box;
@@ -358,11 +360,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-right: 24px;
+    padding-right: 48px;
     box-sizing: border-box;
 
     .title {
-      font-size: 46px;
+      font-size: 32px;
       font-weight: 800;
       margin-bottom: 16px;
       color: #2b403a;
@@ -575,6 +577,10 @@
         margin-bottom: 8px;
       }
     }
+
+    button {
+      margin: 48px 0;
+    }
   }
   
   .vendors {
@@ -598,10 +604,6 @@
     .pictures {
       justify-content: flex-start;
     }
-  }
-
-  .divider {
-    padding: 0 24px;
   }
   
   .sendEmail {

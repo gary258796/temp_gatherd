@@ -89,7 +89,7 @@ const Explore = () => {
     },
     {
       number: "3",
-      title: "開始你的旅程",
+      title: "開始聚餐體驗",
       subtitle:
         "只要你準備好了，通過簡單又快速的上架流程，就可以加入我們成為美食創作家，讓我們一起期待未來的旅程！",
     },
@@ -137,7 +137,7 @@ const Explore = () => {
             讓每個熱愛烹飪的人，可以在自己的空間，與來自不同地方的好友、鄰居或一樣熱愛美食的人們分享你的料理和故事。
           </div>
           <button className={styles.button} onClick={() => navigate("../")}>
-            開始探索
+            加入我們
           </button>
         </div>
       </div>
@@ -183,12 +183,30 @@ const Explore = () => {
           <div className={styles.subtitle}>
             致力於為美食愛好者創造機會，與志同道合的人們建立新的關係與交流。
           </div>
-          <button onClick={() => navigate("../")}>開始探索</button>
+          <button onClick={() => navigate("../")}>加入我們</button>
         </div>
         <div className={styles.image}>
           <img src={banner2} alt="" />
         </div>
       </div>
+      {/* <div className={styles.vendors}>
+        <div className={styles.title}>立即體驗</div>
+        <div className={styles.subtitle}>
+          馬上來認識我們的美食創作家，每一位都有自己的特色，在加入我們之前可以先來試這會是個怎麼樣的體驗。
+        </div>
+        <div className={styles.pictures}>
+          {vendors.map((vendor) => (
+            <div
+              className={styles.vendor}
+              key={vendor.name}
+              onClick={() => navigate("../")}
+            >
+              <img src={vendor.image} alt="" />
+              <div className={styles.name}>{vendor.name}</div>
+            </div>
+          ))}
+        </div>
+      </div> */}
       <div className={styles.how}>
         <div className={styles.title}>如何加入Gatherd?</div>
         <div className={styles.sections}>
@@ -200,26 +218,9 @@ const Explore = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className={styles.vendors}>
-        <div className={styles.title}>立即體驗</div>
-        <div className={styles.subtitle}>
-          馬上來認識我們的美食創作家，每一位都有自己的特色，在加入我們之前可以先來試這會是個怎麼樣的體驗。
-        </div>
-        <div className={styles.pictures}>
-          {vendors.map((vendor) => (
-            <div className={styles.vendor} key={vendor.name}>
-              <img src={vendor.image} alt="" />
-              <div className={styles.name}>{vendor.name}</div>
-            </div>
-          ))}
-        </div>
-        <button className={styles.button} onClick={() => navigate("../")}>
-          開始探索
+        <button className={styles.button} onClick={() => navigate("../joinus")}>
+          加入我們
         </button>
-      </div>
-      <div className={styles.divider}>
-        <div />
       </div>
       <div className={styles.sendEmail}>
         <div className={styles.text}>
