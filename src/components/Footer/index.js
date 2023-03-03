@@ -18,15 +18,15 @@ const Footer = () => {
     <div className={styles.footer}>
       <div>©2023 Gatherd, Inc.</div>
       <div className={styles.buttons}>
-        <div
+        {/* <div
           className={styles.button}
           onClick={() => handleRedirect("/explore")}
         >
           關於 Gatherd
-        </div>
+        </div> */}
         <div
           className={styles.button}
-          onClick={() => handleRedirect("/joinus")}
+          onClick={() => handleRedirect("/explore")}
         >
           美食創作家
         </div>
@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
         <div
           className={styles.button}
-          onClick={() => window.open("mailto:eatgatherd@gmail.com")}
+          onClick={() => window.open("mailto:dinegatherd@gmail.com")}
         >
           電子信箱
         </div>

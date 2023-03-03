@@ -53,7 +53,7 @@ const Explore = () => {
       number: "03",
       title: "用食物說故事",
       subtitle:
-        "你可以在 Gatherd 上清楚的讓客人知道你是個怎麼樣的人，透過菜單的設計、食物的照片、自我介紹的文字，都會是我們呈現你的獨特的最佳方式，讓客人在體驗之前就已經對你充滿想像。",
+        "你可以在 Gatherd 上讓客人知道你是個怎麼樣的人，透過菜單的設計、食物的照片、自我介紹的文字，都會是我們呈現你的獨特的最佳方式，讓客人在體驗之前就已經對你充滿想像。",
     },
     {
       number: "04",
@@ -132,11 +132,14 @@ const Explore = () => {
         <img className={styles.backgroundImg} src={banner} alt="" />
         <div className={styles.cover} />
         <div className={styles.text}>
-          <div className={styles.title}>創造一個聚餐體驗</div>
+          <div className={styles.title}>創造不一樣的聚餐體驗</div>
           <div className={styles.subtitle}>
-            讓每個熱愛烹飪的人，可以在自己的空間，與來自不同地方的好友、鄰居或一樣熱愛美食的人們分享你的料理和故事。
+            讓每個熱愛烹飪的人，可以在自己的空間，與來自各地、喜歡美食的人們分享你的料理和故事。
           </div>
-          <button className={styles.button} onClick={() => navigate("../")}>
+          <button
+            className={styles.button}
+            onClick={() => window.open("https://lin.ee/CGfqTpp")}
+          >
             加入我們
           </button>
         </div>
@@ -218,7 +221,10 @@ const Explore = () => {
             </div>
           ))}
         </div>
-        <button className={styles.button} onClick={() => navigate("../joinus")}>
+        <button
+          className={styles.button}
+          onClick={() => window.open("https://lin.ee/CGfqTpp")}
+        >
           加入我們
         </button>
       </div>
