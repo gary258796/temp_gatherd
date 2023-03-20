@@ -4,7 +4,6 @@ import styles from "./index.module.scss";
 import "swiper/css";
 import SetMenuCard from "../../components/SetMenuCard";
 import SetMenuModal from "../../components/SetMenuModal";
-import PasswordModal from "../../components/PasswordModal";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import logoImg from "../../images/logo.png";
@@ -15,7 +14,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [selectedSetMenu, setSelectedSetMenu] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(true);
   const mockMenu = {
     id: 0, // Set menu ID
     vendorId: 0, // 對應美食創作家 ID
@@ -141,10 +139,6 @@ const Home = () => {
         }
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
-      />
-      <PasswordModal
-        isOpen={passwordModalIsOpen}
-        onCorrect={() => setPasswordModalIsOpen(false)}
       />
     </>
   );
