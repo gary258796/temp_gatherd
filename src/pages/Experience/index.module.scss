@@ -1,0 +1,332 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 400px;
+  padding: 48px;
+  box-sizing: border-box;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+
+    .title {
+      font-size: 56px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}
+
+.description {
+  background: #2b403a;
+  padding: 32px 120px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .content {
+    display: flex;
+    color: #fff;
+
+    .text {
+      flex: 1;
+      margin-right: 12px;
+
+      p {
+        margin: 0 0 12px;
+        font-size: 16px;
+      }
+    }
+
+    img {
+      width: 50%;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+  }
+}
+
+.adventure {
+  background: #fff;
+  padding: 32px 120px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-between;
+
+    .card {
+      width: 30%;
+      display: flex;
+      border-radius: 4px;
+      color: #fff;
+      transition: 0.5s;
+
+      .text {
+        flex: 1;
+        padding: 16px;
+        box-sizing: border-box;
+
+        p {
+          font-size: 24px;
+          margin: 0 0 8px;
+        }
+
+        div {
+          margin-bottom: 11px;
+          font-size: 16px;
+        }
+      }
+
+      img {
+        flex: 1;
+        object-fit: cover;
+      }
+    }
+
+    .card:hover {
+      transform: translate(0, -12px);
+    }
+  }
+}
+
+.how {
+  background: #2b403a;
+  padding: 32px 120px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    flex: 1;
+    margin-right: 12px;
+  }
+
+  .content {
+    font-size: 18px;
+    font-weight: 400;
+    flex: 1;
+    margin-left: 12px;
+  }
+}
+
+.menus {
+  background: #fff;
+  padding: 32px 120px;
+  margin-right: -24px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.sendEmail {
+  padding: 120px 120px;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #f8f6eb;
+
+  .text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 48px;
+    box-sizing: border-box;
+
+    .title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #2b403a;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #323023;
+    }
+  }
+
+  .input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      width: 100%;
+      margin-bottom: 24px;
+      height: 52px;
+      border-radius: 10px;
+      border: 1px solid gray;
+      padding: 0 24px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      height: 56px;
+      width: 150px;
+      background-color: #2b403a;
+      border-radius: 10px;
+      border: none;
+      color: #f8f6eb;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .banner {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 32px 18px;
+  
+    .text {
+      align-items: flex-start;
+  
+      .title {
+        font-size: 32px;
+      }
+    }
+  }
+  
+  .description {
+    padding: 32px 18px;
+  
+    .title {
+      font-size: 18px;
+    }
+  
+    .content {
+      flex-direction: column;
+  
+      .text {
+        margin-right: 0;
+      }
+  
+      img {
+        border-radius: 4px;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+  
+  .adventure {
+    padding: 32px 18px;
+  
+    .title {
+      font-size: 18px;
+    }
+  
+    .cards {
+      flex-direction: column;
+  
+      .card {
+        width: 100%;
+        margin-bottom: 18px;
+  
+        .text {
+          p {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  
+  .how {
+    padding: 32px 18px;
+    align-items: flex-start;
+    flex-direction: column;
+  
+    .title {
+      font-size: 32px;
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
+  
+  .menus {
+    padding: 32px 18px;
+    margin-right: 0;
+  
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+  
+    .list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .sendEmail {
+    padding: 48px 18px;
+    flex-direction: column;
+  
+    .text {
+      padding-right: 0;
+      margin-bottom: 24px;;
+  
+      .title {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+    }
+  
+    .input {
+      width: 300px;
+  
+      button {
+        height: 48px;
+      }
+    }
+  }
+}
