@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import SetMenuCard from "../../components/SetMenuCard";
 import { useNavigate } from "react-router-dom";
 import banner from "../../images/banner.jpg";
-import banner3 from "../../images/banner3.jpeg";
+import banner3 from "../../images/banner3.jpg";
 
 const Experience = () => {
   const navigate = useNavigate();
