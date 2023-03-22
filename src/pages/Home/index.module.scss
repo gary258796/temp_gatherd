@@ -29,8 +29,11 @@
   }
 
   .cards {
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-column-gap: 18px;
+    grid-row-gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -38,6 +41,18 @@
   .container {
     .top {
       padding: 24px;
+    }
+
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

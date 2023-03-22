@@ -15,6 +15,7 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    filter: brightness(0.4);
   }
 
   .text {
@@ -24,28 +25,20 @@
     color: #fff;
 
     .title {
-      font-size: 56px;
+      font-size: 60px;
       font-weight: 600;
       margin-bottom: 16px;
     }
   
     .subtitle {
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 20px;
     }
   }
 }
 
 .description {
   background: #2b403a;
-  padding: 32px 120px;
-
-  .title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 8px;
-  }
+  padding: 120px;
 
   .content {
     display: flex;
@@ -53,11 +46,32 @@
 
     .text {
       flex: 1;
-      margin-right: 12px;
+      margin-right: 24px;
+
+      .title {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 36px;
+        color: #fff;
+      }
 
       p {
         margin: 0 0 12px;
         font-size: 16px;
+      }
+
+      button {
+        display: block;
+        height: 56px;
+        width: 150px;
+        background-color: #f8f6eb;
+        border-radius: 10px;
+        border: none;
+        color: #2b403a;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 36px;
       }
     }
 
@@ -66,17 +80,21 @@
       border-radius: 4px;
       object-fit: cover;
     }
+
+    button {
+      display: none;
+    }
   }
 }
 
 .adventure {
   background: #fff;
-  padding: 32px 120px;
+  padding: 120px;
 
   .title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 36px;
   }
 
   .cards {
@@ -85,42 +103,29 @@
 
     .card {
       width: 30%;
-      display: flex;
       border-radius: 4px;
-      color: #fff;
-      transition: 0.5s;
+      color: #2b403a;
+      background: #f8f6eb;
+      padding: 16px;
+      box-sizing: border-box;
 
-      .text {
-        flex: 1;
-        padding: 16px;
-        box-sizing: border-box;
-
-        p {
-          font-size: 24px;
-          margin: 0 0 8px;
-        }
-
-        div {
-          margin-bottom: 11px;
-          font-size: 16px;
-        }
+      p {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0 0 8px;
       }
 
-      img {
-        flex: 1;
-        object-fit: cover;
+      div {
+        margin-bottom: 11px;
+        font-size: 16px;
       }
-    }
-
-    .card:hover {
-      transform: translate(0, -12px);
     }
   }
 }
 
 .how {
   background: #2b403a;
-  padding: 32px 120px;
+  padding: 120px;
   display: flex;
   align-items: center;
   color: #fff;
@@ -137,24 +142,42 @@
     font-weight: 400;
     flex: 1;
     margin-left: 12px;
+
+    div {
+      margin-bottom: 12px;
+    }
+
+    button {
+      height: 56px;
+      width: 150px;
+      background-color: #f8f6eb;
+      border-radius: 10px;
+      border: none;
+      color: #2b403a;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 36px;
+    }
   }
 }
 
 .menus {
   background: #fff;
-  padding: 32px 120px;
-  margin-right: -24px;
+  padding: 120px;
 
   .title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 36px;
   }
 
-  .list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  .cards {
+    width: 100%;
+    display: grid;
+    grid-column-gap: 18px;
+    grid-row-gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -227,27 +250,56 @@
       .title {
         font-size: 32px;
       }
+
+      .subtitle {
+        font-size: 16px;
+      }
     }
   }
   
   .description {
-    padding: 32px 18px;
-  
-    .title {
-      font-size: 18px;
-    }
+    padding: 32px 0;
   
     .content {
       flex-direction: column;
   
       .text {
         margin-right: 0;
+        padding: 0 18px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 16px;
+        }
+
+        button {
+          display: none;
+        }
       }
   
       img {
         border-radius: 4px;
         object-fit: cover;
         width: 100%;
+        margin-top: 24px;
+      }
+
+      button {
+        display: block;
+        height: 56px;
+        width: 150px;
+        background-color: #f8f6eb;
+        border-radius: 10px;
+        border: none;
+        color: #2b403a;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        margin: auto;
+        margin-top: 32px;
       }
     }
   }
@@ -256,7 +308,9 @@
     padding: 32px 18px;
   
     .title {
-      font-size: 18px;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
     }
   
     .cards {
@@ -265,11 +319,13 @@
       .card {
         width: 100%;
         margin-bottom: 18px;
+
+        p {
+          font-size: 18px;
+        }
   
-        .text {
-          p {
-            font-size: 18px;
-          }
+        div {
+          font-size: 16px;
         }
       }
     }
@@ -281,13 +337,19 @@
     flex-direction: column;
   
     .title {
-      font-size: 32px;
+      font-size: 24px;
+      font-weight: 600;
       margin-right: 0;
       margin-bottom: 12px;
     }
   
     .content {
       margin-left: 0;
+      font-size: 16px;
+
+      button {
+        margin-top: 18px;
+      }
     }
   }
   
@@ -301,9 +363,8 @@
       margin-bottom: 8px;
     }
   
-    .list {
-      flex-direction: column;
-      align-items: center;
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   

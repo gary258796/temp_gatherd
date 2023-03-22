@@ -9,6 +9,7 @@ import { getDatabase, ref, get, child, set } from "firebase/database";
 import logoImg from "../../images/logo.png";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
+import ItemCard from "../../components/ItemCard";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -117,10 +118,11 @@ const Home = () => {
               );
               if (!vendor) return <></>;
               return (
-                <SetMenuCard
-                  key={index}
-                  menu={menu}
-                  vendor={vendor}
+                <ItemCard
+                  images={menu.images}
+                  location={vendor.location}
+                  name={menu.name}
+                  price={menu.price}
                   onClick={() => {
                     setSelectedSetMenu(menu);
                     setModalIsOpen(true);
