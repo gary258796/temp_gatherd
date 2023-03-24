@@ -127,37 +127,66 @@
   background: #2b403a;
   padding: 120px;
   display: flex;
-  align-items: center;
   color: #fff;
 
-  .title {
-    font-size: 32px;
-    font-weight: 800;
+  .text {
     flex: 1;
-    margin-right: 12px;
+    margin-right: 48px;
+    
+    .title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+  
+    .content {
+      font-size: 18px;
+      font-weight: 400;
+  
+      div {
+        margin-bottom: 12px;
+      }
+  
+      button {
+        height: 56px;
+        width: 150px;
+        background-color: #f8f6eb;
+        border-radius: 10px;
+        border: none;
+        color: #2b403a;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 36px;
+      }
+    }
   }
 
-  .content {
-    font-size: 18px;
-    font-weight: 400;
+  .host {
     flex: 1;
-    margin-left: 12px;
+    padding: 24px;
+    background: #f8f6eb;
+    color: black;
+    display: flex;
 
-    div {
+    img {
+      width: 50%;
+      object-fit: cover;
+      margin-right: 24px;
+    }
+
+    .text {
+      margin: 0;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 600;
       margin-bottom: 12px;
     }
 
-    button {
-      height: 56px;
-      width: 150px;
-      background-color: #f8f6eb;
-      border-radius: 10px;
-      border: none;
-      color: #2b403a;
-      font-size: 20px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 36px;
+    .info {
+      font-size: 16px;
     }
   }
 }
@@ -330,25 +359,38 @@
       }
     }
   }
-  
+
   .how {
     padding: 32px 18px;
-    align-items: flex-start;
     flex-direction: column;
   
-    .title {
-      font-size: 24px;
-      font-weight: 600;
+    .text {
       margin-right: 0;
-      margin-bottom: 12px;
+      
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    
+      .content {
+        font-size: 16px;
+    
+        button {
+          margin-top: 18px;
+        }
+      }
     }
   
-    .content {
-      margin-left: 0;
-      font-size: 16px;
-
-      button {
-        margin-top: 18px;
+    .host {
+      margin-top: 24px;
+      flex-direction: column;
+  
+      img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 12px;
       }
     }
   }

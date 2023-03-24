@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../images/banner.jpg";
 import banner3 from "../../images/banner3.jpg";
+import alice from "../../images/host/alice.jpg";
 import ItemCard from "../../components/ItemCard";
 
 const Experience = () => {
@@ -108,15 +109,26 @@ const Experience = () => {
         </div>
       </div>
       <div className={styles.how}>
-        <div className={styles.title}>Gatherd的旅程如何開始</div>
-        <div className={styles.content}>
-          <div>
-            我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。
+        <div className={styles.text}>
+          <div className={styles.title}>Gatherd的旅程如何開始</div>
+          <div className={styles.content}>
+            <div>
+              我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。
+            </div>
+            <div>
+              我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。
+            </div>
+            <button onClick={() => navigate("../")}>開始體驗</button>
           </div>
-          <div>
-            我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。
+        </div>
+        <div className={styles.host}>
+          <img src={alice} alt="" />
+          <div className={styles.text}>
+            <div className={styles.name}>Alice</div>
+            <div className={styles.info}>
+              我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理，如果有機會我也想做泰北料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！
+            </div>
           </div>
-          <button onClick={() => navigate("../")}>開始體驗</button>
         </div>
       </div>
       <div className={styles.menus}>
