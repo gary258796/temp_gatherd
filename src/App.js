@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Explore from "./pages/Explore";
 import ScrollToTop from "./components/ScrollToTop";
 import Experience from "./pages/Experience";
+import Menu from "./pages/Menu";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/joinus" element={<JoinUs />} />
           <Route exact path="/explore" element={<Explore />} />
           <Route exact path="/experience" element={<Experience />} />
+          <Route exact path="/experiences/:experienceId" element={<Menu />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
         </Routes>
       </BrowserRouter>

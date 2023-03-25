@@ -126,53 +126,66 @@
 .how {
   background: #2b403a;
   padding: 120px;
-  display: flex;
   color: #fff;
-
-  .text {
-    flex: 1;
-    margin-right: 48px;
     
-    .title {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 24px;
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+
+  .content {
+    font-size: 18px;
+    font-weight: 400;
+
+    div {
+      margin-bottom: 12px;
     }
-  
-    .content {
-      font-size: 18px;
-      font-weight: 400;
-  
-      div {
-        margin-bottom: 12px;
-      }
-  
-      button {
-        height: 56px;
-        width: 150px;
-        background-color: #f8f6eb;
-        border-radius: 10px;
-        border: none;
-        color: #2b403a;
-        font-size: 20px;
-        font-weight: 500;
-        cursor: pointer;
-        margin-top: 36px;
-      }
+
+    button {
+      height: 56px;
+      width: 150px;
+      background-color: #f8f6eb;
+      border-radius: 10px;
+      border: none;
+      color: #2b403a;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 36px;
     }
+  }
+}
+
+.hosts {
+  background: #2b403a;
+  padding: 0 120px 120px;
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: white;
+  }
+
+  .hostContainer {
+    display: grid;
+    grid-column-gap: 18px;
+    grid-row-gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .host {
-    flex: 1;
     padding: 24px;
     background: #f8f6eb;
     color: black;
-    display: flex;
+    border-radius: 10px;
 
     img {
-      width: 50%;
+      width: 100%;
       object-fit: cover;
-      margin-right: 24px;
+      margin-bottom: 24px;
+      border-radius: 10px;
     }
 
     .text {
@@ -206,7 +219,7 @@
     display: grid;
     grid-column-gap: 18px;
     grid-row-gap: 18px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -310,7 +323,7 @@
       }
   
       img {
-        border-radius: 4px;
+        border-radius: 0;
         object-fit: cover;
         width: 100%;
         margin-top: 24px;
@@ -363,35 +376,38 @@
   .how {
     padding: 32px 18px;
     flex-direction: column;
-  
-    .text {
-      margin-right: 0;
       
-      .title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-right: 0;
-        margin-bottom: 12px;
-      }
-    
-      .content {
-        font-size: 16px;
-    
-        button {
-          margin-top: 18px;
-        }
-      }
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-right: 0;
+      margin-bottom: 12px;
     }
   
-    .host {
-      margin-top: 24px;
-      flex-direction: column;
+    .content {
+      font-size: 16px;
   
-      img {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 12px;
+      button {
+        margin-top: 18px;
       }
+    }
+  }
+
+  .hosts {
+    background: #2b403a;
+    padding: 32px 18px;
+  
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+  
+    .hostContainer {
+      display: grid;
+      grid-column-gap: 18px;
+      grid-row-gap: 18px;
+      grid-template-columns: repeat(1, 1fr);
     }
   }
   

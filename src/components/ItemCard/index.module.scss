@@ -36,15 +36,13 @@
   .text {
     font-size: 16px;
 
-    .location {
+    .location, .price {
+      color: gray;
     }
 
     .name {
       font-weight: 600;
       margin-bottom: 4px;
-    }
-
-    .price {
     }
   }
 }

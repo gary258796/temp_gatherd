@@ -2,17 +2,16 @@ import Footer from "../../components/Footer";
 import styles from "./index.module.scss";
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../images/banner.jpg";
 import banner3 from "../../images/banner3.jpg";
 import alice from "../../images/host/alice.jpg";
 import ItemCard from "../../components/ItemCard";
+import { MENUS } from "../../constants/menus";
 
 const Experience = () => {
   const navigate = useNavigate();
-  const [menus, setMenus] = useState([]);
-  const [vendors, setVendors] = useState([]);
   const [email, setEmail] = useState("");
 
   const firebaseConfig = {
@@ -41,24 +40,6 @@ const Experience = () => {
       });
   };
 
-  useEffect(() => {
-    // 用來寫入資料用
-    // set(ref(db, "vendor"), VENDORS_DATA);
-    // set(ref(db, "menu"), SET_MENUS);
-    get(child(dbRef, "/"))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setMenus(snapshot.val().menu);
-          setVendors(snapshot.val().vendor);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
   return (
     <>
       <div className={styles.banner}>
@@ -77,7 +58,7 @@ const Experience = () => {
         <div className={styles.content}>
           <div className={styles.text}>
             <div className={styles.title}>
-              Gatherd 致力於透過各式各樣的料理方式將人們聚集在一起
+              Gatherd 的理念是透過飲食讓人們聚在一起，相互聯繫
             </div>
             <p>
               我們相信最好的聚餐體驗藏在城市中的每個角落。他們是來自不同背景的人們，可能是一個全職DJ、小學老師或者是身邊的老奶奶們，這些人都有一個共同的地方-熱愛烹飪料理並且樂於與其他人分享。
@@ -96,11 +77,11 @@ const Experience = () => {
         <div className={styles.cards}>
           <div className={styles.card}>
             <p>嘗試獨特料理</p>
-            <div>品嚐在任何餐廳都找不到的新式料理模式</div>
+            <div>品嚐在任何餐廳都找不到的新式料理模式。</div>
           </div>
           <div className={styles.card}>
             <p>特別的體驗</p>
-            <div>離開眾多人群的餐廳，體驗不同氛圍的聚餐空間</div>
+            <div>離開眾多人群的餐廳，體驗不同氛圍的聚餐空間。</div>
           </div>
           <div className={styles.card}>
             <p>結交新夥伴</p>
@@ -109,24 +90,27 @@ const Experience = () => {
         </div>
       </div>
       <div className={styles.how}>
-        <div className={styles.text}>
-          <div className={styles.title}>Gatherd的旅程如何開始</div>
-          <div className={styles.content}>
-            <div>
-              我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。
-            </div>
-            <div>
-              我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。
-            </div>
-            <button onClick={() => navigate("../")}>開始體驗</button>
+        <div className={styles.title}>Gatherd的旅程如何開始</div>
+        <div className={styles.content}>
+          <div>
+            我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。
           </div>
+          <div>
+            我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。
+          </div>
+          <button onClick={() => navigate("../")}>開始體驗</button>
         </div>
-        <div className={styles.host}>
-          <img src={alice} alt="" />
-          <div className={styles.text}>
-            <div className={styles.name}>Alice</div>
-            <div className={styles.info}>
-              我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！
+      </div>
+      <div className={styles.hosts}>
+        <div className={styles.title}>我們的美食創作家</div>
+        <div className={styles.hostContainer}>
+          <div className={styles.host}>
+            <img src={alice} alt="" />
+            <div className={styles.text}>
+              <div className={styles.name}>盈盈</div>
+              <div className={styles.info}>
+                我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！
+              </div>
             </div>
           </div>
         </div>
@@ -134,20 +118,15 @@ const Experience = () => {
       <div className={styles.menus}>
         <div className={styles.title}>開始探索</div>
         <div className={styles.cards}>
-          {menus.map((menu) => {
-            const vendor = vendors.find(
-              (vendor) => vendor.id === menu.vendorId
-            );
-            if (!vendor) return <></>;
-            return (
-              <ItemCard
-                images={menu.images}
-                location={vendor.location}
-                name={menu.name}
-                price={menu.price}
-              />
-            );
-          })}
+          {MENUS.map((menu, index) => (
+            <ItemCard
+              images={menu.images}
+              location={menu.location}
+              name={menu.name}
+              price={menu.price}
+              onClick={() => navigate(`../experiences/${index}`)}
+            />
+          ))}
         </div>
       </div>
       <div className={styles.sendEmail}>

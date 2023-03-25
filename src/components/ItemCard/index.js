@@ -31,7 +31,7 @@ const ItemCard = (props) => {
       <div className={styles.text}>
         <div className={styles.location}>{location}</div>
         <div className={styles.name}>{name}</div>
-        <div className={styles.price}>${price}</div>
+        <div className={styles.price}>${price}/人</div>
       </div>
     </div>
   );
