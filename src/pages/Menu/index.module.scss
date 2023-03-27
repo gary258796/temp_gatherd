@@ -151,6 +151,9 @@
 
     .section {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .description {
         div {
@@ -160,6 +163,18 @@
 
       img {
         display: none;
+      }
+
+      button {
+        height: 48px;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #2b403a;
+        color: #2b403a;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 12px;
       }
     }
 
@@ -213,8 +228,9 @@
           justify-content: center;
           font-size: 16px;
           font-weight: 800;
-          color: white;
-          background: #2b403a;
+          background: white;
+          color: #2b403a;
+          border: 1px solid #2b403a;
           cursor: pointer;
         }
       }
@@ -250,10 +266,6 @@
           .title {
             font-size: 18px;
           }
-
-          ul {
-            padding-inline-start: 16px;
-          }
         }
       }
     }
@@ -274,6 +286,34 @@
 
 .section:first-child {
   padding-top: 0;
+}
+
+.mobileOrder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  background-color: white;
+  border-top: 1px solid rgb(221, 221, 221);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 600;
+
+  button {
+    height: 48px;
+    width: 120px;
+    background-color: #2b403a;
+    border-radius: 10px;
+    border: none;
+    color: #f8f6eb;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
 }
 
 .timesContainer {
@@ -440,6 +480,7 @@
           aspect-ratio: 1;
           object-fit: cover;
           margin-top: 12px;
+          display: block;
         }
       }
   
@@ -471,6 +512,10 @@
         }
       }
     }
+  }
+
+  .mobileOrder {
+    display: flex;
   }
 
   .timesContainer {

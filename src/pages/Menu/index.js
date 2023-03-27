@@ -95,9 +95,12 @@ const Menu = () => {
         </div>
         <div className={styles.host}>
           <div className={styles.section}>
-            <p>Host 介紹</p>
-            <div className={styles.description}>{menu.hostIntroduction}</div>
-            <img src={menu.hostImage} alt="" />
+            <div>
+              <p>Host 介紹</p>
+              <div className={styles.description}>{menu.hostIntroduction}</div>
+              <img src={menu.hostImage} alt="" />
+            </div>
+            <button onClick={requestTime}>詢問其他時間</button>
           </div>
           <div className={styles.image}>
             <img src={menu.hostImage} alt="" />
@@ -132,12 +135,10 @@ const Menu = () => {
             <div className={styles.notices}>
               <div className={styles.notice}>
                 <div className={styles.title}>客人須知</div>
-                <ul>
-                  <li>地址：{menu.address}</li>
-                  {menu.addressGuide && <li>交通指引：{menu.addressGuide}</li>}
-                  {menu.allergy && <li>過敏原：{menu.allergy}</li>}
-                  {menu.notice && <li>注意事項：{menu.notice}</li>}
-                </ul>
+                <div>地址：{menu.address}</div>
+                {menu.addressGuide && <div>交通指引：{menu.addressGuide}</div>}
+                {menu.allergy && <div>過敏原：{menu.allergy}</div>}
+                {menu.notice && <div>注意事項：{menu.notice}</div>}
               </div>
               <div className={styles.notice}>
                 <div className={styles.title}>取消政策</div>
@@ -151,6 +152,10 @@ const Menu = () => {
         </div>
       </div>
       <Footer />
+      <div className={styles.mobileOrder}>
+        <div>{menu.price}$/人</div>
+        <button onClick={order}>預訂</button>
+      </div>
       <div
         className={styles.timesContainer}
         style={{ display: openTimes ? "flex" : "none" }}
