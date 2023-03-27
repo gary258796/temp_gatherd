@@ -46,7 +46,7 @@ const Experience = () => {
         <div className={styles.text}>
           <div className={styles.title}>體驗多元、獨特的聚餐模式</div>
           <div className={styles.subtitle}>
-            你是否曾想嘗試餐廳或外送以外的聚模式嗎？Gatherd與熱愛烹飪料理者合作，
+            你是否曾想嘗試餐廳或外送以外的聚餐模式嗎？Gatherd與熱愛烹飪料理者合作，
           </div>
           <div className={styles.subtitle}>
             讓喜愛美食體驗的你能夠在料理者家中嘗試不同以往的聚餐體驗！
@@ -61,7 +61,7 @@ const Experience = () => {
               Gatherd 的理念是透過飲食讓人們聚在一起，相互聯繫
             </div>
             <p>
-              我們相信最好的聚餐體驗藏在城市中的每個角落。他們是來自不同背景的人們，可能是一個全職DJ、小學老師或者是身邊的老奶奶們，這些人都有一個共同的地方-熱愛烹飪料理並且樂於與其他人分享。
+              我們相信最好的聚餐體驗藏在城市中的每個角落。他們是來自不同背景的人們，可能是一個全職DJ、小學老師或者是身邊的老奶奶們，這些人都有一個共同的地方——熱愛烹飪料理並且樂於與其他人分享。
             </p>
             <p>
               我們想將這種獨特的體驗帶給同樣想要不同於現有聚餐模式的你，透過這樣的模式體驗不同的在地飲食文化。
@@ -81,7 +81,9 @@ const Experience = () => {
           </div>
           <div className={styles.card}>
             <p>特別的體驗</p>
-            <div>離開眾多人群的餐廳，體驗不同氛圍的聚餐空間。</div>
+            <div>
+              離開眾多人群的餐廳，在料理者的空間體驗不同氛圍的聚餐體驗。
+            </div>
           </div>
           <div className={styles.card}>
             <p>結交新夥伴</p>

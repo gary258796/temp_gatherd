@@ -54,10 +54,10 @@ const Home = () => {
             onClick={() => navigate("../explore")}
           />
           <Typography variant="body2" className={styles.title}>
-            美食創作家體驗
+            不一樣的聚餐體驗
           </Typography>
           <Typography variant="body2" className={styles.subtitle}>
-            到美食創作家家中，透過一道道佳餚，與你分享生活、文化以及他們的人生經歷。快與創作家預定美食吧！
+            來到烹飪料理者家中，透過一道道料理，與你分享生活、文化以及他們的人生故事。快與他們預定美食吧！
           </Typography>
           <div className={styles.cards}>
             {MENUS.map((menu, index) => (
