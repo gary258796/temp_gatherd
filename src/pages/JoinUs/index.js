@@ -83,13 +83,13 @@ const JoinUs = () => {
     },
     {
       number: "2",
-      title: "選擇用餐空間",
+      title: "敞開你的空間",
       subtitle:
         "找到一個適合你料理的空間。可以是自己的住家、親朋好友的場地或是任何其他可以激發你的創造力的地方。與跟你一樣熱愛美食的人們在這裏一起享受料理。",
     },
     {
       number: "3",
-      title: "開始聚餐體驗",
+      title: "開啟聚餐體驗",
       subtitle:
         "只要你準備好了，通過簡單又快速的上架流程，就可以加入我們成為美食創作家，讓我們一起期待未來的旅程！",
     },
@@ -140,7 +140,7 @@ const JoinUs = () => {
             className={styles.button}
             onClick={() => window.open("https://lin.ee/CGfqTpp")}
           >
-            加入我們
+            聯絡我們
           </button>
         </div>
       </div>
@@ -187,7 +187,7 @@ const JoinUs = () => {
             致力於為美食愛好者創造機會，與志同道合的人們建立新的關係與交流。
           </div>
           <button onClick={() => window.open("https://lin.ee/CGfqTpp")}>
-            加入我們
+            聯絡我們
           </button>
         </div>
         <div className={styles.image}>
@@ -227,7 +227,7 @@ const JoinUs = () => {
           className={styles.button}
           onClick={() => window.open("https://lin.ee/CGfqTpp")}
         >
-          加入我們
+          聯絡我們
         </button>
       </div>
       <div className={styles.sendEmail}>
