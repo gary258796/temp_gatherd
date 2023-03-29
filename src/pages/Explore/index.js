@@ -186,7 +186,7 @@ const Explore = () => {
           <div className={styles.subtitle}>
             致力於為美食愛好者創造機會，與志同道合的人們建立新的關係與交流。
           </div>
-          <button onClick={() => navigate("../")}>加入我們</button>
+          <button onClick={() => window.open("https://lin.ee/CGfqTpp")}>加入我們</button>
         </div>
         <div className={styles.image}>
           <img src={banner2} alt="" />

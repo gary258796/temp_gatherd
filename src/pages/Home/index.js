@@ -51,7 +51,7 @@ const Home = () => {
             className={styles.logo}
             src={logoImg}
             alt=""
-            onClick={() => navigate("../explore")}
+            onClick={() => navigate("../joinus")}
           />
           <Typography variant="body2" className={styles.title}>
             不一樣的聚餐體驗

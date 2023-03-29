@@ -14,8 +14,8 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/joinus" element={<JoinUs />} />
           <Route exact path="/explore" element={<Explore />} />
+          <Route exact path="/joinus" element={<Explore />} />
           <Route exact path="/experience" element={<Experience />} />
           <Route exact path="/experiences/:experienceId" element={<Menu />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}

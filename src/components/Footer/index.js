@@ -26,7 +26,7 @@ const Footer = () => {
         </div> */}
         <div
           className={styles.button}
-          onClick={() => handleRedirect("/explore")}
+          onClick={() => handleRedirect("/joinus")}
         >
           美食創作家
         </div>
