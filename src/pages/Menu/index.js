@@ -8,6 +8,7 @@ import { MENUS } from "../../constants/menus";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import closeImg from "../../images/close.png";
+import moment from "moment";
 
 const Menu = () => {
   const { experienceId } = useParams();
@@ -21,6 +22,15 @@ const Menu = () => {
   const requestTime = () => {
     window.open("https://forms.gle/EdW4pko259bbyhL46");
   };
+
+  const handleDisplayTimes = () => {
+    const today = new Date();
+    return menu.availableTimes.filter(
+      (time) => moment(time.id).toDate() > today
+    );
+  };
+
+  const availableTimes = handleDisplayTimes();
 
   if (!menu) return <></>;
 
@@ -77,7 +87,7 @@ const Menu = () => {
                   <p>{menu.price}$</p>/ 人
                 </div>
               </div>
-              {menu.availableTimes.slice(0, 3).map((time) => (
+              {availableTimes.slice(0, 3).map((time) => (
                 <div className={styles.date} key={`${time.date}-${time.time}`}>
                   <p>{time.date}</p>
                   <div>{time.time}</div>
@@ -85,11 +95,12 @@ const Menu = () => {
                   <button onClick={order}>預定</button>
                 </div>
               ))}
-              {menu.availableTimes.length > 3 && (
+              {availableTimes.length > 3 && (
                 <div className={styles.buttonContainer}>
                   <button onClick={() => setOpenTimes(true)}>更多時間</button>
                 </div>
               )}
+              {availableTimes.length === 0 && <div>目前無可預約時間</div>}
             </div>
           </div>
         </div>
@@ -110,7 +121,7 @@ const Menu = () => {
           <div className={styles.section}>
             <p>可預訂時間</p>
             <div className={styles.times}>
-              {menu.availableTimes.slice(0, 10).map((time) => (
+              {availableTimes.slice(0, 10).map((time) => (
                 <div
                   className={styles.time}
                   key={`${time.date}-${time.time}-1`}
@@ -120,13 +131,17 @@ const Menu = () => {
                   <div className={styles.price}>{menu.price}$ / 人</div>
                 </div>
               ))}
-              {menu.availableTimes.length > 10 && (
+              {availableTimes.length > 10 && (
                 <div className={styles.more} onClick={() => setOpenTimes(true)}>
                   查看更多
                 </div>
               )}
             </div>
-            <button onClick={order}>預訂</button>
+            {availableTimes.length === 0 ? (
+              <div>目前無可預約時間</div>
+            ) : (
+              <button onClick={order}>預訂</button>
+            )}
           </div>
         </div>
         <div className={styles.moreInfo}>
@@ -166,7 +181,7 @@ const Menu = () => {
           alt=""
           onClick={() => setOpenTimes(false)}
         />
-        {menu.availableTimes.map((time) => (
+        {availableTimes.map((time) => (
           <div className={styles.time} key={`${time.date}-${time.time}-modal`}>
             <div className={styles.date}>{time.date}</div>
             <div className={styles.textContainer}>
