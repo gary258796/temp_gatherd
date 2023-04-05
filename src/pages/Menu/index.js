@@ -35,7 +35,7 @@ const Menu = () => {
   if (!menu) return <></>;
 
   return (
-    <>
+    <div className={styles.box}>
       <div className={styles.container}>
         <div className={styles.title}>{menu.name}</div>
         <div className={styles.subtitle}>
@@ -194,7 +194,7 @@ const Menu = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

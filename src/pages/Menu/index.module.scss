@@ -1,7 +1,12 @@
+.box {
+  background: #f8f6eb;
+}
+
 .container {
   padding: 80px;
+  max-width: 1120px;
+  margin: auto;
   box-sizing: border-box;
-  background: #f8f6eb;
 
   .title {
     font-size: 26px;
