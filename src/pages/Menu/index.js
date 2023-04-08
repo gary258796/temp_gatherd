@@ -39,7 +39,7 @@ const Menu = () => {
       <div className={styles.container}>
         <div className={styles.title}>{menu.name}</div>
         <div className={styles.subtitle}>
-          {`${menu.location}・${menu.duration} 小時`}
+          {`${menu.location}・${menu.duration} 小時・${menu.persons} 人`}
         </div>
         <div className={styles.images}>
           <Swiper
@@ -100,14 +100,21 @@ const Menu = () => {
                   <button onClick={() => setOpenTimes(true)}>更多時間</button>
                 </div>
               )}
-              {availableTimes.length === 0 && <div>目前無可預約時間</div>}
+              {availableTimes.length === 0 && (
+                <>
+                  <div className={styles.notime}>目前無可預約時間</div>
+                  <div className={styles.buttonContainer}>
+                    <button onClick={requestTime}>詢問其他時間</button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
         <div className={styles.host}>
           <div className={styles.section}>
             <div>
-              <p>Host 介紹</p>
+              <p>Host 介紹, {menu.hostName}</p>
               <div className={styles.description}>{menu.hostIntroduction}</div>
               <img src={menu.hostImage} alt="" />
             </div>
@@ -117,7 +124,11 @@ const Menu = () => {
             <img src={menu.hostImage} alt="" />
           </div>
         </div>
-        <div className={styles.avaliable}>
+        <div
+          className={
+            availableTimes.length === 0 ? styles.noavaliable : styles.avaliable
+          }
+        >
           <div className={styles.section}>
             <p>可預訂時間</p>
             <div className={styles.times}>
@@ -138,7 +149,12 @@ const Menu = () => {
               )}
             </div>
             {availableTimes.length === 0 ? (
-              <div>目前無可預約時間</div>
+              <>
+                <div className={styles.notime}>目前無可預約時間</div>
+                <button onClick={order} className={styles.request}>
+                  詢問其他時間
+                </button>
+              </>
             ) : (
               <button onClick={order}>預訂</button>
             )}
@@ -166,10 +182,10 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer className={styles.footer} />
       <div className={styles.mobileOrder}>
         <div>{menu.price}$/人</div>
-        <button onClick={order}>預訂</button>
+        {availableTimes.length !== 0 && <button onClick={order}>預訂</button>}
       </div>
       <div
         className={styles.timesContainer}

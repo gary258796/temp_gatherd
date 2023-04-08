@@ -2,7 +2,8 @@ import styles from "./index.module.scss";
 import lineImg from "../../images/line.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Footer = () => {
+const Footer = (props) => {
+  const { className = "" } = props;
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -15,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <div className={styles.footer}>
+    <div className={`${styles.footer} ${className}`}>
       <div>©2023 Gatherd, Inc.</div>
       <div className={styles.buttons}>
         {/* <div

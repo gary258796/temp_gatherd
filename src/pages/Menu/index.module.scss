@@ -1,5 +1,6 @@
 .box {
   background: #f8f6eb;
+  white-space: break-spaces;
 }
 
 .container {
@@ -146,6 +147,10 @@
             margin-top: 12px;
           }
         }
+
+        .notime {
+          padding-bottom: 24px;
+        }
       }
     }
   }
@@ -172,6 +177,7 @@
 
       button {
         height: 48px;
+        width: 150px;
         background-color: white;
         border-radius: 10px;
         border: 1px solid #2b403a;
@@ -244,7 +250,7 @@
     button {
       margin-top: 24px;
       height: 48px;
-      width: 120px;
+      width: 150px;
       background-color: #2b403a;
       border-radius: 10px;
       border: none;
@@ -252,6 +258,17 @@
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
+    }
+  }
+
+  .noavaliable {
+    @extend .avaliable;
+    display: none;
+
+    .request {
+      background-color: white;
+      color: #2b403a;
+      border: 1px solid #2b403a;
     }
   }
 
@@ -275,6 +292,11 @@
       }
     }
   }
+}
+
+.footer {
+  max-width: 1120px;
+  margin: auto;
 }
 
 .section {
@@ -390,6 +412,10 @@
 }
 
 @media screen and (max-width: 750px) {
+  .box {
+    padding-bottom: 69px;
+  }
+
   .container {
     padding: 0;
   
@@ -487,6 +513,10 @@
           margin-top: 12px;
           display: block;
         }
+
+        button {
+          width: 100%;
+        }
       }
   
       .image {
@@ -496,6 +526,14 @@
   
     .avaliable {
       margin: 0 18px 24px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .noavaliable {
+      display: block;
     }
   
     .moreInfo {
