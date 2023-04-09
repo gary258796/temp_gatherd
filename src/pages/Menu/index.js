@@ -9,8 +9,10 @@ import Footer from "../../components/Footer";
 import { useState } from "react";
 import closeImg from "../../images/close.png";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 const Menu = () => {
+  const { t } = useTranslation();
   const { experienceId } = useParams();
   const [openTimes, setOpenTimes] = useState(false);
   const menu = MENUS[experienceId];
@@ -39,7 +41,9 @@ const Menu = () => {
       <div className={styles.container}>
         <div className={styles.title}>{menu.name}</div>
         <div className={styles.subtitle}>
-          {`${menu.location}・${menu.duration} 小時・${menu.persons} 人`}
+          {`${menu.location}・${menu.duration} ${t("menu.hour")}・${
+            menu.persons
+          } ${t("menu.person")}`}
         </div>
         <div className={styles.images}>
           <Swiper
@@ -61,13 +65,13 @@ const Menu = () => {
           </Swiper>
         </div>
         <div className={styles.mobileTitle}>{menu.name}</div>
-        <div
-          className={styles.mobileSubtitle}
-        >{`${menu.location}・${menu.duration} 小時`}</div>
+        <div className={styles.mobileSubtitle}>{`${menu.location}・${
+          menu.duration
+        } ${t("menu.hour")}・${menu.persons} ${t("menu.person")}`}</div>
         <div className={styles.menuDetail}>
           <div className={styles.info}>
             <div className={styles.section}>
-              <p>體驗介紹</p>
+              <p>{t("menu.info")}</p>
               <div>{menu.description}</div>
               <div className={styles.image}>
                 <img className={styles.image0} src={menu.images[0]} alt="" />
@@ -76,7 +80,7 @@ const Menu = () => {
               </div>
             </div>
             <div className={styles.section}>
-              <p>體驗內容</p>
+              <p>{t("menu.content")}</p>
               <div>{menu.detail}</div>
             </div>
           </div>
@@ -84,27 +88,33 @@ const Menu = () => {
             <div className={styles.booking}>
               <div className={styles.top}>
                 <div className={styles.price}>
-                  <p>{menu.price}$</p>/ 人
+                  <p>{menu.price}$</p>/ {t("menu.person")}
                 </div>
               </div>
               {availableTimes.slice(0, 3).map((time) => (
                 <div className={styles.date} key={`${time.date}-${time.time}`}>
                   <p>{time.date}</p>
                   <div>{time.time}</div>
-                  <p>{menu.price}$ / 人</p>
-                  <button onClick={order}>預定</button>
+                  <p>
+                    {menu.price}$ / {t("menu.person")}
+                  </p>
+                  <button onClick={order}>{t("menu.order")}</button>
                 </div>
               ))}
               {availableTimes.length > 3 && (
                 <div className={styles.buttonContainer}>
-                  <button onClick={() => setOpenTimes(true)}>更多時間</button>
+                  <button onClick={() => setOpenTimes(true)}>
+                    {t("menu.more")}
+                  </button>
                 </div>
               )}
               {availableTimes.length === 0 && (
                 <>
-                  <div className={styles.notime}>目前無可預約時間</div>
+                  <div className={styles.notime}>{t("menu.noTime")}</div>
                   <div className={styles.buttonContainer}>
-                    <button onClick={requestTime}>詢問其他時間</button>
+                    <button onClick={requestTime}>
+                      {t("menu.requestTime")}
+                    </button>
                   </div>
                 </>
               )}
@@ -114,11 +124,11 @@ const Menu = () => {
         <div className={styles.host}>
           <div className={styles.section}>
             <div>
-              <p>Host 介紹, {menu.hostName}</p>
+              <p>{t("menu.host", { name: menu.hostName })}</p>
               <div className={styles.description}>{menu.hostIntroduction}</div>
               <img src={menu.hostImage} alt="" />
             </div>
-            <button onClick={requestTime}>詢問其他時間</button>
+            <button onClick={requestTime}>{t("menu.requestTime")}</button>
           </div>
           <div className={styles.image}>
             <img src={menu.hostImage} alt="" />
@@ -130,7 +140,7 @@ const Menu = () => {
           }
         >
           <div className={styles.section}>
-            <p>可預訂時間</p>
+            <p>{t("menu.available")}</p>
             <div className={styles.times}>
               {availableTimes.slice(0, 10).map((time) => (
                 <div
@@ -139,43 +149,60 @@ const Menu = () => {
                 >
                   <div className={styles.date}>{time.date}</div>
                   <div className={styles.t}>{time.time}</div>
-                  <div className={styles.price}>{menu.price}$ / 人</div>
+                  <div className={styles.price}>
+                    {menu.price}$ / {t("menu.person")}
+                  </div>
                 </div>
               ))}
               {availableTimes.length > 10 && (
                 <div className={styles.more} onClick={() => setOpenTimes(true)}>
-                  查看更多
+                  {t("menu.more")}
                 </div>
               )}
             </div>
             {availableTimes.length === 0 ? (
               <>
-                <div className={styles.notime}>目前無可預約時間</div>
+                <div className={styles.notime}>{t("menu.noTime")}</div>
                 <button onClick={order} className={styles.request}>
-                  詢問其他時間
+                  {t("menu.requestTime")}
                 </button>
               </>
             ) : (
-              <button onClick={order}>預訂</button>
+              <button onClick={order}>{t("menu.order")}</button>
             )}
           </div>
         </div>
         <div className={styles.moreInfo}>
           <div className={styles.section}>
-            <p>注意事項</p>
+            <p>{t("menu.notice")}</p>
             <div className={styles.notices}>
               <div className={styles.notice}>
-                <div className={styles.title}>客人須知</div>
-                <div>地址：{menu.address}</div>
-                {menu.addressGuide && <div>交通指引：{menu.addressGuide}</div>}
-                {menu.allergy && <div>過敏原：{menu.allergy}</div>}
-                {menu.notice && <div>注意事項：{menu.notice}</div>}
+                <div className={styles.title}>{t("menu.customer")}</div>
+                <div>
+                  {t("menu.address")}：{menu.address}
+                </div>
+                {menu.addressGuide && (
+                  <div>
+                    {t("menu.addressGuide")}：{menu.addressGuide}
+                  </div>
+                )}
+                {menu.allergy && (
+                  <div>
+                    {t("menu.allergy")}：{menu.allergy}
+                  </div>
+                )}
+                {menu.notice && (
+                  <div>
+                    {t("menu.noticeDetail")}：{menu.notice}
+                  </div>
+                )}
               </div>
               <div className={styles.notice}>
-                <div className={styles.title}>取消政策</div>
+                <div className={styles.title}>{t("menu.cancel")}</div>
                 <div>
-                  若需取消訂單，會於下訂成功的郵件中附上取消表單，在訂單日期三天前皆可取消訂單，
-                  <b>如在訂單日期三天內取消訂單你將需支付總費用的 50%。</b>
+                  {t("menu.cancelDetail.1")}
+                  <b>{t("menu.cancelDetail.2")}</b>
+                  {t("menu.cancelDetail.3")}
                 </div>
               </div>
             </div>
@@ -184,8 +211,12 @@ const Menu = () => {
       </div>
       <Footer className={styles.footer} />
       <div className={styles.mobileOrder}>
-        <div>{menu.price}$/人</div>
-        {availableTimes.length !== 0 && <button onClick={order}>預訂</button>}
+        <div>
+          {menu.price}$/{t("menu.person")}
+        </div>
+        {availableTimes.length !== 0 && (
+          <button onClick={order}>{t("menu.order")}</button>
+        )}
       </div>
       <div
         className={styles.timesContainer}
@@ -203,9 +234,11 @@ const Menu = () => {
             <div className={styles.textContainer}>
               <div>
                 <div className={styles.t}>{time.time}</div>
-                <div className={styles.price}>{menu.price}$ / 人</div>
+                <div className={styles.price}>
+                  {menu.price}$ / {t("menu.person")}
+                </div>
               </div>
-              <button onClick={order}>預定</button>
+              <button onClick={order}>{t("menu.order")}</button>
             </div>
           </div>
         ))}

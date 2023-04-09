@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./index.module.scss";
 import "swiper/css";
 // import { initializeApp } from "firebase/app";
@@ -9,11 +9,13 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ItemCard from "../../components/ItemCard";
 import { MENUS } from "../../constants/menus";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [selectedSetMenu, setSelectedSetMenu] = useState({});
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { t } = useTranslation();
+  // const [selectedSetMenu, setSelectedSetMenu] = useState({});
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [menus, setMenus] = useState([]);
   // const [vendors, setVendors] = useState([]);
   // const firebaseConfig = {
@@ -54,10 +56,10 @@ const Home = () => {
             onClick={() => navigate("../joinus")}
           />
           <Typography variant="body2" className={styles.title}>
-            不一樣的聚餐體驗
+            {t("home.title")}
           </Typography>
           <Typography variant="body2" className={styles.subtitle}>
-            來到烹飪料理者家中，透過一道道料理，與你分享生活、文化以及他們的人生故事。快與他們預定美食吧！
+            {t("home.subtitle")}
           </Typography>
           <div className={styles.cards}>
             {MENUS.map((menu, index) => (

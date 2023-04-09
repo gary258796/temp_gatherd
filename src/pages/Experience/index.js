@@ -9,9 +9,11 @@ import banner3 from "../../images/banner3.jpg";
 import alice from "../../images/host/alice.jpg";
 import ItemCard from "../../components/ItemCard";
 import { MENUS } from "../../constants/menus";
+import { useTranslation } from "react-i18next";
 
 const Experience = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const firebaseConfig = {
@@ -44,12 +46,9 @@ const Experience = () => {
     <>
       <div className={styles.banner}>
         <div className={styles.text}>
-          <div className={styles.title}>體驗多元、獨特的聚餐模式</div>
+          <div className={styles.title}>{t("experience.banner.title")}</div>
           <div className={styles.subtitle}>
-            你是否曾想嘗試餐廳或外送以外的聚餐模式嗎？Gatherd與熱愛烹飪料理者合作，
-          </div>
-          <div className={styles.subtitle}>
-            讓喜愛美食體驗的你能夠在料理者家中嘗試不同以往的聚餐體驗！
+            {t("experience.banner.subtitle")}
           </div>
         </div>
         <img src={banner3} alt="" />
@@ -58,67 +57,65 @@ const Experience = () => {
         <div className={styles.content}>
           <div className={styles.text}>
             <div className={styles.title}>
-              Gatherd 的理念是透過飲食讓人們聚在一起，相互聯繫
+              {t("experience.description.title.1")}
             </div>
-            <p>
-              我們相信最好的聚餐體驗藏在城市中的每個角落。他們是來自不同背景的人們，可能是一個全職DJ、小學老師或者是身邊的老奶奶們，這些人都有一個共同的地方——熱愛烹飪料理並且樂於與其他人分享。
-            </p>
-            <p>
-              我們想將這種獨特的體驗帶給同樣想要不同於現有聚餐模式的你，透過這樣的模式體驗不同的在地飲食文化。
-            </p>
-            <button onClick={() => navigate("../")}>開始體驗</button>
+            <p>{t("experience.description.title.2")}</p>
+            <p>{t("experience.description.title.3")}</p>
+            <button onClick={() => navigate("../")}>
+              {t("experience.button")}
+            </button>
           </div>
           <img src={banner} alt="" />
-          <button onClick={() => navigate("../")}>開始體驗</button>
+          <button onClick={() => navigate("../")}>
+            {t("experience.button")}
+          </button>
         </div>
       </div>
       <div className={styles.adventure}>
-        <div className={styles.title}>與Gatherd 一同體驗吧</div>
+        <div className={styles.title}>{t("experience.adventure.title")}</div>
         <div className={styles.cards}>
           <div className={styles.card}>
-            <p>嘗試獨特料理</p>
-            <div>品嚐在任何餐廳都找不到的新式料理模式。</div>
+            <p>{t("experience.adventure.1.title")}</p>
+            <div>{t("experience.adventure.1.subtitle")}</div>
           </div>
           <div className={styles.card}>
-            <p>特別的體驗</p>
-            <div>
-              離開眾多人群的餐廳，在料理者的空間體驗不同氛圍的聚餐體驗。
-            </div>
+            <p>{t("experience.adventure.2.title")}</p>
+            <div>{t("experience.adventure.2.subtitle")}</div>
           </div>
           <div className={styles.card}>
-            <p>結交新夥伴</p>
-            <div>透過料理者們的背景，深度了解他們在每一道料理背後的故事。</div>
+            <p>{t("experience.adventure.3.title")}</p>
+            <div>{t("experience.adventure.3.subtitle")}</div>
           </div>
         </div>
       </div>
       <div className={styles.how}>
-        <div className={styles.title}>Gatherd的旅程如何開始</div>
+        <div className={styles.title}>{t("experience.how.title")}</div>
         <div className={styles.content}>
-          <div>
-            我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。
-          </div>
-          <div>
-            我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。
-          </div>
-          <button onClick={() => navigate("../")}>開始體驗</button>
+          <div>{t("experience.how.subtitle.1")}</div>
+          <div>{t("experience.how.subtitle.2")}</div>
+          <button onClick={() => navigate("../")}>
+            {t("experience.button")}
+          </button>
         </div>
       </div>
       <div className={styles.hosts}>
-        <div className={styles.title}>我們的美食創作家</div>
+        <div className={styles.title}>{t("experience.hosts.title")}</div>
         <div className={styles.hostContainer}>
           <div className={styles.host}>
             <img src={alice} alt="" />
             <div className={styles.text}>
-              <div className={styles.name}>盈盈</div>
+              <div className={styles.name}>
+                {t("experience.hosts.host.name")}
+              </div>
               <div className={styles.info}>
-                我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！
+                {t("experience.hosts.host.info")}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.menus}>
-        <div className={styles.title}>開始探索</div>
+        <div className={styles.title}>{t("experience.menus.title")}</div>
         <div className={styles.cards}>
           {MENUS.map((menu, index) => (
             <ItemCard
@@ -133,18 +130,20 @@ const Experience = () => {
       </div>
       <div className={styles.sendEmail}>
         <div className={styles.text}>
-          <div className={styles.title}>了解更多</div>
+          <div className={styles.title}>{t("experience.sendEmail.title")}</div>
           <div className={styles.subtitle}>
-            請留下電子信箱，我們將分享更多相關資訊。
+            {t("experience.sendEmail.subtitle")}
           </div>
         </div>
         <div className={styles.input}>
           <input
-            placeholder="電子信箱"
+            placeholder={t("experience.sendEmail.email")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button onClick={handleSaveEmail}>送出</button>
+          <button onClick={handleSaveEmail}>
+            {t("experience.sendEmail.send")}
+          </button>
         </div>
       </div>
       <Footer />

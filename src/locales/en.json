@@ -1,0 +1,170 @@
+{
+  "home": {
+    "title": "A different kind of dinning experience",
+    "subtitle": "Come visit the home of a cooking enthusiast, they will share with you their food and stories behind each dishes. Book an experience with them and enjoy a unique dining experience!"
+  },
+  "joinus": {
+    "banner": {
+      "title": "Building a different kind of dining experience",
+      "subtitle": "To bring every cooking enthusiast to share their culinary creations and stories in their own spaces with food lovers from around the world."
+    },
+    "why": {
+      "title": "“Meals make the society”",
+      "chef": "Anthony Bourdain",
+      "subtitle": "Everyone has their unique way of cooking, giving food a one-of-a-kind appearance. Let these dishes be shared, seen, and tasted, turning these flavors into cherished memories and building a connection with the people around us."
+    },
+    "creator": {
+      "title": "What is food creator?",
+      "1": {
+        "title": "Passion for food",
+        "subtitle": "You enjoy cooking and are willing to challenge various types of cuisine, try different cooking methods, and use local ingredients to create your own dishes. Share this joy with more people by using cooking as a means of cultural exchange is a fulfilling and enriching experience."
+      },
+      "2": {
+        "title": "Your uniqueness",
+        "subtitle": "You have a unique lifestyle, perhaps you are a full-time DJ, an antique collector, or an amateur barista. Combining this kind of unique lifestyle with cooking can bring your guests an experience beyond just taste buds."
+      },
+      "3": {
+        "title": "Love to share",
+        "subtitle": "You are a person who loves to share and is hospitable, inviting friends and family to dine in your place and hosting gatherings to share your dishes. You love sharing your story through food and creating meaningful memories together."
+      }
+    },
+    "benefits": {
+      "title": "We’ve got your back",
+      "1": {
+        "title": "Earn money on your passion",
+        "subtitle": "Turn your passion for cooking into a new source of income without owning a restaurant, hiring staff, or having a marketing budget. All you need is a passion for cooking and by using Gatherd's simple onboarding steps, you can become a food creator."
+      },
+      "2": {
+        "title": "Own your schedule",
+        "subtitle": "Flexibility to adjust your schedule, unrestricted menu design, and the ability to establish your own culinary style and accept or decline guest bookings. We aim to provide maximum freedom for you to focus on creativity as a food creator."
+      },
+      "3": {
+        "title": "Tell your stories",
+        "subtitle": "Showcase who you are through menu design, food photography, and personal introduction. These elements are the best ways to present your unique style and allow guests to imagine and anticipate their experience."
+      },
+      "4": {
+        "title": "Share your creativity",
+        "subtitle": "We’ll create more opportunities for you to share your culinary skills and showcase your dishes, and help connect with people who share your passion for food and appreciate your creativity. The journey will lead to new discoveries and new connections, making it an exciting exploration for you."
+      },
+      "5": {
+        "title": "Connect with other food creators",
+        "subtitle": "Join a community of individuals who share a passion and values for all things related to food. Enhance your creativity where you can connect, collaborate, grow, and learn from each other."
+      },
+      "6": {
+        "title": "Build your community",
+        "subtitle": "Explore a unique dining experience, and inspire others who love your cooking to feel your passion for culinary arts. Though you may be strangers at first, this experience will create lasting memories and leave you both as friends."
+      }
+    },
+    "problem": {
+      "title": "We aim to create opportunities for individuals who share a passion for food and establish new relationships and connections."
+    },
+    "how": {
+      "title": "How to get started",
+      "1": {
+        "title": "Design your menu",
+        "subtitle": "Unleash your imagination and design a menu that is exclusively yours. There are no limits to the type of cuisine or cooking style. This is the place to showcase your passion and creativity."
+      },
+      "2": {
+        "title": "Open up your space",
+        "subtitle": "Find a place that suits your cooking style. It can be your own home, a friend and family’s place, or any other place that inspires your creativity. Invite and share your love of food with others."
+      },
+      "3": {
+        "title": "Start your journey",
+        "subtitle": "Whenever you’re ready,  join us as a food creator through a simple and quick onboarding step. Start your dining experience with us!"
+      }
+    },
+    "sendEmail": {
+      "title": "Learn more",
+      "subtitle": "We’ll share more information about hosting and invite you to our meet-and-greet events where you can connect with other food creators, and have all your questions answered.",
+      "email": "Email address",
+      "send": "Send"
+    },
+    "button": "Contact Us",
+    "success": "Success!",
+    "error": "Error!"
+  },
+  "experience": {
+    "banner": {
+      "title": "Experience a different kind of unique dining",
+      "subtitle": "Have you ever thought about trying a dining experience beyond restaurants or takeout? We collaborate with cooking enthusiasts to provide you with a unique dining experience in their homes, allowing you to experience food in a different way than before!"
+    },
+    "description": {
+      "title": {
+        "1": "Gatherd is build around the idea of bringing people together through food.",
+        "2": "We believe the best dining experiences can be found in every corner of the city. They are people from different backgrounds, perhaps a full-time DJ, an elementary school teacher, or someone’s grandma, who all have one thing in common 一a passion for cooking and sharing with others.",
+        "3": "We want to bring this unique experience to those who are looking for something different and allow them to experience a one-of-a-kind of local food culture."
+      }
+    },
+    "adventure": {
+      "title": "Start the adventure with Gatherd",
+      "1": {
+        "title": "Try unique dishes",
+        "subtitle": "Taste a new set of dishes that you can’t find in any restaurant."
+      },
+      "2": {
+        "title": "A special experience",
+        "subtitle": "Get away from crowded restaurants, and experience a different vibe of dining experiences."
+      },
+      "3": {
+        "title": "Meet new people",
+        "subtitle": "Meet and connect with your host as they share the stories behind each dish."
+      }
+    },
+    "how": {
+      "title": "How our Gatherd journey start?",
+      "subtitle": {
+        "1": "Our inspiration came from my 90-year-old grandma, who moved from Shanghai to Taipei after the Chinese civil war. Growing up, we were exposed to a blend of her Shanghainese culinary techniques in our household. As a child, I remember watching her invite her friends over for dinner, and now I enjoy having my friends join us for meals at her house, where we savor her delicious food and listen to her captivating stories.",
+        "2": "We realized that many people, like my grandma, have unique cooking styles and stories to share. Our goal is to offer this type of unique dining experience to more individuals, where they can connect over food and stories."
+      }
+    },
+    "hosts": {
+      "title": "Meet our hosts",
+      "host": {
+        "name": "盈盈",
+        "info": "我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！"
+      }
+    },
+    "menus": {
+      "title": "Explore dining experiences"
+    },
+    "sendEmail": {
+      "title": "Learn more",
+      "subtitle": "We’ll share more information, and keep you up to date with our newsletter.",
+      "email": "Email address",
+      "send": "Send"
+    },
+    "button": "Start your experience"
+  },
+  "menu": {
+    "hour": "hours",
+    "person": "person",
+    "info": "What to know",
+    "content": "What's on the menu",
+    "order": "Reserve",
+    "noTime": "No dates available",
+    "requestTime": "Request more dates",
+    "host": "Meet your host, {{name}}",
+    "available": "Choose from available dates",
+    "more": "Show more dates",
+    "notice": "More information",
+    "customer": "Things to know",
+    "address": "Location",
+    "addressGuide": "How to get there",
+    "allergy": "Dietary",
+    "noticeDetail": "More information",
+    "cancel": "Cancellation Policy",
+    "cancelDetail": {
+      "1": "Cancel up to 72 hours before the start time for a full refund. ",
+      "2": "If cancel within 72 hours, 50% of the total reservation cost will apply. ",
+      "3": "A cancellation form will attach with your booking confirmation email."
+    }
+  },
+  "footer": {
+    "about": "About",
+    "joinus": "Food creator",
+    "experience": "Guest",
+    "phone": "Email",
+    "email": "Phone",
+    "language": "中文"
+  }
+}

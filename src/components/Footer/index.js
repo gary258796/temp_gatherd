@@ -1,11 +1,14 @@
 import styles from "./index.module.scss";
 import lineImg from "../../images/line.png";
+import globalImg from "../../images/global.png";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = (props) => {
   const { className = "" } = props;
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { i18n, t } = useTranslation();
 
   const handleRedirect = (path) => {
     if (pathname === path) {
@@ -17,34 +20,36 @@ const Footer = (props) => {
 
   return (
     <div className={`${styles.footer} ${className}`}>
-      <div>©2023 Gatherd, Inc.</div>
       <div className={styles.buttons}>
-        {/* <div
+        <div className={styles.button} style={{ cursor: "auto" }}>
+          ©2023 Gatherd, Inc.
+        </div>
+        <div
           className={styles.button}
-          onClick={() => handleRedirect("/explore")}
+          onClick={() => handleRedirect("/experience")}
         >
-          關於 Gatherd
-        </div> */}
+          {t("footer.about")}
+        </div>
         <div
           className={styles.button}
           onClick={() => handleRedirect("/joinus")}
         >
-          美食創作家
+          {t("footer.joinus")}
         </div>
         <div className={styles.button} onClick={() => handleRedirect("/")}>
-          體驗
+          {t("footer.experience")}
         </div>
         <div
           className={styles.button}
           onClick={() => window.open("tel:+886984499836")}
         >
-          聯絡電話
+          {t("footer.phone")}
         </div>
         <div
           className={styles.button}
           onClick={() => window.open("mailto:dinegatherd@gmail.com")}
         >
-          電子信箱
+          {t("footer.email")}
         </div>
         <div
           className={styles.button}
@@ -52,6 +57,15 @@ const Footer = (props) => {
         >
           <img src={lineImg} alt="" />
         </div>
+      </div>
+      <div
+        className={styles.global}
+        onClick={() =>
+          i18n.changeLanguage(i18n.language === "en" ? "cn" : "en")
+        }
+      >
+        <img src={globalImg} alt="" />
+        {t("footer.language")}
       </div>
     </div>
   );
