@@ -112,7 +112,10 @@ const Menu = () => {
                 <>
                   <div className={styles.notime}>{t("menu.noTime")}</div>
                   <div className={styles.buttonContainer}>
-                    <button onClick={requestTime}>
+                    <button
+                      className={styles.requestTime}
+                      onClick={requestTime}
+                    >
                       {t("menu.requestTime")}
                     </button>
                   </div>
@@ -128,7 +131,12 @@ const Menu = () => {
               <div className={styles.description}>{menu.hostIntroduction}</div>
               <img src={menu.hostImage} alt="" />
             </div>
-            <button onClick={requestTime}>{t("menu.requestTime")}</button>
+            <button
+              onClick={requestTime}
+              className={availableTimes.length === 0 ? styles.noTime : ""}
+            >
+              {t("menu.requestTime")}
+            </button>
           </div>
           <div className={styles.image}>
             <img src={menu.hostImage} alt="" />
@@ -214,8 +222,12 @@ const Menu = () => {
         <div>
           {menu.price}$/{t("menu.person")}
         </div>
-        {availableTimes.length !== 0 && (
+        {availableTimes.length !== 0 ? (
           <button onClick={order}>{t("menu.order")}</button>
+        ) : (
+          <button className={styles.requestTime} onClick={requestTime}>
+            {t("menu.requestTime")}
+          </button>
         )}
       </div>
       <div

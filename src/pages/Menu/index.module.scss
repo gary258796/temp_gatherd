@@ -146,6 +146,12 @@
             cursor: pointer;
             margin-top: 12px;
           }
+
+          .requestTime {
+            background-color: #2b403a;
+            border: none;
+            color: white;
+          }
         }
 
         .notime {
@@ -188,6 +194,12 @@
         font-weight: 500;
         cursor: pointer;
         margin-top: 12px;
+      }
+
+      .noTime {
+        background-color: #2b403a;
+        border: none;
+        color: white;
       }
     }
 
@@ -269,9 +281,9 @@
     display: none;
 
     .request {
-      background-color: white;
-      color: #2b403a;
-      border: 1px solid #2b403a;
+      background-color: #2b403a;
+      border: none;
+      color: white;
     }
   }
 
@@ -323,26 +335,32 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  padding: 16px 24px;
+  padding: 12px 24px;
   box-sizing: border-box;
   background-color: white;
   border-top: 1px solid rgb(221, 221, 221);
   display: none;
   align-items: center;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
 
   button {
-    height: 48px;
-    width: 120px;
+    min-width: 150px;
     background-color: #2b403a;
     border-radius: 10px;
     border: none;
     color: #f8f6eb;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    padding: 12px;
+  }
+
+  .requestTime {
+    background-color: #2b403a;
+    border: none;
+    color: white;
   }
 }
 
