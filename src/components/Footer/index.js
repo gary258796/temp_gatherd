@@ -24,12 +24,12 @@ const Footer = (props) => {
         <div className={styles.button} style={{ cursor: "auto" }}>
           ©2023 Gatherd, Inc.
         </div>
-        <div
+        {/* <div
           className={styles.button}
           onClick={() => handleRedirect("/experience")}
         >
           {t("footer.about")}
-        </div>
+        </div> */}
         <div
           className={styles.button}
           onClick={() => handleRedirect("/joinus")}

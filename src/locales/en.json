@@ -160,11 +160,10 @@
     }
   },
   "footer": {
-    "about": "About",
-    "joinus": "Food creator",
-    "experience": "Guest",
-    "phone": "Email",
-    "email": "Phone",
+    "joinus": "Become a host",
+    "experience": "Experience",
+    "phone": "Email us",
+    "email": "Call us",
     "language": "中文"
   }
 }
