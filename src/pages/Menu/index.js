@@ -46,6 +46,16 @@ const Menu = () => {
           } ${t("menu.person")}`}
         </div>
         <div className={styles.images}>
+          <div className={styles[`pcBanner${menu.images.length}`]}>
+            {menu.images.map((image, index) => (
+              <img
+                key={image}
+                className={styles[`image${index}`]}
+                src={image}
+                alt=""
+              />
+            ))}
+          </div>
           <Swiper
             pagination={{
               clickable: true,
