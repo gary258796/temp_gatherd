@@ -44,7 +44,7 @@ const Menu = () => {
         <div className={styles.subtitle}>
           {`${menu.location}・${menu.duration} ${t("menu.hour")}・${
             menu.persons
-          } ${t("menu.person")}`}
+          } ${t("menu.people")}`}
         </div>
         <div className={styles.images}>
           <div className={styles[`pcBanner${menu.images.length}`]}>
@@ -78,7 +78,7 @@ const Menu = () => {
         <div className={styles.mobileTitle}>{menu.name}</div>
         <div className={styles.mobileSubtitle}>{`${menu.location}・${
           menu.duration
-        } ${t("menu.hour")}・${menu.persons} ${t("menu.person")}`}</div>
+        } ${t("menu.hour")}・${menu.persons} ${t("menu.people")}`}</div>
         <div className={styles.menuDetail}>
           <div className={styles.info}>
             <div className={styles.section}>
