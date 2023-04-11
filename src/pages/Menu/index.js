@@ -10,19 +10,20 @@ import { useState } from "react";
 import closeImg from "../../images/close.png";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import { URL } from "../../constants/urls";
 
 const Menu = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { experienceId } = useParams();
   const [openTimes, setOpenTimes] = useState(false);
   const menu = MENUS[experienceId];
 
   const order = () => {
-    window.open("https://forms.gle/vPoxWfHhhafXsoAR6");
+    window.open(URL.ORDER[i18n.language]);
   };
 
   const requestTime = () => {
-    window.open("https://forms.gle/EdW4pko259bbyhL46");
+    window.open(URL.REQUEST[i18n.language]);
   };
 
   const handleDisplayTimes = () => {
