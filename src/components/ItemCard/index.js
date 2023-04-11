@@ -3,9 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useTranslation } from "react-i18next";
 
 const ItemCard = (props) => {
   const { images, location, name, price, onClick } = props;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
@@ -31,7 +33,9 @@ const ItemCard = (props) => {
       <div className={styles.text}>
         <div className={styles.location}>{location}</div>
         <div className={styles.name}>{name}</div>
-        <div className={styles.price}>${price}/人</div>
+        <div className={styles.price}>
+          ${price}/{t("menu.person")}
+        </div>
       </div>
     </div>
   );
