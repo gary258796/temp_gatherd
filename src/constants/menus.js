@@ -26,7 +26,7 @@ export const MENUS = [
     hostImage:
       "https://drive.google.com/uc?export=view&id=1F7MNPI8tpGpHe2MvUpB29ymVft-UgB6c",
     availableTimes: [
-      // { date: "3月1日 週三", time: "下午12:00-下午14:00", id: "2023/03/01" },
+      { date: "5月6日 週六", time: "下午19:00-下午22:00", id: "2023/05/06" },
       // { date: "4月10日 週一", time: "下午12:00-下午14:00", id: "2023/04/10" },
       // { date: "4月11日 週二", time: "下午12:00-下午14:00", id: "2023/04/11" },
     ],
