@@ -64,6 +64,7 @@ const Home = () => {
           <div className={styles.cards}>
             {MENUS.map((menu, index) => (
               <ItemCard
+                key={index}
                 images={menu.images}
                 location={menu.location}
                 name={menu.name}

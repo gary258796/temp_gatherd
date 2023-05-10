@@ -3,7 +3,7 @@ export const MENUS = [
     name: "泰北料理來台灣",
     location: "台北市文山區",
     address: "台北市文山區汀州路四段 191 號 13 樓",
-    addressGuide: "距離萬隆捷運站步行約五分鐘",
+    addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
     notice: "",
     duration: 2,
     price: 500,
@@ -29,6 +29,38 @@ export const MENUS = [
       { date: "5月6日 週六", time: "19:00-22:00", id: "2023/05/06" },
       // { date: "4月10日 週一", time: "下午12:00-下午14:00", id: "2023/04/10" },
       // { date: "4月11日 週二", time: "下午12:00-下午14:00", id: "2023/04/11" },
+    ],
+  },
+  {
+    name: "西班牙不思議",
+    location: "台北市文山區",
+    address: "台北市文山區汀州路四段 191 號 13 樓",
+    addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
+    notice: "",
+    duration: 2,
+    price: 800,
+    persons: "4-8",
+    images: [
+      "https://drive.google.com/uc?export=view&id=1VFlcbD74OK_k8k5NwFK64akxRBy01tB_",
+      "https://drive.google.com/uc?export=view&id=1iEIK4uYSTh_TNFOBmyAT_hyMXRxq82S_",
+      "https://drive.google.com/uc?export=view&id=1BW_U-sDUfGEM0h3EdP5tUoTALgySGEDG",
+      "https://drive.google.com/uc?export=view&id=1mDpuorZbqeFD_t_77st3l_1u1ZTFwvgH",
+      "https://drive.google.com/uc?export=view&id=1PdfdCgy9HRrGZBsZcqzUDfl6S5SHJRyw",
+    ],
+    description:
+      "我們透過西班牙最經典的料理來認識他！從開胃菜到前菜到主食加上最後的甜點來做個 Happy Ending。\n\n除了美食以外會想讓大家看見每道料理背後的故事、文化和西班牙人對生活的那種熱情、享受和態度。",
+    detail:
+      "前菜和開胃菜屬於西班牙 Tapas 類型的食物 （馬鈴薯烘蛋、蒜香蝦...）。主食我們會由西班牙燉飯或是燉鍋類的食物來當主角。最後大家會吃到像是巴斯克起司蛋糕、米布丁、奶酪、提拉米蘇等甜點！",
+    allergy: "奶類, 蛋, 貝類",
+    hostName: "Ricardo Yang 楊尚儒",
+    hostIntroduction:
+      "大家好！我是Ricky 一位西班牙土生土長的台灣人。碩士畢業後決定踏上我熱愛的廚藝之路去探索人、美食和文化的連結。\n\n我認為美食是一個接觸文化最佳的起點，希望透過廚藝來傳達美食和文化的連結。並藉由自己對於廚藝和美食的熱忱、愛好和經驗分享西班牙料理和文化！",
+    hostImage:
+      "https://drive.google.com/uc?export=view&id=1_5eqn4f7RZuEM_fQd-1A5RTQQROkXOjv",
+    availableTimes: [
+      { date: "5月25日 週四", time: "19:00-21:00", id: "2023/05/25" },
+      { date: "5月26日 週五", time: "19:00-21:00", id: "2023/05/26" },
+      { date: "5月30日 週二", time: "19:00-21:00", id: "2023/05/30" },
     ],
   },
 ];
