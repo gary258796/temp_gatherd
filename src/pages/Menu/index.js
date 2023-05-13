@@ -182,7 +182,7 @@ const Menu = () => {
             {availableTimes.length === 0 ? (
               <>
                 <div className={styles.notime}>{t("menu.noTime")}</div>
-                <button onClick={order} className={styles.request}>
+                <button onClick={requestTime} className={styles.request}>
                   {t("menu.requestTime")}
                 </button>
               </>
