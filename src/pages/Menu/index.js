@@ -3,37 +3,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MENUS } from "../../constants/menus";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import closeImg from "../../images/close.png";
-import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { URL } from "../../constants/urls";
+import { handleDisplayTimes } from "../../utils/time";
 
 const Menu = () => {
   const { t, i18n } = useTranslation();
   const { experienceId } = useParams();
+  const navigate = useNavigate();
   const [openTimes, setOpenTimes] = useState(false);
   const menu = MENUS[experienceId];
+  const availableTimes = handleDisplayTimes(menu.availableTimes);
 
-  const order = () => {
-    window.open(URL.ORDER[i18n.language]);
+  const order = (time) => {
+    if (!time.date || !time.time) {
+      navigate("./checkout");
+    } else {
+      navigate(`./checkout?date=${time.date}&time=${time.time}`);
+    }
   };
 
   const requestTime = () => {
     window.open(URL.REQUEST[i18n.language]);
   };
-
-  const handleDisplayTimes = () => {
-    const today = new Date();
-    return menu.availableTimes.filter(
-      (time) => moment(time.id).toDate() > today
-    );
-  };
-
-  const availableTimes = handleDisplayTimes();
 
   if (!menu) return <></>;
 
@@ -109,7 +106,7 @@ const Menu = () => {
                   <p>
                     {menu.price}$ / {t("menu.person")}
                   </p>
-                  <button onClick={order}>{t("menu.order")}</button>
+                  <button onClick={() => order(time)}>{t("menu.order")}</button>
                 </div>
               ))}
               {availableTimes.length > 3 && (
@@ -261,7 +258,7 @@ const Menu = () => {
                   {menu.price}$ / {t("menu.person")}
                 </div>
               </div>
-              <button onClick={order}>{t("menu.order")}</button>
+              <button onClick={() => order(time)}>{t("menu.order")}</button>
             </div>
           </div>
         ))}

@@ -5,9 +5,9 @@ import banner2 from "../../images/banner2.jpg";
 import creator1 from "../../images/creators/1.jpg";
 import creator2 from "../../images/creators/2.jpg";
 import creator3 from "../../images/creators/3.jpg";
-import eric from "../../images/vendors/eric.png";
-import joe from "../../images/vendors/joe.png";
-import gary from "../../images/vendors/gary.png";
+// import eric from "../../images/vendors/eric.png";
+// import joe from "../../images/vendors/joe.png";
+// import gary from "../../images/vendors/gary.png";
 import Footer from "../../components/Footer";
 // import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
@@ -84,11 +84,11 @@ const JoinUs = () => {
       subtitle: t("joinus.how.3.subtitle"),
     },
   ];
-  const vendors = [
-    { name: "Eric C", image: eric },
-    { name: "Joe H", image: joe },
-    { name: "Gary L", image: gary },
-  ];
+  // const vendors = [
+  //   { name: "Eric C", image: eric },
+  //   { name: "Joe H", image: joe },
+  //   { name: "Gary L", image: gary },
+  // ];
   const firebaseConfig = {
     databaseURL:
       "https://gatherd-test-default-rtdb.asia-southeast1.firebasedatabase.app/",

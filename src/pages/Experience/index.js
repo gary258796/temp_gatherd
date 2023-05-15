@@ -1,6 +1,5 @@
 import Footer from "../../components/Footer";
 import styles from "./index.module.scss";
-import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,17 +9,12 @@ import alice from "../../images/host/alice.jpg";
 import ItemCard from "../../components/ItemCard";
 import { MENUS } from "../../constants/menus";
 import { useTranslation } from "react-i18next";
+import { app } from "../../constants/FirebaseStorage";
 
 const Experience = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
-
-  const firebaseConfig = {
-    databaseURL:
-      "https://gatherd-test-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  };
-  const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
   const dbRef = ref(db);
 

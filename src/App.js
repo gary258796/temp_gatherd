@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Experience from "./pages/Experience";
 import Menu from "./pages/Menu";
 import Guideline from "./pages/Host/Guideline";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
           <Route exact path="/joinus" element={<JoinUs />} />
           <Route exact path="/experience" element={<Experience />} />
           <Route exact path="/experiences/:experienceId" element={<Menu />} />
+          <Route
+            exact
+            path="/experiences/:experienceId/checkout"
+            element={<Checkout />}
+          />
           <Route exact path="/host/guideline" element={<Guideline />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
         </Routes>
