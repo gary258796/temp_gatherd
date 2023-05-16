@@ -140,6 +140,8 @@ const Checkout = () => {
       `${menu.hostName}/${name}_user.png`
     );
     const params = {
+      experience: menu.name,
+      price: menu.price,
       time,
       guest,
       email,
