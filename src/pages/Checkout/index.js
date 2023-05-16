@@ -133,11 +133,11 @@ const Checkout = () => {
     setLoading(true);
     const identifyImagePath = await handleUploadImage(
       identifyImage,
-      `${menu.hostName}/${name}_identify.png`
+      `${menu.name}/${name}_identify.png`
     );
     const userImagePath = await handleUploadImage(
       identifyImage,
-      `${menu.hostName}/${name}_user.png`
+      `${menu.name}/${name}_user.png`
     );
     const params = {
       experience: menu.name,
