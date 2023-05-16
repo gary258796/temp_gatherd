@@ -8,6 +8,7 @@ import Experience from "./pages/Experience";
 import Menu from "./pages/Menu";
 import Guideline from "./pages/Host/Guideline";
 import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             element={<Checkout />}
           />
           <Route exact path="/host/guideline" element={<Guideline />} />
+          <Route exact path="/system/orders" element={<Orders />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
         </Routes>
       </BrowserRouter>
