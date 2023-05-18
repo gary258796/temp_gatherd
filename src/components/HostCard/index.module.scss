@@ -1,0 +1,44 @@
+.container {
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f8f6eb;
+  color: black;
+  border-radius: 10px;
+  height: 100%;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .description {
+    font-size: 16px; 
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    padding: 16px;
+  
+    img {
+      margin-bottom: 12px;
+    }
+  
+    .name {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+  
+    .description {
+      font-size: 14px; 
+    }
+  }
+}

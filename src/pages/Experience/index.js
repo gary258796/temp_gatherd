@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../images/banner.jpg";
 import banner3 from "../../images/banner3.jpg";
-import alice from "../../images/host/alice.jpg";
 import ItemCard from "../../components/ItemCard";
 import { MENUS } from "../../constants/menus";
 import { useTranslation } from "react-i18next";
 import { app } from "../../constants/FirebaseStorage";
+import HostCard from "../../components/HostCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const Experience = () => {
   const navigate = useNavigate();
@@ -17,6 +19,7 @@ const Experience = () => {
   const [email, setEmail] = useState("");
   const db = getDatabase(app);
   const dbRef = ref(db);
+  const hosts = MENUS.slice(0, 3);
 
   const handleSaveEmail = () => {
     get(child(dbRef, "/"))
@@ -94,19 +97,24 @@ const Experience = () => {
       </div>
       <div className={styles.hosts}>
         <div className={styles.title}>{t("experience.hosts.title")}</div>
-        <div className={styles.hostContainer}>
-          <div className={styles.host}>
-            <img src={alice} alt="" />
-            <div className={styles.text}>
-              <div className={styles.name}>
-                {t("experience.hosts.host.name")}
-              </div>
-              <div className={styles.info}>
-                {t("experience.hosts.host.info")}
-              </div>
-            </div>
-          </div>
+        <div className={styles.cards}>
+          {hosts.map((host) => (
+            <HostCard host={host} />
+          ))}
         </div>
+        <Swiper
+          slidesPerView={"auto"}
+          spaceBetween={24}
+          loop
+          centeredSlides
+          className={styles.swiper}
+        >
+          {MENUS.map((menu, index) => (
+            <SwiperSlide className={styles.slide} key={index}>
+              <HostCard host={menu} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
       <div className={styles.menus}>
         <div className={styles.title}>{t("experience.menus.title")}</div>

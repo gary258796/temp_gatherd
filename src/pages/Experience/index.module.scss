@@ -172,38 +172,19 @@
     color: white;
   }
 
-  .hostContainer {
+  .cards {
     display: grid;
     grid-column-gap: 18px;
     grid-row-gap: 18px;
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .host {
-    padding: 24px;
-    background: #f8f6eb;
-    color: black;
-    border-radius: 10px;
+  .swiper {
+    display: none;
 
-    img {
-      width: 100%;
-      object-fit: cover;
-      margin-bottom: 24px;
-      border-radius: 10px;
-    }
-
-    .text {
-      margin: 0;
-    }
-
-    .name {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .info {
-      font-size: 16px;
+    .slide {
+      width: 240px;
+      aspect-ratio: 0.5;
     }
   }
 }
@@ -409,11 +390,12 @@
       margin-bottom: 12px;
     }
   
-    .hostContainer {
-      display: grid;
-      grid-column-gap: 18px;
-      grid-row-gap: 18px;
-      grid-template-columns: repeat(1, 1fr);
+    .cards {
+      display: none;
+    }
+
+    .swiper {
+      display: block;
     }
   }
   
