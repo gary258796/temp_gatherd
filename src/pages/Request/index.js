@@ -148,12 +148,6 @@ const Request = () => {
                   請提供想要的體驗時間及人數，我們會在三天內與美食創作家詢問後用
                   Email 與你聯絡
                 </div>
-                <input
-                  type="date"
-                  className={styles.datepicker}
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                />
                 <FormControl className={styles.input} fullWidth>
                   <InputLabel>時段*</InputLabel>
                   <Select
@@ -161,9 +155,17 @@ const Request = () => {
                     label="時段"
                     onChange={(e) => setPeriod(e.target.value)}
                   >
-                    <MenuItem value="晚上">晚上</MenuItem>
+                    <MenuItem value="晚上 19:00-21:30">
+                      晚上 19:00-21:30
+                    </MenuItem>
                   </Select>
                 </FormControl>
+                <input
+                  type="date"
+                  className={styles.datepicker}
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
                 <FormControl className={styles.input} fullWidth>
                   <InputLabel>人數*</InputLabel>
                   <Select
@@ -269,7 +271,7 @@ const Request = () => {
                 同意
               </div>
               <button className={styles.send} onClick={handleSubmit}>
-                預定
+                詢問預訂時間
               </button>
             </div>
             <div className={styles.block}>
