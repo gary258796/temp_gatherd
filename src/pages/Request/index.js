@@ -1,7 +1,6 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./index.module.scss";
 import { MENUS } from "../../constants/menus";
-import { handleDisplayTimes } from "../../utils/time";
 import { useTranslation } from "react-i18next";
 import {
   Checkbox,
@@ -16,16 +15,15 @@ import { useState } from "react";
 import { getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
 import { app } from "../../constants/FirebaseStorage";
 import UploadArea from "../../components/UploadArea";
-import { useEffect } from "react";
 import { getDatabase, ref as databaseRef, set } from "firebase/database";
 import Footer from "../../components/Footer";
 
-const Checkout = () => {
+const Request = () => {
   const { t } = useTranslation();
   const { experienceId } = useParams();
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [time, setTime] = useState("");
+  const [period, setPeriod] = useState("");
   const [guest, setGuest] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -37,24 +35,10 @@ const Checkout = () => {
   const [memo, setMemo] = useState("");
   const [inquiry, setInquiry] = useState("");
   const [othersEmail, setOthersEmail] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("bank");
-  const [paymentDetail, setPaymentDetail] = useState("");
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const menu = MENUS[experienceId];
-  const availableTimes = handleDisplayTimes(menu.availableTimes);
-
-  const personsArray = () => {
-    const list = menu.persons.split("-");
-    const min = parseInt(list[0]);
-    const max = parseInt(list[1]);
-    let result = [];
-    for (let index = min; index < max + 1; index++) {
-      result.push(index);
-    }
-    return result;
-  };
 
   const handleUploadImage = async (file, path) => {
     const storage = getStorage(app);
@@ -113,14 +97,6 @@ const Checkout = () => {
       alert("與美食創作家說的一句話為必填");
       return false;
     }
-    if (!paymentDetail) {
-      alert(
-        `${
-          paymentMethod === "bank" ? "匯款帳號後五碼" : "LINE 使用者名稱"
-        }為必填`
-      );
-      return false;
-    }
     if (!checked) {
       alert("請同意體驗活動聲明");
       return false;
@@ -152,45 +128,40 @@ const Checkout = () => {
       memo,
       inquiry,
       othersEmail,
-      paymentDetail,
-      paymentMethod,
     };
     const db = getDatabase(app);
-    await set(databaseRef(db, "orders/" + new Date().getTime()), params);
+    await set(databaseRef(db, "request/" + new Date().getTime()), params);
     setLoading(false);
     setSuccess(true);
   };
-
-  useEffect(() => {
-    setGuest(personsArray()[0]);
-    const date = searchParams.get("date");
-    const time = searchParams.get("time");
-    if (!date || !time) return;
-    setTime(`${date} ${time}`);
-  }, []);
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.checkout}>
-          <div className={styles.pageTitle}>確認付款</div>
+          <div className={styles.pageTitle}>詢問預訂時間</div>
           <div className={styles.content}>
             <div className={styles.forms}>
               <div className={styles.section}>
-                <div className={styles.title}>你的體驗</div>
+                <div className={styles.title}>預訂時間</div>
+                <div className={styles.description}>
+                  請提供想要的體驗時間及人數，我們會在三天內與美食創作家詢問後用
+                  Email 與你聯絡
+                </div>
+                <input
+                  type="date"
+                  className={styles.datepicker}
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
                 <FormControl className={styles.input} fullWidth>
-                  <InputLabel>日期*</InputLabel>
+                  <InputLabel>時段*</InputLabel>
                   <Select
-                    value={time}
-                    label="日期"
-                    onChange={(e) => setTime(e.target.value)}
+                    value={period}
+                    label="時段"
+                    onChange={(e) => setPeriod(e.target.value)}
                   >
-                    {availableTimes.map((time) => (
-                      <MenuItem
-                        value={`${time.date} ${time.time}`}
-                        key={`${time.date} ${time.time}`}
-                      >{`${time.date} ${time.time}`}</MenuItem>
-                    ))}
+                    <MenuItem value="晚上">晚上</MenuItem>
                   </Select>
                 </FormControl>
                 <FormControl className={styles.input} fullWidth>
@@ -200,7 +171,7 @@ const Checkout = () => {
                     label="人數"
                     onChange={(e) => setGuest(e.target.value)}
                   >
-                    {personsArray().map((count) => (
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((count) => (
                       <MenuItem value={count} key={count}>
                         {count}
                       </MenuItem>
@@ -282,39 +253,6 @@ const Checkout = () => {
                 </div>
               </div>
               <div className={styles.section}>
-                <div className={styles.title}>付款資訊</div>
-                <FormControl className={styles.input} fullWidth>
-                  <InputLabel>付款方式*</InputLabel>
-                  <Select
-                    value={paymentMethod}
-                    label="付款方式"
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                  >
-                    <MenuItem value={"bank"}>
-                      轉帳：(882) - 0000218540154981
-                    </MenuItem>
-                    <MenuItem value={"linepay"}>
-                      LINE Pay: jo841130s (黃冠中)
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  className={styles.input}
-                  label={
-                    paymentMethod === "bank"
-                      ? "匯款帳號後五碼*"
-                      : "LINE 使用者名稱*"
-                  }
-                  value={paymentDetail}
-                  onChange={(e) => setPaymentDetail(e.target.value)}
-                />
-                <div className={styles.description}>
-                  {
-                    "若選取 LinePay，請先傳送一則訊息「Gatherd 訂單匯款」，待回覆之後再進行匯款\n若訂單遭取消，將會依匯款銀行或 LINE 帳號進行退款"
-                  }
-                </div>
-              </div>
-              <div className={styles.section}>
                 <div className={styles.title}>體驗活動聲明*</div>
                 <div
                   className={styles.description}
@@ -377,9 +315,9 @@ const Checkout = () => {
           {success && (
             <div className={styles.modalContainer}>
               <div className={styles.modal}>
-                <div className={styles.title}>預定成功！</div>
+                <div className={styles.title}>詢問預訂時間送出成功！</div>
                 <div className={styles.subtitle}>
-                  將於確定訂單後用 Email 通知你
+                  將在三天內與美食創作家詢問後用 Email 與你聯絡
                 </div>
                 <button onClick={() => navigate(`..`)}>回首頁</button>
               </div>
@@ -392,4 +330,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Request;
