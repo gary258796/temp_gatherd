@@ -105,8 +105,6 @@ const Experience = () => {
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={24}
-          loop
-          centeredSlides
           className={styles.swiper}
         >
           {MENUS.map((menu, index) => (

@@ -69,4 +69,31 @@ export const MENUS = [
       { date: "6月7日 週三", time: "19:00-21:00", id: "2023/06/07" },
     ],
   },
+  {
+    name: "家常特色料理",
+    location: "台北市文山區",
+    address: "台北市文山區汀州路四段 191 號 13 樓",
+    addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
+    notice: "",
+    duration: 2.5,
+    price: 480,
+    persons: "3-7",
+    images: [
+      "https://drive.google.com/uc?export=view&id=1T3AZUi-IDoqdtpmHGaLQoEN83UGHaCpF",
+      "https://drive.google.com/uc?export=view&id=185GWB_mtu7_5B19L6RkA090w3DRtR6Kr",
+      "https://drive.google.com/uc?export=view&id=1BA-eNbKNP8-jgPOlHqtDn1HqLpZOla9-",
+      "https://drive.google.com/uc?export=view&id=1VOVoTEPOyx-NbXVxi8ShVR8ij1JUB4k7",
+      "https://drive.google.com/uc?export=view&id=1kVCp259_aQV888K1pKi7T5wCz-mc4tek",
+    ],
+    description:
+      "好好吃飯、好好生活\n\n是我在忙碌的生活中休息的方式\n\n慢慢為自己煮一頓可口簡單的料理\n\n每一道菜都有不同的回憶\n\n家族傳下來的、和朋友一起旅行發明的、外國朋友教的、別人的家鄉菜……\n\n菜色就像一張張相片\n\n打開記憶的味蕾\n\n那些飽滿美麗的回憶彷彿又重溫一遍",
+    detail:
+      "4道家常特色料理，主食為白飯和1-2份手工歐式麵包\n\n佐醬口味皆為辛辣",
+    allergy: "辛辣、蝦子（過敏）",
+    hostName: "李漢薇",
+    hostIntroduction: "喜歡在空閒的時候\n\n慢慢料理一頓美味的餐點",
+    hostImage:
+      "https://drive.google.com/uc?export=view&id=13QEyO2uEb5UYQiguTMJKvtbK4pb4k-5C",
+    availableTimes: [],
+  },
 ];
