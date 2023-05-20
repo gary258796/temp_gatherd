@@ -176,12 +176,25 @@ const Request = () => {
                     </MenuItem>
                   </Select>
                 </FormControl>
-                <input
-                  type="date"
-                  className={styles.datepicker}
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                />
+                <div className={styles.dateContainer}>
+                  <TextField
+                    className={styles.input}
+                    label="日期*"
+                    value={time}
+                  />
+                  <div
+                    className={styles.cover}
+                    onClick={() => {
+                      document.getElementById("datepicker").showPicker();
+                    }}
+                  />
+                  <input
+                    id="datepicker"
+                    type="date"
+                    className={styles.datepicker}
+                    onChange={(e) => setTime(e.target.value)}
+                  />
+                </div>
                 <FormControl className={styles.input} fullWidth>
                   <InputLabel>人數*</InputLabel>
                   <Select
