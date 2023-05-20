@@ -143,7 +143,7 @@
     "content": "What's on the menu",
     "order": "Reserve",
     "noTime": "No dates available",
-    "requestTime": "Request more dates",
+    "requestTime": "Request Available Dates",
     "host": "Meet your host, {{name}}",
     "available": "Choose from available dates",
     "more": "Show more dates",

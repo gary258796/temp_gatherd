@@ -143,7 +143,7 @@
     "content": "體驗內容",
     "order": "預定",
     "noTime": "目前無可預約時間",
-    "requestTime": "詢問其他時間",
+    "requestTime": "詢問預訂時間",
     "host": "Host 介紹, {{name}}",
     "available": "可預訂時間",
     "more": "查看更多",
