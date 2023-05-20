@@ -10,7 +10,6 @@ import Guideline from "./pages/Host/Guideline";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import Request from "./pages/Request";
-import Requests from "./pages/Requests";
 
 function App() {
   return (
@@ -39,7 +38,6 @@ function App() {
           />
           <Route exact path="/host/guideline" element={<Guideline />} />
           <Route exact path="/system/orders" element={<Orders />} />
-          <Route exact path="/system/requests" element={<Requests />} />
           {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
         </Routes>
       </BrowserRouter>
