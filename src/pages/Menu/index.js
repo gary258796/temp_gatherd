@@ -29,7 +29,7 @@ const Menu = () => {
   };
 
   const requestTime = () => {
-    window.open(URL.REQUEST[i18n.language]);
+    navigate("./request");
   };
 
   if (!menu) return <></>;
@@ -162,6 +162,7 @@ const Menu = () => {
                 <div
                   className={styles.time}
                   key={`${time.date}-${time.time}-1`}
+                  onClick={() => order(time)}
                 >
                   <div className={styles.date}>{time.date}</div>
                   <div className={styles.t}>{time.time}</div>
