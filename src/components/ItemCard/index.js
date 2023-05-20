@@ -10,8 +10,8 @@ const ItemCard = (props) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
-      <div className={styles.images} onClick={onClick}>
+    <div className={styles.container} onClick={onClick}>
+      <div className={styles.images}>
         <Swiper
           pagination={{
             clickable: true,
