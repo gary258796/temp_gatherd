@@ -17,6 +17,7 @@ import { app } from "../../constants/FirebaseStorage";
 import UploadArea from "../../components/UploadArea";
 import { getDatabase, ref as databaseRef, set } from "firebase/database";
 import Footer from "../../components/Footer";
+import { useEffect } from "react";
 
 const Request = () => {
   const { t } = useTranslation();
@@ -39,6 +40,17 @@ const Request = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const menu = MENUS[experienceId];
+
+  const personsArray = () => {
+    const list = menu.persons.split("-");
+    const min = parseInt(list[0]);
+    const max = parseInt(list[1]);
+    let result = [];
+    for (let index = min; index < max + 1; index++) {
+      result.push(index);
+    }
+    return result;
+  };
 
   const handleUploadImage = async (file, path) => {
     const storage = getStorage(app);
@@ -135,6 +147,10 @@ const Request = () => {
     setSuccess(true);
   };
 
+  useEffect(() => {
+    setGuest(personsArray()[0]);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -173,7 +189,7 @@ const Request = () => {
                     label="人數"
                     onChange={(e) => setGuest(e.target.value)}
                   >
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((count) => (
+                    {personsArray().map((count) => (
                       <MenuItem value={count} key={count}>
                         {count}
                       </MenuItem>
