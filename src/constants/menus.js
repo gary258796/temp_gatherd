@@ -56,7 +56,7 @@ export const MENUS = [
     hostIntroduction:
       "大家好！我是Ricky 一位西班牙土生土長的台灣人。碩士畢業後決定踏上我熱愛的廚藝之路去探索人、美食和文化的連結。\n\n我認為美食是一個接觸文化最佳的起點，希望透過廚藝來傳達美食和文化的連結。並藉由自己對於廚藝和美食的熱忱、愛好和經驗分享西班牙料理和文化！",
     hostImage:
-      "https://drive.google.com/uc?export=view&id=1_5eqn4f7RZuEM_fQd-1A5RTQQROkXOjv",
+      "https://drive.google.com/uc?export=view&id=1LnoHdwZ6cBBFm_VHEHrki2JOFaVp2MN0",
     availableTimes: [
       { date: "5月25日 週四", time: "19:00-21:00", id: "2023/05/25" },
       { date: "5月26日 週五", time: "19:00-21:00", id: "2023/05/26" },
