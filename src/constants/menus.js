@@ -41,11 +41,11 @@ export const MENUS = [
     price: 800,
     persons: "4-8",
     images: [
+      "https://drive.google.com/uc?export=view&id=1PdfdCgy9HRrGZBsZcqzUDfl6S5SHJRyw",
       "https://drive.google.com/uc?export=view&id=1VFlcbD74OK_k8k5NwFK64akxRBy01tB_",
       "https://drive.google.com/uc?export=view&id=1iEIK4uYSTh_TNFOBmyAT_hyMXRxq82S_",
       "https://drive.google.com/uc?export=view&id=1mDpuorZbqeFD_t_77st3l_1u1ZTFwvgH",
       "https://drive.google.com/uc?export=view&id=13Jm5Fi5RLfr7qG2Hj0msyLAMDavKqUID",
-      "https://drive.google.com/uc?export=view&id=1PdfdCgy9HRrGZBsZcqzUDfl6S5SHJRyw",
     ],
     description:
       "我們透過西班牙最經典的料理來認識他！從開胃菜到前菜到主食加上最後的甜點來做個 Happy Ending。\n\n除了美食以外會想讓大家看見每道料理背後的故事、文化和西班牙人對生活的那種熱情、享受和態度。",
@@ -79,11 +79,11 @@ export const MENUS = [
     price: 480,
     persons: "3-7",
     images: [
+      "https://drive.google.com/uc?export=view&id=1Zswt1yRg4cHPR7mU5wymc0p4nDsqqKge",
       "https://drive.google.com/uc?export=view&id=1Lfqd7-oIw2tEGbce81NBGClWffxPpGwE",
       "https://drive.google.com/uc?export=view&id=1XQJsJ8s0-U_XuXaTOOjjaM34jlS5B6Bg",
       "https://drive.google.com/uc?export=view&id=1iPbVHixEMQO7lyJnmOVdiqkhAVTAmMMI",
       "https://drive.google.com/uc?export=view&id=1UTbaIbUt_bx1BfCkqT6gSNVDHLigBNeR",
-      "https://drive.google.com/uc?export=view&id=1Zswt1yRg4cHPR7mU5wymc0p4nDsqqKge",
     ],
     description:
       "好好吃飯、好好生活\n是我在忙碌的生活中休息的方式\n慢慢為自己煮一頓可口簡單的料理\n\n每一道菜都有不同的回憶\n\n家族傳下來的、和朋友一起旅行發明的、外國朋友教的、別人的家鄉菜……\n\n菜色就像一張張相片\n打開記憶的味蕾\n那些飽滿美麗的回憶彷彿又重溫一遍",
@@ -94,6 +94,62 @@ export const MENUS = [
     hostIntroduction: "喜歡在空閒的時候\n\n慢慢料理一頓美味的餐點",
     hostImage:
       "https://drive.google.com/uc?export=view&id=13QEyO2uEb5UYQiguTMJKvtbK4pb4k-5C",
+    availableTimes: [],
+  },
+  {
+    name: "< Savor and Socialise > 與Candy的特色料理",
+    location: "台北市大安區",
+    address: "安和路一段78巷5號",
+    addressGuide: "信義安和捷運站1號出口，步行約3分鐘",
+    notice: "",
+    duration: 3,
+    price: 650,
+    persons: "1-4",
+    images: [
+      "https://drive.google.com/uc?export=view&id=1BmQ8CmmTiwI9UUQ7ibeoHa40NpNWCY8g",
+      "https://drive.google.com/uc?export=view&id=1AzJilP1ppZTzaGR1c3d5UOvJb7htq-AY",
+      "https://drive.google.com/uc?export=view&id=1GxetjoPR4OzWieTsA3HJjrJUJvAIXKo-",
+      "https://drive.google.com/uc?export=view&id=1PtuwVOvxIgxevCdNBGxmm3Pfz2OsDPtm",
+      "https://drive.google.com/uc?export=view&id=133qbehE6bLAeUjxHsnvk1umC-AhIBA12",
+    ],
+    description:
+      "Offering fusion cuisine that combines traditional Chinese culinary techniques with new and innovative recipes discovered during our cook's time living in the UK. Prioritize using fresh, seasonal ingredients sourced from the local market. My passion for cooking stems from grandmother and am constantly on the lookout for new recipes to incorporate into menu. I believe that food is meant to be shared and enjoyed. Join me for a memorable dining experience that celebrates the best of both old and new culinary.\n\n結合中式傳統烹技巧和在英國生活期間發現的新穎創新食材一併融合到料理裡。優先使用當地市場採購的季節性食材。我的烹飪熱情源於外婆，並不斷尋找不同元素的食材融入到料理中。我認為食物是用來分享和享受的。與我一起體驗難忘的用餐時光，是慶祝多元烹飪的最佳結合。",
+    detail:
+      "Enjoy a set meal of 5-6 fusion dishes featuring ingredients based on the market. You may also be pleasantly surprised with additional cuisine.\n\n品嚐由市場新鮮食材精心烹調的五到六道無國界料理，也有機會品嚐到意外驚喜的額外料理。",
+    allergy: "奶類, 蛋, 貝類, 魚類",
+    hostName: "Candy",
+    hostIntroduction:
+      "Meet Candy, a bright and cheerful young woman who has a contagious passion for life. Her outgoing personality and love for sharing make her a true delight to be around. Always eager to try new things and explore the world around.\n\nHi 我是Candy，充滿活力與熱情。具有外向的個性和分享的熱愛，總是渴望嘗試新事物並探索周圍的世界。",
+    hostImage:
+      "https://drive.google.com/uc?export=view&id=1M-6jvc1kkyO5-KOid4beksO6KLJkErA7",
+    availableTimes: [],
+  },
+  {
+    name: "旬味定食",
+    location: "台北市文山區",
+    address: "台北市文山區汀州路四段 191 號 13 樓",
+    addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
+    notice: "素食者可在備註中告知",
+    duration: 3,
+    price: 650,
+    persons: "4-6",
+    images: [
+      "https://drive.google.com/uc?export=view&id=1L-fwR4mF7vMIhB9izmMEF9n6QhoTTJOz",
+      "https://drive.google.com/uc?export=view&id=1OH0jjmXdPeqGgD-szl4OMTL2mBrNwa1Q",
+      "https://drive.google.com/uc?export=view&id=1CsainNjDsIHPgSz0BcTKDjAHI9d1ebcU",
+      "https://drive.google.com/uc?export=view&id=1f0vNUqR-ZvebQgAD8IDTSFuXwFpyKWjt",
+      "https://drive.google.com/uc?export=view&id=1DF1ERD6SfoIpmLbikebji3DEY3uxxiK_",
+    ],
+    description:
+      "日本料理的特色是透過食物的原味，傳達春夏秋冬的變化以及季節感，調味相對單純卻富有風味。\n\n因為從小就特別喜歡日本的文化，在我成長的過程中從語言、歷史、飲食等等不同面向慢慢認識了這個國家，而飲食是我最拿手的絕活，希望能把這樣的快樂帶給更多的人，歡迎來一同體驗～",
+    detail:
+      "在這個體驗當中會有定食、壽司、烤物、炸物等經典日式料理的菜色，依據季節會稍有變動，並且絕對使用當季食材，以符合日本料理的精髓！",
+    allergy: "奶類, 蛋, 貝類, 魚類, 麩質",
+    hostName: "何愷原",
+    hostIntroduction:
+      "大家好我叫愷原，做餐飲業將近十年。學習過程以及料理職涯中，都是以日式的菜系為主，目前在日本料理的餐廳工作。\n\n平常就很喜歡跟好友分享料理，不喜歡被框架的個性也讓我會在家裡自己嘗試各式各樣的料理，除了依照傳統的做法之外，會融入自己偏好的口味以及創意！",
+    hostImage:
+      "https://drive.google.com/uc?export=view&id=1Vj-z6mGZXtjjJyZm0Tfg9laR3s6fjMZM",
     availableTimes: [],
   },
 ];
