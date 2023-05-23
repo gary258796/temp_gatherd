@@ -122,7 +122,12 @@ export const MENUS = [
       "Hi 我是Candy，充滿活力與熱情。具有外向的個性和分享的熱愛，總是渴望嘗試新事物並探索周圍的世界。",
     hostImage:
       "https://drive.google.com/uc?export=view&id=1M-6jvc1kkyO5-KOid4beksO6KLJkErA7",
-    availableTimes: [],
+    availableTimes: [
+      { date: "5月28日 週四", time: "18:00-21:00", id: "2023/05/28" },
+      { date: "6月3日 週四", time: "18:00-21:00", id: "2023/06/03" },
+      { date: "6月10日 週四", time: "18:00-21:00", id: "2023/06/10" },
+      { date: "6月17日 週四", time: "18:00-21:00", id: "2023/06/17" },
+    ],
   },
   {
     name: "旬味定食",
