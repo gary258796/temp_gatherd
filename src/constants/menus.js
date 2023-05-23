@@ -97,10 +97,10 @@ export const MENUS = [
     availableTimes: [],
   },
   {
-    name: "< Savor and Socialise > 與Candy的特色料理",
-    location: "台北市大安區",
-    address: "安和路一段78巷5號",
-    addressGuide: "信義安和捷運站1號出口，步行約3分鐘",
+    name: "與Candy的特色料理",
+    location: "台北市文山區",
+    address: "台北市文山區汀州路四段 191 號 13 樓",
+    addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
     notice: "",
     duration: 3,
     price: 650,
@@ -113,13 +113,13 @@ export const MENUS = [
       "https://drive.google.com/uc?export=view&id=133qbehE6bLAeUjxHsnvk1umC-AhIBA12",
     ],
     description:
-      "Offering fusion cuisine that combines traditional Chinese culinary techniques with new and innovative recipes discovered during our cook's time living in the UK. Prioritize using fresh, seasonal ingredients sourced from the local market. My passion for cooking stems from grandmother and am constantly on the lookout for new recipes to incorporate into menu. I believe that food is meant to be shared and enjoyed. Join me for a memorable dining experience that celebrates the best of both old and new culinary.\n\n結合中式傳統烹技巧和在英國生活期間發現的新穎創新食材一併融合到料理裡。優先使用當地市場採購的季節性食材。我的烹飪熱情源於外婆，並不斷尋找不同元素的食材融入到料理中。我認為食物是用來分享和享受的。與我一起體驗難忘的用餐時光，是慶祝多元烹飪的最佳結合。",
+      "結合中式傳統烹技巧和在英國生活期間發現的新穎創新食材一併融合到料理裡。優先使用當地市場採購的季節性食材。我的烹飪熱情源於外婆，並不斷尋找不同元素的食材融入到料理中。我認為食物是用來分享和享受的。與我一起體驗難忘的用餐時光，是慶祝多元烹飪的最佳結合。",
     detail:
-      "Enjoy a set meal of 5-6 fusion dishes featuring ingredients based on the market. You may also be pleasantly surprised with additional cuisine.\n\n品嚐由市場新鮮食材精心烹調的五到六道無國界料理，也有機會品嚐到意外驚喜的額外料理。",
+      "品嚐由市場新鮮食材精心烹調的五到六道無國界料理，也有機會品嚐到意外驚喜的額外料理。",
     allergy: "奶類, 蛋, 貝類, 魚類",
     hostName: "Candy",
     hostIntroduction:
-      "Meet Candy, a bright and cheerful young woman who has a contagious passion for life. Her outgoing personality and love for sharing make her a true delight to be around. Always eager to try new things and explore the world around.\n\nHi 我是Candy，充滿活力與熱情。具有外向的個性和分享的熱愛，總是渴望嘗試新事物並探索周圍的世界。",
+      "Hi 我是Candy，充滿活力與熱情。具有外向的個性和分享的熱愛，總是渴望嘗試新事物並探索周圍的世界。",
     hostImage:
       "https://drive.google.com/uc?export=view&id=1M-6jvc1kkyO5-KOid4beksO6KLJkErA7",
     availableTimes: [],
