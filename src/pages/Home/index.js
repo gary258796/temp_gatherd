@@ -53,7 +53,7 @@ const Home = () => {
             className={styles.logo}
             src={logoImg}
             alt=""
-            onClick={() => navigate("../joinus")}
+            onClick={() => navigate("../")}
           />
           <Typography variant="body2" className={styles.title}>
             {t("home.title")}
