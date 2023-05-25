@@ -13,9 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import { getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
 import { app } from "../../constants/FirebaseStorage";
-import UploadArea from "../../components/UploadArea";
 import { useEffect } from "react";
 import { getDatabase, ref as databaseRef, set } from "firebase/database";
 import Footer from "../../components/Footer";
@@ -30,13 +28,7 @@ const Checkout = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [identifyImage, setIdentifyImage] = useState(null);
-  const [identifyImageURL, setIdentifyImageURL] = useState(null);
-  const [userImage, setUserImage] = useState(null);
-  const [userImageURL, setUserImageURL] = useState(null);
-  const [memo, setMemo] = useState("");
   const [inquiry, setInquiry] = useState("");
-  const [othersEmail, setOthersEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("bank");
   const [paymentDetail, setPaymentDetail] = useState("");
   const [checked, setChecked] = useState(false);
@@ -54,30 +46,6 @@ const Checkout = () => {
       result.push(index);
     }
     return result;
-  };
-
-  const handleUploadImage = async (file, path) => {
-    const storage = getStorage(app);
-    const ref = storageRef(storage, path);
-    let fullPath = "";
-
-    await uploadBytes(ref, file).then((snapshot) => {
-      fullPath = snapshot.metadata.fullPath;
-    });
-
-    return fullPath;
-  };
-
-  const identifyImageOnChange = async (e) => {
-    const file = e.target.files[0];
-    setIdentifyImage(file);
-    setIdentifyImageURL(URL.createObjectURL(file));
-  };
-
-  const userImageOnChange = (e) => {
-    const file = e.target.files[0];
-    setUserImage(file);
-    setUserImageURL(URL.createObjectURL(file));
   };
 
   const checkValid = () => {
@@ -101,18 +69,6 @@ const Checkout = () => {
       alert("電話為必填");
       return false;
     }
-    if (!identifyImage) {
-      alert("身分證為必填");
-      return false;
-    }
-    if (!userImage) {
-      alert("生活照為必填");
-      return false;
-    }
-    if (!memo) {
-      alert("與美食創作家說的一句話為必填");
-      return false;
-    }
     if (!paymentDetail) {
       alert(
         `${
@@ -131,14 +87,6 @@ const Checkout = () => {
   const handleSubmit = async () => {
     if (!checkValid()) return;
     setLoading(true);
-    const identifyImagePath = await handleUploadImage(
-      identifyImage,
-      `${menu.name}/${name}_identify.png`
-    );
-    const userImagePath = await handleUploadImage(
-      identifyImage,
-      `${menu.name}/${name}_user.png`
-    );
     const params = {
       experience: menu.name,
       price: menu.price,
@@ -147,11 +95,7 @@ const Checkout = () => {
       email,
       name,
       phone,
-      identifyImagePath,
-      userImagePath,
-      memo,
       inquiry,
-      othersEmail,
       paymentDetail,
       paymentMethod,
     };
@@ -230,36 +174,6 @@ const Checkout = () => {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
-                <UploadArea
-                  className={styles.upload}
-                  onChange={identifyImageOnChange}
-                  src={identifyImageURL}
-                >
-                  上傳身分證*
-                </UploadArea>
-                <div className={styles.description}>
-                  為了讓雙方安全性的保障，請上傳一張附有個人照片之證件照片（身分證、健保卡、駕照、居留證等），僅供身份確認使用
-                </div>
-                <UploadArea
-                  className={styles.upload}
-                  onChange={userImageOnChange}
-                  src={userImageURL}
-                >
-                  上傳生活照*
-                </UploadArea>
-                <div className={styles.description}>
-                  上傳一張你的生活照，讓美食創作家更了解你
-                </div>
-                <TextField
-                  className={styles.input}
-                  label="與美食創作家說的一段話*"
-                  value={memo}
-                  onChange={(e) => setMemo(e.target.value)}
-                />
-                <div className={styles.description}>
-                  可以說明自己為何選擇這個體驗,
-                  對這個體驗的期待或是介紹自己的一段話
-                </div>
                 <TextField
                   className={styles.input}
                   label="備註"
@@ -267,18 +181,7 @@ const Checkout = () => {
                   onChange={(e) => setInquiry(e.target.value)}
                 />
                 <div className={styles.description}>
-                  如有任何其他需求請於此提出
-                </div>
-                <TextField
-                  className={styles.input}
-                  label="其他參與者郵件"
-                  value={othersEmail}
-                  onChange={(e) => setOthersEmail(e.target.value)}
-                />
-                <div className={styles.description}>
-                  {
-                    "請提供其他同行者 Email，我們將同時發送相關通知給同行者\n如有多個郵件，請以 “,“ 區分。如：reservation@gmail.com, reservation1@gmail.com"
-                  }
+                  如有忌口食物或任何其他需求請於此提出
                 </div>
               </div>
               <div className={styles.section}>
