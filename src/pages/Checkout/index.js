@@ -194,7 +194,7 @@ const Checkout = () => {
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   >
                     <MenuItem value={"bank"}>
-                      轉帳：(882) - 0000218540154981
+                      轉帳：(822) - 0000218540154981
                     </MenuItem>
                     <MenuItem value={"linepay"}>
                       LINE Pay: jo841130s (黃冠中)
