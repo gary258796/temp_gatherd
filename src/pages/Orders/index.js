@@ -8,7 +8,12 @@ import {
 import { app } from "../../constants/FirebaseStorage";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import {
+  Button,
+  TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 
 const Image = (props) => {
   const { path, className } = props;
@@ -28,6 +33,8 @@ const Image = (props) => {
 };
 
 const Orders = () => {
+  const [pass, setPass] = useState(false);
+  const [password, setPassword] = useState("");
   const [tabIndex, setTabIndex] = useState("0");
   const [data, setData] = useState({});
   const db = getDatabase(app);
@@ -214,6 +221,24 @@ const Orders = () => {
           ? handleOrderCellRender(value, key)
           : handleRequestCell(value, key);
       })}
+      {!pass && (
+        <div className={styles.password}>
+          <TextField
+            className={styles.textfield}
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            onClick={() => {
+              if (password === "gatherd2023") setPass(true);
+            }}
+          >
+            確定
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
