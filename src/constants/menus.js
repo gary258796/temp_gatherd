@@ -38,7 +38,7 @@ export const MENUS = [
     addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
     notice: "",
     duration: 2,
-    price: 800,
+    price: 1000,
     persons: "4-8",
     images: [
       "https://drive.google.com/uc?export=view&id=1PdfdCgy9HRrGZBsZcqzUDfl6S5SHJRyw",
