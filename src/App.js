@@ -10,37 +10,52 @@ import Guideline from "./pages/Host/Guideline";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import Request from "./pages/Request";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Header from "./components/Header";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getUserData } from "./utils/user";
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const userData = getUserData();
+    userData && setUser(userData);
+  }, []);
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route
-            exact
-            path="/explore"
-            element={<Navigate to="../joinus" replace />}
-          />
-          <Route exact path="/joinus" element={<JoinUs />} />
-          <Route exact path="/experience" element={<Experience />} />
-          <Route exact path="/experiences/:experienceId" element={<Menu />} />
-          <Route
-            exact
-            path="/experiences/:experienceId/checkout"
-            element={<Checkout />}
-          />
-          <Route
-            exact
-            path="/experiences/:experienceId/request"
-            element={<Request />}
-          />
-          <Route exact path="/host/guideline" element={<Guideline />} />
-          <Route exact path="/system/orders" element={<Orders />} />
-          {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
-        </Routes>
-      </BrowserRouter>
+      <GoogleOAuthProvider clientId="1018066292186-p5a7gl85c3uf6tbo32fl6i9m45far5mn.apps.googleusercontent.com">
+        <BrowserRouter>
+          <ScrollToTop />
+          <Header user={user} onUserChange={setUser} />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route
+              exact
+              path="/explore"
+              element={<Navigate to="../joinus" replace />}
+            />
+            <Route exact path="/joinus" element={<JoinUs />} />
+            <Route exact path="/experience" element={<Experience />} />
+            <Route exact path="/experiences/:experienceId" element={<Menu />} />
+            <Route
+              exact
+              path="/experiences/:experienceId/checkout"
+              element={<Checkout />}
+            />
+            <Route
+              exact
+              path="/experiences/:experienceId/request"
+              element={<Request />}
+            />
+            <Route exact path="/host/guideline" element={<Guideline />} />
+            <Route exact path="/system/orders" element={<Orders />} />
+            {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </div>
   );
 }

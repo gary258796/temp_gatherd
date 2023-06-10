@@ -1,0 +1,21 @@
+.container {
+  padding: 18px 36px;
+  box-sizing: border-box;
+  background: #2b403a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .user {
+    height: 36px;
+    width: 36px;
+    border-radius: 100px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
