@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { app } from "../../../constants/FirebaseStorage";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { MENUS } from "../../../constants/menus";
 
 const Orders = (props) => {
   const { user } = props;
+  const navigate = useNavigate();
   const [orders, setOrders] = useState({});
   const db = getDatabase(app);
   const dbRef = ref(db);
@@ -17,7 +18,7 @@ const Orders = (props) => {
     const pastOrders = [];
     Object.keys(orders).forEach((key) => {
       const order = orders[key];
-      if (order.email !== user?.email) {
+      if (order.email === user?.email) {
         const isPastOrder = key > moment().unix();
         if (isPastOrder) {
           pastOrders.push({ ...order, key });
@@ -31,12 +32,20 @@ const Orders = (props) => {
 
   const handleOrderRender = (order) => {
     const { key, experience, time, price, guest } = order;
-    const menu = MENUS.find((menu) => menu.name === experience);
+    const menuIndex = MENUS.findIndex((menu) => menu.name === experience);
+    const menu = MENUS[menuIndex];
     const { hostName, images } = menu;
     return (
       <div key={key} className={styles.order}>
-        <img src={images[0]} alt="" />
-        <div className={styles.info}>
+        <img
+          src={images[0]}
+          alt=""
+          onClick={() => navigate(`../experiences/${menuIndex}`)}
+        />
+        <div
+          className={styles.info}
+          onClick={() => navigate(`../experiences/${menuIndex}`)}
+        >
           <div className={styles.name}>{experience}</div>
           <div className={styles.host}>主辦者: {hostName}</div>
           <div className={styles.time}>{time}</div>
@@ -62,9 +71,6 @@ const Orders = (props) => {
   }, []);
 
   const { recentOrders, pastOrders } = getDisplayOrders();
-
-  console.log(recentOrders);
-  console.log(pastOrders);
 
   if (!user) return <Navigate to={"../"} />;
 
