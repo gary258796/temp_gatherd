@@ -10,9 +10,9 @@ import creator3 from "../../images/creators/3.jpg";
 // import gary from "../../images/vendors/gary.png";
 import Footer from "../../components/Footer";
 // import { useNavigate } from "react-router-dom";
-import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, set } from "firebase/database";
 import { useTranslation } from "react-i18next";
+import { app } from "../../constants/FirebaseStorage";
 
 const JoinUs = () => {
   // const navigate = useNavigate();
@@ -89,12 +89,12 @@ const JoinUs = () => {
   //   { name: "Joe H", image: joe },
   //   { name: "Gary L", image: gary },
   // ];
-  const firebaseConfig = {
-    databaseURL:
-      "https://gatherd-test-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  };
+  // const firebaseConfig = {
+  //   databaseURL:
+  //     "https://gatherd-test-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  // };
 
-  const app = initializeApp(firebaseConfig);
+  // const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
   const dbRef = ref(db);
 
