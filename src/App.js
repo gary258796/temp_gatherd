@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getUserData } from "./utils/user";
 import Profile from "./pages/User/Profile";
+import UserOrders from "./pages/User/Orders";
 
 function App() {
   const [user, setUser] = useState();
@@ -52,6 +53,7 @@ function App() {
               element={<Request />}
             />
             <Route exact path="/profile" element={<Profile user={user} />} />
+            <Route exact path="/orders" element={<UserOrders user={user} />} />
             <Route exact path="/host/guideline" element={<Guideline />} />
             <Route exact path="/system/orders" element={<Orders />} />
             {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
