@@ -4,8 +4,6 @@ import { saveUserData } from "../../utils/user";
 import styles from "./index.module.scss";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import { getDatabase, ref, set } from "firebase/database";
-import { app } from "../../constants/FirebaseStorage";
 import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
@@ -16,8 +14,6 @@ const Header = (props) => {
     saveUserData(response.credential);
     const user = jwt_decode(response.credential);
     onUserChange(user);
-    const db = getDatabase(app);
-    await set(ref(db, `users/${user.email.split("@")[0]}`), user);
   };
 
   return (

@@ -10,10 +10,14 @@
     font-weight: 600;
   }
 
-  div {
+  .info {
     padding: 18px 0;
     border-bottom: 1px solid rgb(204, 204, 204);
     width: 100%;
+
+    &:last-child {
+      border: none;
+    }
 
     h5 {
       margin: 0 0 8px;
@@ -35,14 +39,14 @@
       border: 1px solid rgb(119, 119, 119);
       background-color: white;
       border-radius: 8px;
-      width: 100%;
       box-sizing: border-box;
-      max-width: 300px;
+      width: 300px;
     }
   }
 
-  .button {
+  button {
     margin-top: 18px;
+    width: 150px;
   }
 }
 
@@ -54,12 +58,20 @@
       font-size: 24px;
     }
   
-    div {
+    .info {
       padding: 12px 0;
 
       h5 {
         margin: 0 0 4px;
       }
+
+      input {
+        width: 100%;
+      }
+    }
+
+    button {
+      width: 100%;
     }
   }
 }

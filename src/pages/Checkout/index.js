@@ -17,6 +17,7 @@ import { app } from "../../constants/FirebaseStorage";
 import { useEffect } from "react";
 import { getDatabase, ref as databaseRef, set } from "firebase/database";
 import Footer from "../../components/Footer";
+import LoadingModal from "../../components/LoadingModal";
 
 const Checkout = () => {
   const { t } = useTranslation();
@@ -270,13 +271,7 @@ const Checkout = () => {
               </div>
             </div>
           </div>
-          {loading && (
-            <div className={styles.modalContainer}>
-              <div className={styles.modal}>
-                <CircularProgress />
-              </div>
-            </div>
-          )}
+          {loading && <LoadingModal />}
           {success && (
             <div className={styles.modalContainer}>
               <div className={styles.modal}>
