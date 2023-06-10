@@ -19,26 +19,4 @@
     overflow: hidden;
     cursor: pointer;
   }
-
-  .menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 36px;
-    padding: 4px 12px;
-    border-radius: 12px;
-    min-width: 150px;
-    background: white;
-    z-index: 99;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
-
-    div {
-      border-bottom: 1px solid rgb(204, 204, 204);
-      padding: 8px 0;
-      cursor: pointer;
-
-      &:last-child {
-        border: none;
-      }
-    }
-  }
 }
