@@ -1,37 +1,48 @@
 import logo from "../../images/logo.png";
 import userImg from "../../images/user.png";
-import { saveUserData } from "../../utils/user";
+import googleImg from "../../images/google.png";
 import styles from "./index.module.scss";
-import { GoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import LoginModal from "../LoginModal";
 
 const Header = (props) => {
   const { user, onUserChange } = props;
   const navigate = useNavigate();
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
 
-  const handleLogin = async (response) => {
-    saveUserData(response.credential);
-    const user = jwt_decode(response.credential);
+  const handleUserOnChange = (user) => {
     onUserChange(user);
+    setLoginModalIsOpen(false);
   };
 
   return (
     <div className={styles.container}>
-      <img src={logo} alt="" className={styles.logo} />
+      <img
+        src={logo}
+        alt=""
+        className={styles.logo}
+        onClick={() => navigate("..")}
+      />
       {!!user ? (
-        <div>
-          <img
-            src={user.picture || userImg}
-            alt=""
-            className={styles.user}
-            onClick={() => navigate("../user")}
-          />
-        </div>
+        <img
+          src={user.picture || userImg}
+          alt=""
+          className={styles.user}
+          onClick={() => navigate("../user")}
+        />
       ) : (
-        <GoogleLogin
-          onSuccess={handleLogin}
-          onError={() => alert("登入失敗請重新嘗試")}
+        <div
+          className={styles.google}
+          onClick={() => setLoginModalIsOpen(true)}
+        >
+          <img src={googleImg} alt="" /> Login
+        </div>
+      )}
+      {loginModalIsOpen && (
+        <LoginModal
+          onUserChange={handleUserOnChange}
+          onClose={() => setLoginModalIsOpen(false)}
         />
       )}
     </div>

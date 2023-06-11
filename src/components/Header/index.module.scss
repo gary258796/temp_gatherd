@@ -10,6 +10,7 @@
   .logo {
     height: 24px;
     object-fit: contain;
+    cursor: pointer;
   }
 
   .user {
@@ -18,5 +19,31 @@
     border-radius: 100px;
     overflow: hidden;
     cursor: pointer;
+  }
+
+  .google {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+      background: rgb(227, 227, 240);
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    padding: 12px;
   }
 }

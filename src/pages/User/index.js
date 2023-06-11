@@ -4,8 +4,15 @@ import { Button } from "@mui/material";
 import userImg from "../../images/user.png";
 import orderImg from "../../images/order.png";
 
-const User = () => {
+const User = (props) => {
+  const { onLogout } = props;
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("..");
+    localStorage.setItem("user", "");
+    onLogout();
+  };
 
   return (
     <div className={styles.container}>
@@ -26,7 +33,7 @@ const User = () => {
           </div>
         </div>
       </div>
-      <Button variant="contained" color="error">
+      <Button variant="contained" color="error" onClick={handleLogout}>
         登出
       </Button>
     </div>

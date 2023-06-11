@@ -53,7 +53,11 @@ function App() {
               path="/experiences/:experienceId/request"
               element={<Request />}
             />
-            <Route exact path="/user" element={<User user={user} />} />
+            <Route
+              exact
+              path="/user"
+              element={<User onLogout={() => setUser(undefined)} />}
+            />
             <Route
               exact
               path="/user/profile"
