@@ -1,11 +1,15 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Navigate,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import styles from "./index.module.scss";
 import { MENUS } from "../../constants/menus";
 import { handleDisplayTimes } from "../../utils/time";
 import { useTranslation } from "react-i18next";
 import {
   Checkbox,
-  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
@@ -15,19 +19,18 @@ import {
 import { useState } from "react";
 import { app } from "../../constants/FirebaseStorage";
 import { useEffect } from "react";
-import { getDatabase, ref as databaseRef, set } from "firebase/database";
+import { getDatabase, ref, set, get, child } from "firebase/database";
 import Footer from "../../components/Footer";
 import LoadingModal from "../../components/LoadingModal";
 
-const Checkout = () => {
+const Checkout = (props) => {
+  const { user } = props;
   const { t } = useTranslation();
   const { experienceId } = useParams();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [time, setTime] = useState("");
   const [guest, setGuest] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [inquiry, setInquiry] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("bank");
@@ -36,7 +39,10 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const menu = MENUS[experienceId];
+  const db = getDatabase(app);
+  const dbRef = ref(db);
   const availableTimes = handleDisplayTimes(menu.availableTimes);
+  const path = `phone/${user?.email.split("@")[0]}`;
 
   const personsArray = () => {
     const list = menu.persons.split("-");
@@ -56,14 +62,6 @@ const Checkout = () => {
     }
     if (!guest) {
       alert("人數為必填");
-      return false;
-    }
-    if (!name) {
-      alert("姓名為必填");
-      return false;
-    }
-    if (!email) {
-      alert("Email 為必填");
       return false;
     }
     if (!phone) {
@@ -93,26 +91,33 @@ const Checkout = () => {
       price: menu.price,
       time,
       guest,
-      email,
-      name,
+      email: user?.email,
+      name: user?.name,
       phone,
       inquiry,
       paymentDetail,
       paymentMethod,
     };
-    const db = getDatabase(app);
-    await set(databaseRef(db, "orders/" + new Date().getTime()), params);
+    await set(ref(db, "orders/" + new Date().getTime()), params);
+    await set(ref(db, path), phone);
     setLoading(false);
     setSuccess(true);
   };
 
   useEffect(() => {
     setGuest(personsArray()[0]);
+    get(child(dbRef, path)).then((snapshot) => {
+      if (snapshot.exists()) {
+        setPhone(snapshot.val());
+      }
+    });
     const date = searchParams.get("date");
     const time = searchParams.get("time");
     if (!date || !time) return;
     setTime(`${date} ${time}`);
   }, []);
+
+  if (!user) return <Navigate to={"../"} />;
 
   return (
     <>
@@ -124,7 +129,7 @@ const Checkout = () => {
               <div className={styles.section}>
                 <div className={styles.title}>你的體驗</div>
                 <FormControl className={styles.input} fullWidth>
-                  <InputLabel>日期*</InputLabel>
+                  <InputLabel>日期</InputLabel>
                   <Select
                     value={time}
                     label="日期"
@@ -139,7 +144,7 @@ const Checkout = () => {
                   </Select>
                 </FormControl>
                 <FormControl className={styles.input} fullWidth>
-                  <InputLabel>人數*</InputLabel>
+                  <InputLabel>人數</InputLabel>
                   <Select
                     value={guest}
                     label="人數"
@@ -157,20 +162,20 @@ const Checkout = () => {
                 <div className={styles.title}>關於你</div>
                 <TextField
                   className={styles.input}
-                  label="Email*"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  label="Email"
+                  value={user?.email || ""}
+                  disabled
                 />
                 <div className={styles.flex}>
                   <TextField
                     className={styles.input}
-                    label="姓名*"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    label="姓名"
+                    value={user?.name || ""}
+                    disabled
                   />
                   <TextField
                     className={styles.input}
-                    label="電話*"
+                    label="電話"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />

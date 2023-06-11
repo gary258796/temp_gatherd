@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styles from "./index.module.scss";
 import { MENUS } from "../../constants/menus";
 import { useTranslation } from "react-i18next";
@@ -11,27 +11,28 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { app } from "../../constants/FirebaseStorage";
-import { getDatabase, ref as databaseRef, set } from "firebase/database";
+import { child, get, getDatabase, ref, set } from "firebase/database";
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
 
-const Request = () => {
+const Request = (props) => {
+  const { user } = props;
   const { t } = useTranslation();
   const { experienceId } = useParams();
   const navigate = useNavigate();
   const [time, setTime] = useState("");
   const [period, setPeriod] = useState("");
   const [guest, setGuest] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [inquiry, setInquiry] = useState("");
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const menu = MENUS[experienceId];
+  const db = getDatabase(app);
+  const dbRef = ref(db);
+  const path = `phone/${user?.email.split("@")[0]}`;
 
   const personsArray = () => {
     const list = menu.persons.split("-");
@@ -53,14 +54,6 @@ const Request = () => {
       alert("人數為必填");
       return false;
     }
-    if (!name) {
-      alert("姓名為必填");
-      return false;
-    }
-    if (!email) {
-      alert("Email 為必填");
-      return false;
-    }
     if (!phone) {
       alert("電話為必填");
       return false;
@@ -80,20 +73,28 @@ const Request = () => {
       price: menu.price,
       time,
       guest,
-      email,
-      name,
+      email: user.email,
+      name: user.name,
       phone,
       inquiry,
     };
-    const db = getDatabase(app);
-    await set(databaseRef(db, "request/" + new Date().getTime()), params);
+
+    await set(ref(db, "request/" + new Date().getTime()), params);
+    await set(ref(db, path), phone);
     setLoading(false);
     setSuccess(true);
   };
 
   useEffect(() => {
     setGuest(personsArray()[0]);
+    get(child(dbRef, path)).then((snapshot) => {
+      if (snapshot.exists()) {
+        setPhone(snapshot.val());
+      }
+    });
   }, []);
+
+  if (!user) return <Navigate to={"../"} />;
 
   return (
     <>
@@ -109,7 +110,7 @@ const Request = () => {
                   Email 與你聯絡
                 </div>
                 <FormControl className={styles.input} fullWidth>
-                  <InputLabel>時段*</InputLabel>
+                  <InputLabel>時段</InputLabel>
                   <Select
                     value={period}
                     label="時段"
@@ -122,7 +123,7 @@ const Request = () => {
                 </FormControl>
                 <TextField
                   className={styles.input}
-                  label="日期*"
+                  label="日期"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
                 />
@@ -146,20 +147,20 @@ const Request = () => {
                 <div className={styles.title}>關於你</div>
                 <TextField
                   className={styles.input}
-                  label="Email*"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  label="Email"
+                  value={user?.email || ""}
+                  disabled
                 />
                 <div className={styles.flex}>
                   <TextField
                     className={styles.input}
-                    label="姓名*"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    label="姓名"
+                    value={user?.name || ""}
+                    disabled
                   />
                   <TextField
                     className={styles.input}
-                    label="電話*"
+                    label="電話"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -175,7 +176,7 @@ const Request = () => {
                 </div>
               </div>
               <div className={styles.section}>
-                <div className={styles.title}>體驗活動聲明*</div>
+                <div className={styles.title}>體驗活動聲明</div>
                 <div
                   className={styles.description}
                   style={{ fontSize: "16px" }}

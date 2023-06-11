@@ -64,12 +64,12 @@ function App() {
               <Route
                 exact
                 path="/experiences/:experienceId/checkout"
-                element={<Checkout />}
+                element={<Checkout user={user} />}
               />
               <Route
                 exact
                 path="/experiences/:experienceId/request"
-                element={<Request />}
+                element={<Request user={user} />}
               />
               <Route
                 exact
