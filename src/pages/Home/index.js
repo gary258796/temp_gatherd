@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import React from "react";
 import styles from "./index.module.scss";
 import "swiper/css";
-import logoImg from "../../images/logo.png";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ItemCard from "../../components/ItemCard";

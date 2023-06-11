@@ -17,9 +17,16 @@ import User from "./pages/User";
 import Profile from "./pages/User/Profile";
 import UserOrders from "./pages/User/Orders";
 import BasicLayout from "./components/BasicLayout";
+import LoginModal from "./components/LoginModal";
 
 function App() {
   const [user, setUser] = useState();
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+
+  const handleUserOnChange = (user) => {
+    setUser(user);
+    setLoginModalIsOpen(false);
+  };
 
   useEffect(() => {
     const userData = getUserData();
@@ -31,7 +38,14 @@ function App() {
       <GoogleOAuthProvider clientId="1018066292186-p5a7gl85c3uf6tbo32fl6i9m45far5mn.apps.googleusercontent.com">
         <BrowserRouter>
           <Routes>
-            <Route element={<BasicLayout user={user} onUserChange={setUser} />}>
+            <Route
+              element={
+                <BasicLayout
+                  user={user}
+                  onLogin={() => setLoginModalIsOpen(true)}
+                />
+              }
+            >
               <Route exact path="/" element={<Home />} />
               <Route
                 exact
@@ -43,7 +57,9 @@ function App() {
               <Route
                 exact
                 path="/experiences/:experienceId"
-                element={<Menu />}
+                element={
+                  <Menu user={user} onLogin={() => setLoginModalIsOpen(true)} />
+                }
               />
               <Route
                 exact
@@ -75,6 +91,12 @@ function App() {
               {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
             </Route>
           </Routes>
+          {loginModalIsOpen && (
+            <LoginModal
+              onUserChange={handleUserOnChange}
+              onClose={() => setLoginModalIsOpen(false)}
+            />
+          )}
         </BrowserRouter>
       </GoogleOAuthProvider>
     </div>

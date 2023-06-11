@@ -3,18 +3,10 @@ import userImg from "../../images/user.png";
 import googleImg from "../../images/google.png";
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import LoginModal from "../LoginModal";
 
 const Header = (props) => {
-  const { user, onUserChange } = props;
+  const { user, onLogin } = props;
   const navigate = useNavigate();
-  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
-
-  const handleUserOnChange = (user) => {
-    onUserChange(user);
-    setLoginModalIsOpen(false);
-  };
 
   return (
     <div className={styles.container}>
@@ -32,18 +24,9 @@ const Header = (props) => {
           onClick={() => navigate("../user")}
         />
       ) : (
-        <div
-          className={styles.google}
-          onClick={() => setLoginModalIsOpen(true)}
-        >
+        <div className={styles.google} onClick={onLogin}>
           <img src={googleImg} alt="" /> Login
         </div>
-      )}
-      {loginModalIsOpen && (
-        <LoginModal
-          onUserChange={handleUserOnChange}
-          onClose={() => setLoginModalIsOpen(false)}
-        />
       )}
     </div>
   );

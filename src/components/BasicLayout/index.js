@@ -4,12 +4,12 @@ import { Outlet } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
 
 const BasicLayout = (props) => {
-  const { user, onUserChange } = props;
+  const { user, onLogin } = props;
 
   return (
     <div className={styles.container}>
       <ScrollToTop />
-      <Header user={user} onUserChange={onUserChange} />
+      <Header user={user} onLogin={onLogin} />
       <div className={styles.content}>
         <Outlet />
       </div>

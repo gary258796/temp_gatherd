@@ -9,11 +9,11 @@ import Footer from "../../components/Footer";
 import { useState } from "react";
 import closeImg from "../../images/close.png";
 import { useTranslation } from "react-i18next";
-import { URL } from "../../constants/urls";
 import { handleDisplayTimes } from "../../utils/time";
 
-const Menu = () => {
-  const { t, i18n } = useTranslation();
+const Menu = (props) => {
+  const { user, onLogin } = props;
+  const { t } = useTranslation();
   const { experienceId } = useParams();
   const navigate = useNavigate();
   const [openTimes, setOpenTimes] = useState(false);
@@ -21,6 +21,10 @@ const Menu = () => {
   const availableTimes = handleDisplayTimes(menu.availableTimes);
 
   const order = (time) => {
+    if (!user) {
+      onLogin();
+      return;
+    }
     if (!time.date || !time.time) {
       navigate("./checkout");
     } else {
@@ -29,6 +33,10 @@ const Menu = () => {
   };
 
   const requestTime = () => {
+    if (!user) {
+      onLogin();
+      return;
+    }
     navigate("./request");
   };
 
