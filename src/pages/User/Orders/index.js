@@ -19,7 +19,7 @@ const Orders = (props) => {
     Object.keys(orders).forEach((key) => {
       const order = orders[key];
       if (order.email === user?.email) {
-        const isPastOrder = key > moment().unix();
+        const isPastOrder = key > moment().unix() * 1000;
         if (isPastOrder) {
           pastOrders.push({ ...order, key });
         } else {

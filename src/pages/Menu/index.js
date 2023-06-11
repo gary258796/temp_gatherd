@@ -32,13 +32,13 @@ const Menu = (props) => {
     }
   };
 
-  const requestTime = () => {
-    if (!user) {
-      onLogin();
-      return;
-    }
-    navigate("./request");
-  };
+  // const requestTime = () => {
+  //   if (!user) {
+  //     onLogin();
+  //     return;
+  //   }
+  //   navigate("./request");
+  // };
 
   if (!menu) return <></>;
 
@@ -127,14 +127,14 @@ const Menu = (props) => {
               {availableTimes.length === 0 && (
                 <>
                   <div className={styles.notime}>{t("menu.noTime")}</div>
-                  <div className={styles.buttonContainer}>
+                  {/* <div className={styles.buttonContainer}>
                     <button
                       className={styles.requestTime}
                       onClick={requestTime}
                     >
                       {t("menu.requestTime")}
                     </button>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
@@ -147,12 +147,12 @@ const Menu = (props) => {
               <div className={styles.description}>{menu.hostIntroduction}</div>
               <img src={menu.hostImage} alt="" />
             </div>
-            <button
+            {/* <button
               onClick={requestTime}
               className={availableTimes.length === 0 ? styles.noTime : ""}
             >
               {t("menu.requestTime")}
-            </button>
+            </button> */}
           </div>
           <div className={styles.image}>
             <img src={menu.hostImage} alt="" />
@@ -188,9 +188,9 @@ const Menu = (props) => {
             {availableTimes.length === 0 ? (
               <>
                 <div className={styles.notime}>{t("menu.noTime")}</div>
-                <button onClick={requestTime} className={styles.request}>
+                {/* <button onClick={requestTime} className={styles.request}>
                   {t("menu.requestTime")}
-                </button>
+                </button> */}
               </>
             ) : (
               <button onClick={order}>{t("menu.order")}</button>
@@ -242,9 +242,7 @@ const Menu = (props) => {
         {availableTimes.length !== 0 ? (
           <button onClick={order}>{t("menu.order")}</button>
         ) : (
-          <button className={styles.requestTime} onClick={requestTime}>
-            {t("menu.requestTime")}
-          </button>
+          <button className={styles.requestTime}>{t("menu.noTime")}</button>
         )}
       </div>
       <div
