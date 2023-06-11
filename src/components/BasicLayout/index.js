@@ -10,9 +10,7 @@ const BasicLayout = (props) => {
     <div className={styles.container}>
       <ScrollToTop />
       <Header user={user} onLogin={onLogin} />
-      <div className={styles.content}>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

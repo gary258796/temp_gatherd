@@ -1,6 +1,4 @@
 import Home from "./pages/Home";
-// import JoinUs from "./pages/JoinUs";
-// import AddVendor from "./pages/AddVendor";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import JoinUs from "./pages/JoinUs";
 import Experience from "./pages/Experience";
@@ -8,7 +6,6 @@ import Menu from "./pages/Menu";
 import Guideline from "./pages/Host/Guideline";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
-import Request from "./pages/Request";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -66,11 +63,11 @@ function App() {
                 path="/experiences/:experienceId/checkout"
                 element={<Checkout user={user} />}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/experiences/:experienceId/request"
                 element={<Request user={user} />}
-              />
+              /> */}
               <Route
                 exact
                 path="/user"
