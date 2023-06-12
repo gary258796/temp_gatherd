@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.scss";
-import { Button } from "@mui/material";
 import userImg from "../../images/user.png";
 import orderImg from "../../images/order.png";
 
@@ -33,9 +32,7 @@ const User = (props) => {
           </div>
         </div>
       </div>
-      <Button variant="contained" color="error" onClick={handleLogout}>
-        登出
-      </Button>
+      <button onClick={handleLogout}>登出</button>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import styles from "./index.module.scss";
 import { Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -60,9 +59,9 @@ const Profile = (props) => {
           />
         </div>
       </div>
-      <Button variant="contained" onClick={savePhone}>
+      <button onClick={savePhone} className={styles.button}>
         儲存
-      </Button>
+      </button>
       {loading && <LoadingModal />}
     </div>
   );
