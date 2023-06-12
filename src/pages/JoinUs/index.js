@@ -95,10 +95,10 @@ const JoinUs = () => {
   // };
 
   // const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const dbRef = ref(db);
 
   const handleSaveEmail = () => {
+    const db = getDatabase(app);
+    const dbRef = ref(db);
     get(child(dbRef, "/"))
       .then((snapshot) => {
         if (snapshot.exists()) {
