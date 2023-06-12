@@ -50,7 +50,7 @@ function App() {
                 element={<Navigate to="../joinus" replace />}
               />
               <Route exact path="/joinus" element={<JoinUs />} />
-              <Route exact path="/experience" element={<Experience />} />
+              <Route exact path="/aboutus" element={<Experience />} />
               <Route
                 exact
                 path="/experiences/:experienceId"

@@ -26,7 +26,7 @@ const Footer = (props) => {
         </div>
         <div
           className={styles.button}
-          onClick={() => handleRedirect("/experience")}
+          onClick={() => handleRedirect("/aboutus")}
         >
           {t("footer.about")}
         </div>
