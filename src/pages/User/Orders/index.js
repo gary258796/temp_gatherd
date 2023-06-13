@@ -36,7 +36,8 @@ const Orders = (props) => {
     const { key, experienceId, time, price, guest } = order;
     const menuIndex = MENUS.findIndex((menu) => menu.id === experienceId);
     const menu = MENUS[menuIndex][i18n.language];
-    const { hostName, images } = menu;
+    const { hostName, images, availableTimes } = menu;
+    const timeData = availableTimes.find((t) => t.id === time);
     return (
       <div key={key} className={styles.order}>
         <img
@@ -50,7 +51,9 @@ const Orders = (props) => {
         >
           <div className={styles.name}>{menu.name}</div>
           <div className={styles.host}>主辦者: {hostName}</div>
-          <div className={styles.time}>{time}</div>
+          <div
+            className={styles.time}
+          >{`${timeData.date} ${timeData.time}`}</div>
           <div className={styles.price}>
             ${price} x {guest}人
           </div>

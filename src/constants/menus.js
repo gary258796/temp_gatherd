@@ -97,6 +97,7 @@ export const MENUS = [
       hostImage:
         "https://drive.google.com/uc?export=view&id=1LnoHdwZ6cBBFm_VHEHrki2JOFaVp2MN0",
       availableTimes: [
+        { date: "5月30日 週三", time: "19:00-21:00", id: "2023/05/30" },
         { date: "6月1日 週四", time: "19:00-21:00", id: "2023/06/01" },
         { date: "6月2日 週五", time: "19:00-21:00", id: "2023/06/02" },
         { date: "6月4日 週日", time: "19:00-21:00", id: "2023/06/04" },
@@ -134,6 +135,7 @@ export const MENUS = [
       hostImage:
         "https://drive.google.com/uc?export=view&id=1LnoHdwZ6cBBFm_VHEHrki2JOFaVp2MN0",
       availableTimes: [
+        { date: "5月30日 週三", time: "19:00-21:00", id: "2023/05/30" },
         { date: "6月1日 週四", time: "19:00-21:00", id: "2023/06/01" },
         { date: "6月2日 週五", time: "19:00-21:00", id: "2023/06/02" },
         { date: "6月4日 週日", time: "19:00-21:00", id: "2023/06/04" },

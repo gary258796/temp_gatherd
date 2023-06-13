@@ -89,7 +89,7 @@ const Checkout = (props) => {
     const params = {
       experienceId: MENUS[experienceId].id,
       price: menu.price,
-      time,
+      time: menu.availableTimes.find((t) => `${t.date} ${t.time}` === time).id,
       guest,
       email: user?.email,
       name: user?.name,

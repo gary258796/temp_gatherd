@@ -22,6 +22,8 @@ const Orders = () => {
   };
 
   const handleOrderCellRender = (value, time) => {
+    const menu = MENUS.find((menu) => menu.id === value.experienceId);
+    const timeData = menu?.cn.availableTimes.find((t) => t.id === value.time);
     return (
       <div className={styles.cell} key={time}>
         <div className={styles.section}>
@@ -31,7 +33,7 @@ const Orders = () => {
           </div>
           <div className={styles.detail}>
             <p>體驗名稱</p>
-            {MENUS.find((menu) => menu.id === value.experienceId)?.cn.name}
+            {menu?.cn.name}
           </div>
           <div className={styles.detail}>
             <p>價格</p>
@@ -53,7 +55,8 @@ const Orders = () => {
           </div>
           <div className={styles.detail}>
             <p>體驗時間</p>
-            {value.time}
+            {timeData.date}
+            {timeData.time}
           </div>
           <div className={styles.detail}>
             <p>人數</p>
