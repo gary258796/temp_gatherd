@@ -15,11 +15,12 @@ import "swiper/css";
 
 const Experience = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [email, setEmail] = useState("");
   const db = getDatabase(app);
   const dbRef = ref(db);
   const hosts = MENUS.slice(0, 3);
+  const lang = i18n.language;
 
   const handleSaveEmail = () => {
     get(child(dbRef, "/"))
@@ -99,7 +100,7 @@ const Experience = () => {
         <div className={styles.title}>{t("experience.hosts.title")}</div>
         <div className={styles.cards}>
           {hosts.map((host) => (
-            <HostCard host={host} />
+            <HostCard host={host[lang]} />
           ))}
         </div>
         <Swiper
@@ -109,7 +110,7 @@ const Experience = () => {
         >
           {MENUS.map((menu, index) => (
             <SwiperSlide className={styles.slide} key={index}>
-              <HostCard host={menu} />
+              <HostCard host={menu[lang]} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -119,10 +120,10 @@ const Experience = () => {
         <div className={styles.cards}>
           {MENUS.map((menu, index) => (
             <ItemCard
-              images={menu.images}
-              location={menu.location}
-              name={menu.name}
-              price={menu.price}
+              images={menu[lang].images}
+              location={menu[lang].location}
+              name={menu[lang].name}
+              price={menu[lang].price}
               onClick={() => navigate(`../experiences/${index}`)}
             />
           ))}

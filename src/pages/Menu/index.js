@@ -13,11 +13,12 @@ import { handleDisplayTimes } from "../../utils/time";
 
 const Menu = (props) => {
   const { user, onLogin } = props;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { experienceId } = useParams();
   const navigate = useNavigate();
   const [openTimes, setOpenTimes] = useState(false);
-  const menu = MENUS[experienceId];
+  const lang = i18n.language;
+  const menu = MENUS[experienceId][lang];
   const availableTimes = handleDisplayTimes(menu.availableTimes);
 
   const order = (time) => {

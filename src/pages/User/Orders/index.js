@@ -5,9 +5,11 @@ import { app } from "../../../constants/FirebaseStorage";
 import { Navigate, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { MENUS } from "../../../constants/menus";
+import { useTranslation } from "react-i18next";
 
 const Orders = (props) => {
   const { user } = props;
+  const { i18n } = useTranslation();
   const navigate = useNavigate();
   const [orders, setOrders] = useState({});
   const db = getDatabase(app);
@@ -31,9 +33,9 @@ const Orders = (props) => {
   };
 
   const handleOrderRender = (order) => {
-    const { key, experience, time, price, guest } = order;
-    const menuIndex = MENUS.findIndex((menu) => menu.name === experience);
-    const menu = MENUS[menuIndex];
+    const { key, experienceId, time, price, guest } = order;
+    const menuIndex = MENUS.findIndex((menu) => menu.id === experienceId);
+    const menu = MENUS[menuIndex][i18n.language];
     const { hostName, images } = menu;
     return (
       <div key={key} className={styles.order}>
@@ -46,7 +48,7 @@ const Orders = (props) => {
           className={styles.info}
           onClick={() => navigate(`../experiences/${menuIndex}`)}
         >
-          <div className={styles.name}>{experience}</div>
+          <div className={styles.name}>{menu.name}</div>
           <div className={styles.host}>主辦者: {hostName}</div>
           <div className={styles.time}>{time}</div>
           <div className={styles.price}>

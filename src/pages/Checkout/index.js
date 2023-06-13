@@ -25,7 +25,7 @@ import LoadingModal from "../../components/LoadingModal";
 
 const Checkout = (props) => {
   const { user } = props;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { experienceId } = useParams();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Checkout = (props) => {
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const menu = MENUS[experienceId];
+  const menu = MENUS[experienceId][i18n.language];
   const db = getDatabase(app);
   const dbRef = ref(db);
   const availableTimes = handleDisplayTimes(menu.availableTimes);
@@ -87,7 +87,7 @@ const Checkout = (props) => {
     if (!checkValid()) return;
     setLoading(true);
     const params = {
-      experience: menu.name,
+      experienceId: MENUS[experienceId].id,
       price: menu.price,
       time,
       guest,
@@ -193,7 +193,7 @@ const Checkout = (props) => {
               <div className={styles.section}>
                 <div className={styles.title}>付款資訊</div>
                 <FormControl className={styles.input} fullWidth>
-                  <InputLabel>付款方式*</InputLabel>
+                  <InputLabel>付款方式</InputLabel>
                   <Select
                     value={paymentMethod}
                     label="付款方式"
@@ -211,8 +211,8 @@ const Checkout = (props) => {
                   className={styles.input}
                   label={
                     paymentMethod === "bank"
-                      ? "匯款帳號後五碼*"
-                      : "LINE 使用者名稱*"
+                      ? "匯款帳號後五碼"
+                      : "LINE 使用者名稱"
                   }
                   value={paymentDetail}
                   onChange={(e) => setPaymentDetail(e.target.value)}
@@ -224,7 +224,7 @@ const Checkout = (props) => {
                 </div>
               </div>
               <div className={styles.section}>
-                <div className={styles.title}>體驗活動聲明*</div>
+                <div className={styles.title}>體驗活動聲明</div>
                 <div
                   className={styles.description}
                   style={{ fontSize: "16px" }}
