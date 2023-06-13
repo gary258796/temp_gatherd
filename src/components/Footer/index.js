@@ -60,9 +60,11 @@ const Footer = (props) => {
       </div>
       <div
         className={styles.global}
-        onClick={() =>
-          i18n.changeLanguage(i18n.language === "en" ? "cn" : "en")
-        }
+        onClick={() => {
+          const lang = i18n.language === "en" ? "cn" : "en";
+          i18n.changeLanguage(lang);
+          localStorage.setItem("lang", lang);
+        }}
       >
         <img src={globalImg} alt="" />
         {t("footer.language")}
