@@ -57,7 +57,7 @@ export const MENUS = [
         "https://drive.google.com/uc?export=view&id=1of1WjBkH0MOoFp0HIvpVT6yL9mJ9u0AQ",
         "https://drive.google.com/uc?export=view&id=17f19tm5jpVX0biR4hEGNPzUUA4rEt0iI",
       ],
-      allergy: "奶類, 蛋, 魚類",
+      allergy: "Dairy, Eggs, Fish",
       hostName: "李盈盈",
       hostImage:
         "https://drive.google.com/uc?export=view&id=1F7MNPI8tpGpHe2MvUpB29ymVft-UgB6c",
@@ -118,7 +118,7 @@ export const MENUS = [
       detail:
         'For the starters and appetizers, we will serve classic Spanish tapas such as potato omelette (tortilla española) and garlic shrimp (gambas al ajillo). As for the main course, we will feature paella or other Spanish rice pot. For the grand finale, you can expect indulgent desserts like Basque cheesecake, rice pudding, cheese platters, tiramisu, and more!\n\nAdditionally, we offer an optional upgrade: Spanish Premium Black Label 100% Acorn-fed Iberian Ham (as shown in the picture) Add-on price: $1300/50g, approximately serving 2-3 people, recommended serving size per person is 15-20g. If you would like to add this to your order, please leave a note in the inquiry section with "Add-on ham x serving".',
       hostIntroduction:
-        "Hello everyone! I'm Ricky, a Spanish born and raised Taiwanese. After completing my master's degree, I decided to embark on a culinary journey to explore the connection between people, food, and culture, which I'm deeply passionate about.\n\nI believe that food is the best starting point to delve into a culture, and I aspire to bring the link between food and culture through my culinary skills. With my enthusiasm, love, and experiences in cooking and gastronomy, I look forward to sharing my Spanish cuisine and culture with you all!",
+        "Hello everyone! I'm Ricky, a Spanish born and raised Taiwanese. I believe food is the best starting point to delve into a culture, and I aspire to bring the link between food and culture through my culinary skills. With my enthusiasm, love, and experiences in cooking and gastronomy, I look forward to sharing my Spanish cuisine and culture with you all!",
       notice: "",
       duration: 2,
       price: 1000,
@@ -130,7 +130,7 @@ export const MENUS = [
         "https://drive.google.com/uc?export=view&id=1mDpuorZbqeFD_t_77st3l_1u1ZTFwvgH",
         "https://drive.google.com/uc?export=view&id=13Jm5Fi5RLfr7qG2Hj0msyLAMDavKqUID",
       ],
-      allergy: "奶類, 蛋, 貝類",
+      allergy: "Dairy, Eggs, Shellfish",
       hostName: "Ricardo Yang 楊尚儒",
       hostImage:
         "https://drive.google.com/uc?export=view&id=1LnoHdwZ6cBBFm_VHEHrki2JOFaVp2MN0",
@@ -198,7 +198,7 @@ export const MENUS = [
         "https://drive.google.com/uc?export=view&id=1iPbVHixEMQO7lyJnmOVdiqkhAVTAmMMI",
         "https://drive.google.com/uc?export=view&id=1UTbaIbUt_bx1BfCkqT6gSNVDHLigBNeR",
       ],
-      allergy: "辛辣、蝦子（過敏）",
+      allergy: "Spicy, Shellfish",
       hostName: "Helen",
       hostImage:
         "https://drive.google.com/uc?export=view&id=13QEyO2uEb5UYQiguTMJKvtbK4pb4k-5C",
@@ -264,7 +264,7 @@ export const MENUS = [
         "https://drive.google.com/uc?export=view&id=1PtuwVOvxIgxevCdNBGxmm3Pfz2OsDPtm",
         "https://drive.google.com/uc?export=view&id=133qbehE6bLAeUjxHsnvk1umC-AhIBA12",
       ],
-      allergy: "奶類, 蛋, 貝類, 魚類",
+      allergy: "Dairy, Eggs, Fish, Shellfish",
       hostName: "Candy",
       hostImage:
         "https://drive.google.com/uc?export=view&id=1M-6jvc1kkyO5-KOid4beksO6KLJkErA7",
@@ -322,8 +322,8 @@ export const MENUS = [
       detail:
         "In this experience, I will follow a similar approach to traditional Japanese cuisine, with slight variations based on the seasonal ingredients!\n\nThe menu will include simmered dishes, steamed dishes, fried dishes, pickles, miso soup, or clear broth.\n\nAdditionally, I also provide a service where you can bring your own seafood and I will prepare during the experience.\n\nHere are the following prices:\nFish:\n* Under 2kg: $200\n* 2kg or above: $300\n* 3kg or above: $400\nCrab: $200\nShrimp and shellfish: $150\nFor other seafood, we can discuss it separately\n\nPlease note that it is important to ensure the freshness of seafood. If there are any food safety concerns, I will respectfully decline. Thank you.",
       hostIntroduction:
-        "Hello, My name is Kai Yuan, and I have been working in the food and beverage industry for nearly ten years. Throughout my learning process and culinary career, I have primarily focused on Japanese cuisine, and I am currently working at a Japanese restaurant.\n\nI enjoy sharing my cooking with friends on a regular basis. I don't have a specific cooking framework, which allows me to experiment with various types of dishes at home. In addition of following traditional methods, I incorporate my own flavors and creativity into my cooking!",
-      notice: "素食者可在備註中告知",
+        "Hello, My name is Kai Yuan, and I have been working in the food and beverage industry for nearly ten years. I enjoy sharing my cooking with friends. I don't have a specific cooking framework, which allows me to experiment with various types of dishes at home. In addition of following the traditional methods, I also incorporate my own creativity into my cooking!",
+      notice: "For vegetarian option, please requested in the inquiry section",
       duration: 3,
       price: 850,
       persons: "4-6",
@@ -334,7 +334,7 @@ export const MENUS = [
         "https://drive.google.com/uc?export=view&id=1f0vNUqR-ZvebQgAD8IDTSFuXwFpyKWjt",
         "https://drive.google.com/uc?export=view&id=1DF1ERD6SfoIpmLbikebji3DEY3uxxiK_",
       ],
-      allergy: "奶類, 蛋, 貝類, 魚類, 麩質",
+      allergy: "Dairy, Eggs, Fish, Shellfish, Gluten",
       hostName: "何愷原",
       hostImage:
         "https://drive.google.com/uc?export=view&id=1Vj-z6mGZXtjjJyZm0Tfg9laR3s6fjMZM",
