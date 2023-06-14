@@ -21,7 +21,12 @@
   }
 
   .description {
-    font-size: 16px; 
+    font-size: 16px;
+    -webkit-line-clamp: 3;
+    white-space: break-spaces;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 

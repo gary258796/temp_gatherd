@@ -100,7 +100,9 @@ const Experience = () => {
         <div className={styles.title}>{t("experience.hosts.title")}</div>
         <div className={styles.cards}>
           {hosts.map((host) => (
-            <HostCard host={host[lang]} />
+            <div onClick={() => navigate(`../experiences/${host.id}`)}>
+              <HostCard key={host.id} host={host[lang]} />
+            </div>
           ))}
         </div>
         <Swiper
@@ -109,7 +111,11 @@ const Experience = () => {
           className={styles.swiper}
         >
           {MENUS.map((menu, index) => (
-            <SwiperSlide className={styles.slide} key={index}>
+            <SwiperSlide
+              className={styles.slide}
+              key={index}
+              onClick={() => navigate(`../experiences/${menu.id}`)}
+            >
               <HostCard host={menu[lang]} />
             </SwiperSlide>
           ))}
@@ -120,11 +126,12 @@ const Experience = () => {
         <div className={styles.cards}>
           {MENUS.map((menu, index) => (
             <ItemCard
+              key={menu.id}
               images={menu[lang].images}
               location={menu[lang].location}
               name={menu[lang].name}
               price={menu[lang].price}
-              onClick={() => navigate(`../experiences/${index}`)}
+              onClick={() => navigate(`../experiences/${menu.id}`)}
             />
           ))}
         </div>
