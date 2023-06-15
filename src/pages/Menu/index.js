@@ -10,6 +10,10 @@ import { useState } from "react";
 import closeImg from "../../images/close.png";
 import { useTranslation } from "react-i18next";
 import { handleDisplayTimes } from "../../utils/time";
+import NotifySuccessModal from "../../components/NotifySuccessModal";
+import LoadingModal from "../../components/LoadingModal";
+import { child, get, getDatabase, ref, set } from "firebase/database";
+import { app } from "../../constants/FirebaseStorage";
 
 const Menu = (props) => {
   const { user, onLogin } = props;
@@ -17,6 +21,8 @@ const Menu = (props) => {
   const { experienceId } = useParams();
   const navigate = useNavigate();
   const [openTimes, setOpenTimes] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [notifySuccess, setNotifySuccess] = useState(false);
   const lang = i18n.language;
   const menu = MENUS[experienceId][lang];
   const availableTimes = handleDisplayTimes(menu.availableTimes);
@@ -33,13 +39,27 @@ const Menu = (props) => {
     }
   };
 
-  // const requestTime = () => {
-  //   if (!user) {
-  //     onLogin();
-  //     return;
-  //   }
-  //   navigate("./request");
-  // };
+  const requestTime = async () => {
+    if (!user) {
+      onLogin();
+      return;
+    }
+    setLoading(true);
+    try {
+      const db = getDatabase(app);
+      const dbRef = ref(db);
+      await get(child(dbRef, `notify/${experienceId}`)).then(
+        async (snapshot) => {
+          const emails = snapshot.val() || [];
+          !emails.find((email) => email === user.email) &&
+            emails.push(user.email);
+          await set(ref(db, `notify/${experienceId}`), emails);
+          setNotifySuccess(true);
+        }
+      );
+    } catch (error) {}
+    setLoading(false);
+  };
 
   if (!menu) return <></>;
 
@@ -128,14 +148,14 @@ const Menu = (props) => {
               {availableTimes.length === 0 && (
                 <>
                   <div className={styles.notime}>{t("menu.noTime")}</div>
-                  {/* <div className={styles.buttonContainer}>
+                  <div className={styles.buttonContainer}>
                     <button
                       className={styles.requestTime}
                       onClick={requestTime}
                     >
                       {t("menu.requestTime")}
                     </button>
-                  </div> */}
+                  </div>
                 </>
               )}
             </div>
@@ -148,12 +168,12 @@ const Menu = (props) => {
               <div className={styles.description}>{menu.hostIntroduction}</div>
               <img src={menu.hostImage} alt="" />
             </div>
-            {/* <button
+            <button
               onClick={requestTime}
               className={availableTimes.length === 0 ? styles.noTime : ""}
             >
               {t("menu.requestTime")}
-            </button> */}
+            </button>
           </div>
           <div className={styles.image}>
             <img src={menu.hostImage} alt="" />
@@ -189,9 +209,9 @@ const Menu = (props) => {
             {availableTimes.length === 0 ? (
               <>
                 <div className={styles.notime}>{t("menu.noTime")}</div>
-                {/* <button onClick={requestTime} className={styles.request}>
+                <button onClick={requestTime} className={styles.request}>
                   {t("menu.requestTime")}
-                </button> */}
+                </button>
               </>
             ) : (
               <button onClick={order}>{t("menu.order")}</button>
@@ -243,7 +263,9 @@ const Menu = (props) => {
         {availableTimes.length !== 0 ? (
           <button onClick={order}>{t("menu.order")}</button>
         ) : (
-          <button className={styles.requestTime}>{t("menu.noTime")}</button>
+          <button className={styles.requestTime} onClick={requestTime}>
+            {t("menu.requestTime")}
+          </button>
         )}
       </div>
       <div
@@ -271,6 +293,10 @@ const Menu = (props) => {
           </div>
         ))}
       </div>
+      {notifySuccess && (
+        <NotifySuccessModal onClose={() => setNotifySuccess(false)} />
+      )}
+      {loading && <LoadingModal />}
     </div>
   );
 };

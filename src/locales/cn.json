@@ -143,7 +143,7 @@
     "content": "體驗內容",
     "order": "預定",
     "noTime": "目前無可預約時間",
-    "requestTime": "詢問預訂時間",
+    "requestTime": "可預約通知我",
     "host": "Host 介紹, {{name}}",
     "available": "可預訂時間",
     "more": "查看更多",
@@ -185,5 +185,8 @@
     "phone": "聯絡電話",
     "email": "電子信箱",
     "language": "English"
-  }
+  },
+  "notifySuccessModal.title": "已通知",
+  "notifySuccessModal.subtitle": "將於可預約時 Email 通知",
+  "notifySuccessModal.button": "OK"
 }
