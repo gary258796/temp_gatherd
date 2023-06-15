@@ -305,9 +305,9 @@ export const MENUS = [
       hostImage:
         "https://drive.google.com/uc?export=view&id=1Vj-z6mGZXtjjJyZm0Tfg9laR3s6fjMZM",
       availableTimes: [
-        { date: "6/18 SUN", time: "19:00-22:00", id: "2023/06/18" },
-        { date: "6/22 THU", time: "19:00-22:00", id: "2023/06/22" },
-        { date: "6/23 FRI", time: "19:00-22:00", id: "2023/06/23" },
+        { date: "6/18 週日", time: "19:00-22:00", id: "2023/06/18" },
+        { date: "6/22 週四", time: "19:00-22:00", id: "2023/06/22" },
+        { date: "6/23 週五", time: "19:00-22:00", id: "2023/06/23" },
       ],
     },
     en: {
