@@ -143,7 +143,7 @@
     "content": "What's on the menu",
     "order": "Reserve",
     "noTime": "No dates available",
-    "requestTime": "Request Available Dates",
+    "requestTime": "Notify me when available",
     "host": "Meet your host, {{name}}",
     "available": "Choose from available dates",
     "more": "Show more dates",
@@ -185,5 +185,8 @@
     "phone": "Email us",
     "email": "Call us",
     "language": "中文"
-  }
+  },
+  "notifySuccessModal.title": "Requested sent",
+  "notifySuccessModal.subtitle": "You will be notify when reservations is available",
+  "notifySuccessModal.button": "OK"
 }
