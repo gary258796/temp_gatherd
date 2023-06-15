@@ -36,7 +36,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <Footer />
+        <Footer className={styles.footer} />
       </div>
     </>
   );

@@ -42,7 +42,6 @@ const Guideline = () => {
           </li>
         </ul>
       </div>
-      <Footer />
     </div>
   );
 };

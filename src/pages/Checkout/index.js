@@ -289,8 +289,8 @@ const Checkout = (props) => {
             </div>
           )}
         </div>
+        <Footer className={styles.footer} />
       </div>
-      <Footer />
     </>
   );
 };

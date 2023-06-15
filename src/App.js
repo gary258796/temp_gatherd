@@ -84,9 +84,9 @@ function App() {
                 element={<UserOrders user={user} />}
               />
               <Route exact path="/host/guideline" element={<Guideline />} />
-              <Route exact path="/system/orders" element={<Orders />} />
               {/* <Route exact path="/addVendor" element={<AddVendor />} /> */}
             </Route>
+            <Route exact path="/system/orders" element={<Orders />} />
           </Routes>
           {loginModalIsOpen && (
             <LoginModal

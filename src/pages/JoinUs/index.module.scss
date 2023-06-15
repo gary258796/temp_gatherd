@@ -413,30 +413,8 @@
 }
 
 .footer {
-  width: 100%;
-  padding: 24px 80px;
+  padding: 24px 120px;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 600;
-  font-size: 10px;
-  color: #323023;
-  background-color: #f8f6eb;
-
-  .buttons {
-    display: flex;
-
-    .button {
-      margin-left: 24px;
-      cursor: pointer;
-
-      img {
-        width: 18px;
-        height: 18px;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 750px) {
@@ -449,7 +427,7 @@
     }
   
     .text {
-      padding: 48px 24px;
+      padding: 48px 18px;
   
       .title {
         font-size: 32px;
@@ -467,7 +445,7 @@
   
   .why {
     align-items: flex-start;
-    padding: 48px 24px;
+    padding: 48px 18px;
   
     .title {
       font-size: 24px;
@@ -483,7 +461,7 @@
   }
 
   .creator {
-    padding: 32px 24px 48px;
+    padding: 32px 18px 48px;
   
     .creatorTitle {
       font-size: 24px;
@@ -503,7 +481,7 @@
   }
   
   .benefits {
-    padding: 48px 24px 0;
+    padding: 48px 18px 0;
 
     .title {
       font-size: 24px;
@@ -540,7 +518,7 @@
     flex-direction: column-reverse;
 
     .text {
-      padding: 0 24px;
+      padding: 0 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -571,7 +549,7 @@
   
     .title {
       margin-bottom: 32px;
-      padding: 0 24px;
+      padding: 0 18px;
       box-sizing: border-box;
       font-size: 24px;
     }
@@ -595,12 +573,12 @@
   
     .title {
       font-size: 40px;
-      padding: 0 24px;
+      padding: 0 18px;
       box-sizing: border-box;
     }
 
     .subtitle {
-      padding: 0 24px;
+      padding: 0 18px;
       box-sizing: border-box;
     }
   
@@ -614,7 +592,7 @@
   }
   
   .sendEmail {
-    padding: 48px 24px;
+    padding: 48px 18px;
     flex-direction: column;
   
     .text {
@@ -637,11 +615,6 @@
   }
   
   .footer {
-    width: 100%;
-    padding: 24px;
-
-    .buttons {
-      margin: 0;
-    }
+    padding: 18px;
   }
 }

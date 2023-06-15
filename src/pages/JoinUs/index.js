@@ -233,7 +233,7 @@ const JoinUs = () => {
           </button>
         </div>
       </div>
-      <Footer />
+      <Footer className={styles.footer} />
     </>
   );
 };

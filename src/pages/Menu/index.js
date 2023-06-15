@@ -255,7 +255,6 @@ const Menu = (props) => {
           </div>
         </div>
       </div>
-      <Footer className={styles.footer} />
       <div className={styles.mobileOrder}>
         <div>
           {menu.price}$/{t("menu.person")}
@@ -293,6 +292,7 @@ const Menu = (props) => {
           </div>
         ))}
       </div>
+      <Footer className={styles.footer} />
       {notifySuccess && (
         <NotifySuccessModal onClose={() => setNotifySuccess(false)} />
       )}

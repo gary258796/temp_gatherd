@@ -363,8 +363,10 @@
 }
 
 .footer {
+  padding: 24px 80px;
   max-width: 1280px;
   margin: auto;
+  box-sizing: border-box;
 }
 
 .section {
@@ -654,5 +656,9 @@
       top: 18px;
       left: 18px;
     }
+  }
+
+  .footer {
+    padding: 18px;
   }
 }

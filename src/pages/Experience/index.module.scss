@@ -266,6 +266,11 @@
   }
 }
 
+.footer {
+  padding: 24px 120px;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 750px) {
   .banner {
     align-items: flex-end;
@@ -436,5 +441,9 @@
         height: 48px;
       }
     }
+  }
+
+  .footer {
+    padding: 24px 18px;
   }
 }

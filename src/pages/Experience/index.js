@@ -154,7 +154,7 @@ const Experience = () => {
           </button>
         </div>
       </div>
-      <Footer />
+      <Footer className={styles.footer} />
     </>
   );
 };

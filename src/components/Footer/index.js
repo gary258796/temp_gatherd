@@ -4,8 +4,7 @@ import globalImg from "../../images/global.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Footer = (props) => {
-  const { className = "" } = props;
+const Footer = ({ className }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { i18n, t } = useTranslation();

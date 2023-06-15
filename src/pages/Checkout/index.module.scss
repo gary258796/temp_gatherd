@@ -201,6 +201,12 @@
       }
     }
   }
+
+  .footer {
+    max-width: 1120px;
+    margin: auto;
+    padding: 24px 32px;
+  }
 }
 
 @media screen and (max-width: 750px) {
@@ -247,6 +253,11 @@
       .modal {
         padding: 24px;
       }
+    }
+
+    .footer {
+      padding: 18px;
+      box-sizing: border-box;
     }
   }
 }

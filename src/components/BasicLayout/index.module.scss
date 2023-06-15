@@ -1,12 +1,11 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 72px;
   background-color: #f8f6eb;
 }
 
 @media screen and (max-width: 750px) {
   .container {
-    height: 100vh;
     padding-top: 60px;
   }
 }
