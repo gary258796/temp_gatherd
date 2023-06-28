@@ -345,4 +345,59 @@ export const MENUS = [
       ],
     },
   },
+  {
+    id: 5,
+    cn: {
+      location: "台北市文山區",
+      address: "台北市文山區汀州路四段 191 號 13 樓",
+      addressGuide: "萬隆站4號出口，走羅斯福路五段212巷，步行450公尺",
+      name: "調酒與風味探索之旅",
+      description:
+        "分成調酒體驗、風味體驗兩種。前者會帶各位親自調製雞尾酒，後者則是選定主題由我製作給各位享用。每位參與體驗的人都可以體驗到三杯調酒。\n\n調酒體驗會為每位參與者準備器具，帶各位操作三種調酒手法(直調法、搖盪法、攪拌法)，自行製作三杯經典調酒。\n\n風味體驗可以事先告知這次想體驗的調酒、風味、喜好或偏好的基酒，不然會由我來準備。會從歷史的演進帶來過去、現在、未來，不同時期人們對於類似架構的詮釋。\n\n以上體驗都希望以風味為主體出發，和各位分享味道平衡、感知上的一些心得。如有想法都歡迎事先告知，期待和您分享調酒世界的美好。\n\n酒後不開車、理性飲酒、謝絕未成年人參加，還請見諒。",
+      detail: "每人三杯調酒，有需求歡迎事先告知。",
+      hostIntroduction:
+        "我是Tim，風味獵人，調酒愛好者。身邊很多喜歡調酒但不知道如何進一步品鑑一杯酒的朋友，或是想要學習調酒製作，買了線上課程又充滿疑惑的人。希望我的經驗可以帶給你們一些收穫。",
+      notice: "謝絕未成年者參加，酒後不開車、理性飲酒。造成不便還請見諒。",
+      duration: 2.5,
+      price: 1000,
+      persons: "3-6",
+      images: [
+        "https://drive.google.com/uc?export=view&id=1ipReMqFNGtjycVR4vvUQ-ZOlGoK_UoaF",
+        "https://drive.google.com/uc?export=view&id=1gpOYOD3M-7IbuNME4DakL0HjPyIvEYFY",
+        "https://drive.google.com/uc?export=view&id=1Ce7PAeFgT2pj_o_6Gw8CkAo7GtmLnUU6",
+      ],
+      allergy: "",
+      hostName: "Tim",
+      hostImage:
+        "https://drive.google.com/uc?export=view&id=1kQ1KYcZ5iLJZpbLqfpJsJuMenOCtnpmV",
+      availableTimes: [],
+    },
+    en: {
+      location: "Wenshan Dist, Taipei City",
+      address:
+        "13F, No. 191, Section 4, Tingzhou Rd, Wenshan District, Taipei City, Taiwan 116",
+      addressGuide:
+        "Wanglong Station exit 4 (Green line), turn left on Lane 192, Section 5, Luosifu Rd, and walk about 450 m. ",
+      name: "調酒與風味探索之旅",
+      description:
+        "分成調酒體驗、風味體驗兩種。前者會帶各位親自調製雞尾酒，後者則是選定主題由我製作給各位享用。每位參與體驗的人都可以體驗到三杯調酒。\n\n調酒體驗會為每位參與者準備器具，帶各位操作三種調酒手法(直調法、搖盪法、攪拌法)，自行製作三杯經典調酒。\n\n風味體驗可以事先告知這次想體驗的調酒、風味、喜好或偏好的基酒，不然會由我來準備。會從歷史的演進帶來過去、現在、未來，不同時期人們對於類似架構的詮釋。\n\n以上體驗都希望以風味為主體出發，和各位分享味道平衡、感知上的一些心得。如有想法都歡迎事先告知，期待和您分享調酒世界的美好。\n\n酒後不開車、理性飲酒、謝絕未成年人參加，還請見諒。",
+      detail: "每人三杯調酒，有需求歡迎事先告知。",
+      hostIntroduction:
+        "我是Tim，風味獵人，調酒愛好者。身邊很多喜歡調酒但不知道如何進一步品鑑一杯酒的朋友，或是想要學習調酒製作，買了線上課程又充滿疑惑的人。希望我的經驗可以帶給你們一些收穫。",
+      notice: "謝絕未成年者參加，酒後不開車、理性飲酒。造成不便還請見諒。",
+      duration: 2.5,
+      price: 1000,
+      persons: "3-6",
+      images: [
+        "https://drive.google.com/uc?export=view&id=1ipReMqFNGtjycVR4vvUQ-ZOlGoK_UoaF",
+        "https://drive.google.com/uc?export=view&id=1gpOYOD3M-7IbuNME4DakL0HjPyIvEYFY",
+        "https://drive.google.com/uc?export=view&id=1Ce7PAeFgT2pj_o_6Gw8CkAo7GtmLnUU6",
+      ],
+      allergy: "",
+      hostName: "Tim",
+      hostImage:
+        "https://drive.google.com/uc?export=view&id=1kQ1KYcZ5iLJZpbLqfpJsJuMenOCtnpmV",
+      availableTimes: [],
+    },
+  },
 ];
