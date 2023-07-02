@@ -369,8 +369,12 @@ export const MENUS = [
       allergy: "",
       hostName: "Tim",
       hostImage:
-        "https://drive.google.com/uc?export=view&id=1kQ1KYcZ5iLJZpbLqfpJsJuMenOCtnpmV",
-      availableTimes: [],
+        "https://drive.google.com/uc?export=view&id=1kptNMH5_PzwT8BDNECp591Fc3N2baSo3",
+      availableTimes: [
+        { date: "7/3 週一", time: "20:30-23:00", id: "2023/07/03" },
+        { date: "7/4 週二", time: "20:30-23:00", id: "2023/07/04" },
+        { date: "7/5 週三", time: "20:30-23:00", id: "2023/07/05" },
+      ],
     },
     en: {
       location: "Wenshan Dist, Taipei City",
@@ -396,8 +400,12 @@ export const MENUS = [
       allergy: "",
       hostName: "Tim",
       hostImage:
-        "https://drive.google.com/uc?export=view&id=1kQ1KYcZ5iLJZpbLqfpJsJuMenOCtnpmV",
-      availableTimes: [],
+        "https://drive.google.com/uc?export=view&id=1kptNMH5_PzwT8BDNECp591Fc3N2baSo3",
+      availableTimes: [
+        { date: "7/3 MON", time: "20:30-23:00", id: "2023/07/03" },
+        { date: "7/4 TUE", time: "20:30-23:00", id: "2023/07/04" },
+        { date: "7/5 WED", time: "20:30-23:00", id: "2023/07/05" },
+      ],
     },
   },
 ];
