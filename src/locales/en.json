@@ -83,58 +83,24 @@
     "success": "Success!",
     "error": "Error!"
   },
-  "experience": {
-    "banner": {
-      "title": "Experience a different kind of unique dining",
-      "subtitle": "Have you ever thought about trying a dining experience beyond restaurants or takeout? We collaborate with cooking enthusiasts to provide you with a unique dining experience in their homes, allowing you to experience food in a different way than before!"
-    },
-    "description": {
-      "title": {
-        "1": "Gatherd is built around the idea of bringing people together through food.",
-        "2": "We believe the best dining experiences can be found in every corner of the city. They are people from different backgrounds, perhaps a full-time DJ, an elementary school teacher, or someone’s grandma, who all have one thing in common 一a passion for cooking and sharing with others.",
-        "3": "We want to bring this unique experience to those who are looking for something different and allow them to experience a one-of-a-kind local food culture."
-      }
-    },
-    "adventure": {
-      "title": "Start the adventure with Gatherd",
-      "1": {
-        "title": "Try unique dishes",
-        "subtitle": "Taste a new set of dishes that you can’t find in any restaurant."
-      },
-      "2": {
-        "title": "A special experience",
-        "subtitle": "Get away from crowded restaurants, and experience a different vibe of dining experiences."
-      },
-      "3": {
-        "title": "Meet new people",
-        "subtitle": "Meet and connect with your host as they share the stories behind each dish."
-      }
-    },
-    "how": {
-      "title": "How our Gatherd journey start?",
-      "subtitle": {
-        "1": "Our inspiration came from my 90-year-old grandma, who moved from Shanghai to Taipei after the Chinese civil war. Growing up, we were exposed to a blend of her Shanghainese culinary techniques in our household. As a child, I remember watching her invite her friends over for dinner, and now I enjoy having my friends join us for meals at her house, where we savor her delicious food and listen to her captivating stories.",
-        "2": "We realized that many people, like my grandma, have unique cooking styles and stories to share. Our goal is to offer this type of unique dining experience to more individuals, where they can connect over food and stories."
-      }
-    },
-    "hosts": {
-      "title": "Meet our hosts",
-      "host": {
-        "name": "盈盈",
-        "info": "我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！"
-      }
-    },
-    "menus": {
-      "title": "Explore dining experiences"
-    },
-    "sendEmail": {
-      "title": "Learn more",
-      "subtitle": "We’ll share more information, and keep you up to date with our newsletter.",
-      "email": "Email address",
-      "send": "Send"
-    },
-    "button": "Start your experience"
-  },
+  "aboutUs.banner.title": "讓任何人都能擁有",
+  "aboutUs.banner.subtitle": "「像家的食物體驗」",
+  "aboutUs.description.title": "料理讓人相聚",
+  "aboutUs.description.subtitle": "Gatherd 致力於讓人們能夠輕鬆分享食物，讓人們能夠在異地體驗在家的感覺。透過食物建立文化的交流、人與人之間的橋樑。",
+  "aboutUs.adventure.title": "像家的食物體驗",
+  "aboutUs.adventure.1.title": "體驗過程",
+  "aboutUs.adventure.1.subtitle": "除了味蕾的享受，我們想給客人更多的是體驗，美食創作家給你的會是一段難忘的旅程",
+  "aboutUs.adventure.2.title": "溫馨空間",
+  "aboutUs.adventure.2.subtitle": "有別一般餐廳的場地的吵雜或是擁擠，讓你就像回到了家中，如此樸實卻難得",
+  "aboutUs.adventure.3.title": "多樣化",
+  "aboutUs.adventure.3.subtitle": "體驗有不同形式風格，但美食創作家們都非常熱情，想把自己所愛分享給更多人",
+  "aboutUs.qa.title": "常見問題",
+  "aboutUs.menus.title": "Explore dining experiences",
+  "aboutUs.sendEmail.title": "Learn more",
+  "aboutUs.sendEmail.subtitle": "We’ll share more information, and keep you up to date with our newsletter.",
+  "aboutUs.sendEmail.email": "Email address",
+  "aboutUs.sendEmail.send": "Send",
+  "aboutUs.button": "Start your experience",
   "menu": {
     "hour": "hours",
     "person": "person",

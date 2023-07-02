@@ -83,58 +83,24 @@
     "success": "成功！",
     "error": "失敗！"
   },
-  "experience": {
-    "banner": {
-      "title": "體驗多元、獨特的聚餐模式",
-      "subtitle": "你是否曾想嘗試餐廳或外送以外的聚餐模式嗎？Gatherd與熱愛烹飪料理者合作，讓喜愛美食體驗的你能夠在料理者家中嘗試不同以往的聚餐體驗！"
-    },
-    "description": {
-      "title": {
-        "1": "Gatherd 的理念是透過飲食讓人們聚在一起，相互聯繫",
-        "2": "我們相信最好的聚餐體驗藏在城市中的每個角落。他們是來自不同背景的人們，可能是一個全職DJ、小學老師或者是身邊的老奶奶們，這些人都有一個共同的地方——熱愛烹飪料理並且樂於與其他人分享。",
-        "3": "我們想將這種獨特的體驗帶給同樣想要不同於現有聚餐模式的你，透過這樣的模式體驗不同的在地飲食文化。"
-      }
-    },
-    "adventure": {
-      "title": "與Gatherd 一同體驗吧",
-      "1": {
-        "title": "嘗試獨特料理",
-        "subtitle": "品嚐在任何餐廳都找不到的新式料理模式。"
-      },
-      "2": {
-        "title": "特別的體驗",
-        "subtitle": "離開眾多人群的餐廳，在料理者的空間體驗不同氛圍的聚餐體驗。"
-      },
-      "3": {
-        "title": "結交新夥伴",
-        "subtitle": "透過料理者們的背景，深度了解他們在每一道料理背後的故事。"
-      }
-    },
-    "how": {
-      "title": "Gatherd的旅程如何開始",
-      "subtitle": {
-        "1": "我們的啟發來自於我90歲的奶奶，她在內戰後從上海來到了台北。在成長過程中，我們在家中接觸到她的上海烹飪技巧的融合。小時候，我記得看著她邀請她的朋友們來家裡吃飯，現在長大後也會讓我想邀請我的朋友們一起在她家共進她做的料理，並聽她講述引人入勝的故事。",
-        "2": "我們意識到像我的奶奶一樣，許多人有著獨特的烹飪風格和故事。我們的目標是為更多的人提供這樣獨特的聚餐體驗，讓他們可以透過食物和故事相互聯繫與分享。"
-      }
-    },
-    "hosts": {
-      "title": "我們的美食創作家",
-      "host": {
-        "name": "盈盈",
-        "info": "我是盈盈，於泰國清邁來台灣生活。在台灣時我覺得很難找道地美味的泰國料理，我想讓你們體驗道地的泰國料理看看，也想分享你們沒有吃過的泰國料理。泰國的北部，東北部，中部和南部的料理完全不一樣，味道及材料也不一樣，我希望你可以一起來體驗看看！"
-      }
-    },
-    "menus": {
-      "title": "開始探索"
-    },
-    "sendEmail": {
-      "title": "了解更多",
-      "subtitle": "請留下電子信箱，我們將分享更多相關資訊。",
-      "email": "電子信箱",
-      "send": "送出"
-    },
-    "button": "開始體驗"
-  },
+  "aboutUs.banner.title": "讓任何人都能擁有",
+  "aboutUs.banner.subtitle": "「像家的食物體驗」",
+  "aboutUs.description.title": "料理讓人相聚",
+  "aboutUs.description.subtitle": "Gatherd 致力於讓人們能夠輕鬆分享食物，讓人們能夠在異地體驗在家的感覺。透過食物建立文化的交流、人與人之間的橋樑。",
+  "aboutUs.adventure.title": "像家的食物體驗",
+  "aboutUs.adventure.1.title": "體驗過程",
+  "aboutUs.adventure.1.subtitle": "除了味蕾的享受，我們想給客人更多的是體驗，美食創作家給你的會是一段難忘的旅程",
+  "aboutUs.adventure.2.title": "溫馨空間",
+  "aboutUs.adventure.2.subtitle": "有別一般餐廳的場地的吵雜或是擁擠，讓你就像回到了家中，如此樸實卻難得",
+  "aboutUs.adventure.3.title": "多樣化",
+  "aboutUs.adventure.3.subtitle": "體驗有不同形式風格，但美食創作家們都非常熱情，想把自己所愛分享給更多人",
+  "aboutUs.qa.title": "常見問題",
+  "aboutUs.menus.title": "開始探索",
+  "aboutUs.sendEmail.title": "了解更多",
+  "aboutUs.sendEmail.subtitle": "請留下電子信箱，我們將分享更多相關資訊。",
+  "aboutUs.sendEmail.email": "電子信箱",
+  "aboutUs.sendEmail.send": "送出",
+  "aboutUs.button": "開始體驗",
   "menu": {
     "hour": "小時",
     "person": "人",

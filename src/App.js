@@ -1,8 +1,8 @@
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import JoinUs from "./pages/JoinUs";
+import AboutUs from "./pages/AboutUs";
 import Experience from "./pages/Experience";
-import Menu from "./pages/Menu";
 import Guideline from "./pages/Host/Guideline";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
@@ -50,12 +50,15 @@ function App() {
                 element={<Navigate to="../joinus" replace />}
               />
               <Route exact path="/joinus" element={<JoinUs />} />
-              <Route exact path="/aboutus" element={<Experience />} />
+              <Route exact path="/aboutus" element={<AboutUs />} />
               <Route
                 exact
                 path="/experiences/:experienceId"
                 element={
-                  <Menu user={user} onLogin={() => setLoginModalIsOpen(true)} />
+                  <Experience
+                    user={user}
+                    onLogin={() => setLoginModalIsOpen(true)}
+                  />
                 }
               />
               <Route
