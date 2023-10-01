@@ -1,0 +1,25 @@
+@import "../../styles/breakpoints.module.scss";
+
+.container {
+  margin-top: 64px;
+
+  .box {
+    width: 500px;
+    padding: 48px 0 104px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    margin-top: 56px;
+  
+    .box {
+      width: 100%;
+      padding: 24px 16px;
+    }
+  }
+}

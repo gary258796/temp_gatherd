@@ -1,0 +1,31 @@
+@import "../../styles/breakpoints.module.scss";
+
+.button {
+  border: none;
+  border-radius: 8px;
+  padding: 16px 14px;
+  min-width: 150px;
+  text-align: center;
+  background: #2b403a;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: #38534c;
+  }
+
+  &.disabled {
+    background: #cbcbcb;
+    pointer-events: none;
+  }
+
+  .loading {
+    color: white;
+    height: 24px !important;
+    width: 24px !important;
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+
+}
