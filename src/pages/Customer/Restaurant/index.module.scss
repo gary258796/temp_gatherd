@@ -1,0 +1,191 @@
+@import "../../../styles/breakpoints.module.scss";
+
+.container {
+  margin: auto;
+  max-width: 1440px;
+  padding: 48px;
+  display: flex;
+  gap: 48px;
+
+  .mobileImageContainer {
+    display: none;
+  }
+
+  .left {
+    flex: 2;
+
+    .subtitle {
+      color: rgb(181, 181, 181);
+      margin: 12px 0 36px;
+    }
+
+    .forms {
+      margin-bottom: 48px;
+
+      .form {
+        margin-bottom: 8px;
+      }
+
+      .datepicker {
+        >div {
+          >div {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .time {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgb(181, 181, 181);
+      margin-bottom: 36px;
+
+      .timePeriod {
+        .periods {
+          margin-top: 8px;
+          display: flex;
+          gap: 8px;
+
+          div {
+            border-radius: 8px;
+            padding: 8px 12px;
+            background: #2b403a;
+            color: white;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .notice {
+      margin-bottom: 36px;
+    }
+
+    .about {
+      white-space: break-spaces;
+    }
+  }
+
+  .right {
+    flex: 1;
+
+    .imageContainer {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 36px;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .mapContainer {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgb(200, 200, 200);
+
+      .map {
+        width: 100%;
+        padding-top: 70%;
+        position: relative;
+
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .content {
+        padding: 12px;
+        background: white;
+        border-bottom: 1px solid rgb(200, 200, 200);
+
+        &:last-child {
+          border: none;
+        }
+
+        .media {
+          display: flex;
+          gap: 8px;
+          margin-top: 12px;
+  
+          img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    padding: 0;
+    gap: 24px;
+    flex-direction: column;
+
+    .mobileImageContainer {
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    .left {
+      padding: 16px;
+  
+      .subtitle {
+        margin: 12px 0 24px;
+      }
+  
+      .forms {
+        margin-bottom: 36px;
+      }
+  
+      .time {
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
+  
+      .notice {
+        margin-bottom: 24px;
+      }
+    }
+  
+    .right {
+      .imageContainer {
+        display: none;
+      }
+  
+      .mapContainer {
+        margin: 0 16px 24px;
+      }
+    }
+  }
+}
