@@ -6,6 +6,7 @@ interface Props {
   onClick?:() => void;
   disabled?:boolean;
   loading?:boolean;
+  className?:string;
 }
 
 const Button = (props:Props) => {
@@ -13,11 +14,12 @@ const Button = (props:Props) => {
     children,
     onClick = () => {},
     disabled = false,
-    loading = false
+    loading = false,
+    className = ''
   } = props
 
   return (
-    <button className={`${styles.button} ${(disabled || loading) && styles.disabled}`} onClick={onClick}>
+    <button className={`${styles.button} ${(disabled || loading) && styles.disabled} ${className}`} onClick={onClick}>
       {loading ? <CircularProgress className={styles.loading} /> : <Typography>{children}</Typography>}
     </button>
   )

@@ -6,8 +6,10 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import ExpandText from "../../../components/ExpandText";
 import instagramImg from '../../../images/instagram.png'
 import facebookImg from '../../../images/facebook.png'
+import { useNavigate } from "react-router-dom";
+import dayjs from 'dayjs';
 
-const data = {
+export const data = {
   name: 'W.Cookery',
   type: '西式料理',
   section: '中山區',
@@ -36,6 +38,7 @@ const data = {
 }
 
 const Restaurant = () => {
+  const navigate = useNavigate()
   const {
     name,
     type,
@@ -53,7 +56,7 @@ const Restaurant = () => {
     line
   } = data
   const [customerCount, setCustomerCount] = useState<number>(customerCountOptions[0])
-  const [date, setDate] = useState<any>()
+  const [date, setDate] = useState<dayjs.Dayjs | null>()
 
   const handleIconRender = (type: string) => {
     let src = ''
@@ -68,6 +71,10 @@ const Restaurant = () => {
         break;
     }
     return <img src={src} alt='' />
+  }
+
+  const handlePeriodOnClick = (value: string) => {
+    navigate(`./order?customerCount=${customerCount}&date=${dayjs(date).format('YYYY/MM/DD')}&period=${value}`)
   }
 
   return (
@@ -97,7 +104,7 @@ const Restaurant = () => {
           </FormControl>
           <FormControl fullWidth className={styles.datepicker}>
             <DemoContainer components={['DatePicker']}>
-              <DatePicker label="日期" value={date} onChange={setDate} format="YYYY/MM/DD" />
+              <DatePicker label="日期" onChange={setDate} format="YYYY/MM/DD" />
             </DemoContainer>
           </FormControl>
         </div>
@@ -108,7 +115,7 @@ const Restaurant = () => {
                 <Typography variant="caption">{timePeriod.title}</Typography>
                 <div className={styles.periods}>
                   {timePeriod.periods.map((period) => (
-                    <div key={period.id}>
+                    <div key={period.id} onClick={() => handlePeriodOnClick(period.value)}>
                       <Typography variant="body1">{period.value}</Typography>
                     </div>
                   ))}
