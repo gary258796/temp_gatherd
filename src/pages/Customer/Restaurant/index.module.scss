@@ -55,6 +55,11 @@
             background: #2b403a;
             color: white;
             cursor: pointer;
+
+            &.disabled {
+              background: gray;
+              pointer-events: none;
+            }
           }
         }
       }

@@ -1,13 +1,15 @@
-import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material"
+import { CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material"
 import styles from "./index.module.scss"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import ExpandText from "../../../components/ExpandText";
 import instagramImg from '../../../images/instagram.png'
 import facebookImg from '../../../images/facebook.png'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
+import { useProfile } from '../../../hooks/useProfile'
+import { ITimePeriods } from "../../../interfaces/profile";
 
 export const data = {
   name: 'W.Cookery',
@@ -38,44 +40,65 @@ export const data = {
 }
 
 const Restaurant = () => {
+  const { id = '' } = useParams()
   const navigate = useNavigate()
-  const {
-    name,
-    type,
-    section,
-    address,
-    customerCountOptions,
-    timePeriods,
-    notices,
-    about,
-    image,
-    googleMap,
-    socialMedia,
-    phone,
-    email,
-    line
-  } = data
-  const [customerCount, setCustomerCount] = useState<number>(customerCountOptions[0])
-  const [date, setDate] = useState<dayjs.Dayjs | null>()
-
-  const handleIconRender = (type: string) => {
-    let src = ''
-    switch (type) {
-      case 'facebook':
-        src = facebookImg
-        break;
-      case 'instagram':
-        src = instagramImg
-        break;
-      default:
-        break;
-    }
-    return <img src={src} alt='' />
-  }
+  const { fetching, profile } = useProfile({ id })
+  const [customerCount, setCustomerCount] = useState<number>(0)
+  const [date, setDate] = useState<dayjs.Dayjs | null>(null)
 
   const handlePeriodOnClick = (value: string) => {
     navigate(`./order?customerCount=${customerCount}&date=${dayjs(date).format('YYYY/MM/DD')}&period=${value}`)
   }
+
+  const getCustomerCountOptions = (): number[] => {
+    if (!profile) return []
+    let options: number[] = []
+    for (let index = profile.seatSetting.min; index < profile.seatSetting.max + 1; index++) {
+      options.push(index)
+    }
+
+    return options
+  }
+
+  const getTimePeriodsData = (): ITimePeriods[] | undefined => {
+    if (!date || !profile) return undefined
+    return profile.timeSetting.basic[date.day()].periods
+  }
+
+  const shuoldDisableDate = (date: dayjs.Dayjs): boolean => {
+    if (!profile) return true
+    if (profile.timeSetting.basic[date.day()].isGeneralHoliday) return true
+    // 如果訂滿
+    // 如果有設定特定休假
+    return false
+  }
+
+  const shuoldDisabledPeriod = (): boolean => {
+    if (!profile) return true
+    // 如果訂滿
+    return false
+  }
+
+  useEffect(() => {
+    if (!profile) return
+    setCustomerCount(profile.seatSetting.min)
+  }, [profile])
+
+  if (fetching || !profile) return <CircularProgress />
+
+  const {
+    image,
+    name,
+    type,
+    address,
+    notices,
+    about,
+    googleMap,
+    externalLinks,
+    phone,
+    email,
+    website
+  } = profile
 
   return (
     <div className={styles.container}>
@@ -85,8 +108,8 @@ const Restaurant = () => {
       <div className={styles.left}>
         <Typography variant="h3">{name}</Typography>
         <div className={styles.subtitle}>
+          <Typography variant="body1">{address}</Typography>
           <Typography variant="body1">{type}</Typography>
-          <Typography variant="body1">{section}</Typography>
         </div>
         <div className={styles.forms}>
           <FormControl fullWidth className={styles.form}>
@@ -95,28 +118,38 @@ const Restaurant = () => {
               labelId="customerCount"
               value={customerCount}
               label="人數"
-              onChange={(e) => setCustomerCount(Number(e.target.value))}
+              onChange={(e) => {
+                setCustomerCount(Number(e.target.value))
+                setDate(null)
+              }}
             >
-              {customerCountOptions.map((option) => (
+              {getCustomerCountOptions().map((option) => (
                 <MenuItem key={option} value={option}>{option}人</MenuItem>
-                ))}
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth className={styles.datepicker}>
             <DemoContainer components={['DatePicker']}>
-              <DatePicker label="日期" onChange={setDate} format="YYYY/MM/DD" />
+              <DatePicker
+                label="日期"
+                value={date}
+                onChange={setDate}
+                format="YYYY/MM/DD"
+                disablePast
+                shouldDisableDate={shuoldDisableDate}
+              />
             </DemoContainer>
           </FormControl>
         </div>
         {date && (
           <div className={styles.time}>
-            {timePeriods.map((timePeriod) => (
+            {getTimePeriodsData()?.map((timePeriod) => (
               <div key={timePeriod.title} className={styles.timePeriod}>
                 <Typography variant="caption">{timePeriod.title}</Typography>
                 <div className={styles.periods}>
-                  {timePeriod.periods.map((period) => (
-                    <div key={period.id} onClick={() => handlePeriodOnClick(period.value)}>
-                      <Typography variant="body1">{period.value}</Typography>
+                  {timePeriod.list.map((period) => (
+                    <div key={period} className={shuoldDisabledPeriod() ? styles.disabled : ''} onClick={() => handlePeriodOnClick(period)}>
+                      <Typography variant="body1">{period}</Typography>
                     </div>
                   ))}
                 </div>
@@ -148,13 +181,18 @@ const Restaurant = () => {
           <div className={styles.content}>
             <Typography variant="h6">{name}</Typography>
             <Typography variant="body2">{address}</Typography>
-            <Typography variant="caption">{type} {section}</Typography>
+            <Typography variant="caption">{type}</Typography>
             <div className={styles.media}>
-              {socialMedia.map((media) => (
-                <div key={media.type} onClick={() => window.open(media.link)}>
-                  {handleIconRender(media.type)}
+              {externalLinks.facebook && (
+                <div onClick={() => window.open(externalLinks.facebook)}>
+                  <img src={facebookImg} alt='' />
                 </div>
-              ))}
+              )}
+              {externalLinks.instagram && (
+                <div onClick={() => window.open(externalLinks.instagram)}>
+                  <img src={instagramImg} alt='' />
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.content}>
@@ -164,7 +202,7 @@ const Restaurant = () => {
             {email}
           </div>
           <div className={styles.content}>
-            {line}
+            {website}
           </div>
         </div>
       </div>

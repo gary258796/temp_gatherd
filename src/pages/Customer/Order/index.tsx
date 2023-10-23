@@ -1,50 +1,39 @@
 import { ArrowBackIos, Event, Person, Schedule } from '@mui/icons-material'
 import styles from './index.module.scss'
-import { Typography, TextField } from '@mui/material'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import { data } from '../Restaurant'
+import { Typography, TextField, CircularProgress } from '@mui/material'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import instagramImg from '../../../images/instagram.png'
 import facebookImg from '../../../images/facebook.png'
 import ExpandText from '../../../components/ExpandText'
 import Button from '../../../components/Button'
+import { useProfile } from '../../../hooks/useProfile'
 
 const Order = () => {
+  const { id = '' } = useParams()
   const navigate = useNavigate()
+  const { profile, fetching } = useProfile({ id })
   const [searchParams] = useSearchParams()
   const customerCount = searchParams.get('customerCount')
   const date = searchParams.get('date')
   const period = searchParams.get('period')
+
+  const handleConfirm = () => {
+    navigate('./success')
+  }
+
+  if (fetching || !profile) return <CircularProgress />
+
   const {
     name,
     address,
     googleMap,
     type,
-    section,
-    socialMedia,
+    externalLinks,
     phone,
     email,
-    line,
+    website,
     notices
-  } = data
-
-  const handleIconRender = (type: string) => {
-    let src = ''
-    switch (type) {
-      case 'facebook':
-        src = facebookImg
-        break;
-      case 'instagram':
-        src = instagramImg
-        break;
-      default:
-        break;
-    }
-    return <img src={src} alt='' />
-  }
-
-  const handleConfirm = () => {
-    navigate('./success')
-  }
+  } = profile
 
   return (
     <div className={styles.container}>
@@ -84,13 +73,18 @@ const Order = () => {
             <div className={styles.content}>
               <Typography variant="h6">{name}</Typography>
               <Typography variant="body2">{address}</Typography>
-              <Typography variant="caption">{type} {section}</Typography>
+              <Typography variant="caption">{type}</Typography>
               <div className={styles.media}>
-                {socialMedia.map((media) => (
-                  <div key={media.type} onClick={() => window.open(media.link)}>
-                    {handleIconRender(media.type)}
+                {externalLinks.facebook && (
+                  <div onClick={() => window.open(externalLinks.facebook)}>
+                    <img src={facebookImg} alt='' />
                   </div>
-                ))}
+                )}
+                {externalLinks.instagram && (
+                  <div onClick={() => window.open(externalLinks.instagram)}>
+                    <img src={instagramImg} alt='' />
+                  </div>
+                )}
               </div>
             </div>
             <div className={styles.content}>
@@ -100,7 +94,7 @@ const Order = () => {
               {email}
             </div>
             <div className={styles.content}>
-              {line}
+              {website}
             </div>
           </div>
         </div>
