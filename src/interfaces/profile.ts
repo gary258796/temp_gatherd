@@ -1,8 +1,7 @@
 export interface IOrder {
-  id: number
   date: string
-  time: string
-  numberOfCustomer: number
+  period: string
+  customerCount: string
   name: string
   email: string
   phone: string
@@ -32,7 +31,6 @@ export interface IProfile {
   type: string
   phone: string
   email: string
-  website: string
   address: string
   googleMap: string
   about: string
@@ -41,11 +39,13 @@ export interface IProfile {
   timeSetting: {
     basic: ITimeSetting[]
   },
-  orders: IOrder[]
+  orders: { [key: string]: IOrder }
   externalLinks: {
     instagram: string
     facebook: string
     tiktok: string
     youtube: string
+    line: string
+    website: string
   }
 }
