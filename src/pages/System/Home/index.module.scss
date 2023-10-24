@@ -1,0 +1,108 @@
+@import "../../../styles/breakpoints.module.scss";
+
+.container {
+  min-height: 100vh;
+  background: white;
+
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    border-bottom: 1px solid gray;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .logo {
+      padding: 8px 24px;
+      background: #2b403a;
+      color: white;
+    }
+  }
+
+  .menu {
+    position: absolute;
+    top: 56px;
+    left: 24px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid gray;
+    min-width: 150px;
+
+    .header {
+      display: none;
+    }
+
+    .options {
+      > div {
+        padding: 12px;
+        border-bottom: 1px solid gray;
+        cursor: pointer;
+
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+
+    .mobileShow {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      border: none;
+      display: flex;
+      flex-direction: column;
+
+      .header {
+        display: flex;
+      }
+  
+      .options {
+        flex: 1;
+
+        .mobileHidden {
+          display: none;
+        }
+      }
+
+      .mobileShow {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: auto;
+        padding: 48px 24px;
+        width: 80%;
+
+        >div {
+          padding: 8px;
+          text-align: center;
+        }
+
+        .contact {
+          background: #2b403a;
+          color: white;
+        }
+
+        .logout {
+          border: 1px solid gray;
+        }
+      }
+    }
+  }
+}

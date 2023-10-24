@@ -1,11 +1,13 @@
 import { AppBar, TextField, Toolbar, Typography } from "@mui/material"
 import styles from './index.module.scss';
 import { useState } from "react";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "../../settings/firebase";
+import { app } from "../../../settings/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -15,11 +17,9 @@ const Login = () => {
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log("user", user);
-        console.log(userCredential);
-        // ...
+        user.getIdToken().then((response) => localStorage.setItem('accessToken', response))
+        navigate('..')
       })
       .catch((error) => {
         console.log("error", error);
