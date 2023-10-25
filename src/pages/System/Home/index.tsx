@@ -10,7 +10,7 @@ const Home = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   useEffect(() => {
-    !localStorage.getItem('accessToken') ? navigate('/login') : navigate('/orders')
+    !localStorage.getItem('accessToken') ? navigate('/os/login') : navigate('/os/orders')
   }, [navigate])
 
   useEffect(() => {
