@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { getDatabase, ref, get, child } from "firebase/database"
 import { IProfile } from "../interfaces/profile"
 
-export const useProfile = ({ id }: { id: number | string }) => {
+export const useProfile = ({ id }: { id: string }) => {
   const [fetching, setFetching] = useState(false)
   const [profile, setProfile] = useState<IProfile>()
 
-  useEffect(() => {
+  const fetchProfile = () => {
     setFetching(true)
     const database = getDatabase()
     get(child(ref(database), `/profile/${id}`)).then((snapshot) => {
@@ -18,10 +18,15 @@ export const useProfile = ({ id }: { id: number | string }) => {
     }).finally(() => {
       setFetching(false)
     })
+  }
+
+  useEffect(() => {
+    fetchProfile()
   }, [id])
 
   return {
     profile,
-    fetching
+    fetching,
+    fetchProfile
   }
 }

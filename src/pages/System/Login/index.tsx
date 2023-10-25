@@ -17,9 +17,11 @@ const Login = () => {
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        user.getIdToken().then((response) => localStorage.setItem('accessToken', response))
-        navigate('..')
+        userCredential.user.getIdToken().then((response) => {
+          localStorage.setItem('accessToken', response)
+          localStorage.setItem('userAccount', email.split('@')[0])
+          navigate('..')
+        })
       })
       .catch((error) => {
         console.log("error", error);

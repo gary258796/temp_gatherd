@@ -4,6 +4,7 @@ import Home from "../pages/System/Home";
 import Restaurant from "../pages/Customer/Restaurant";
 import Order from "../pages/Customer/Order";
 import CustomerHome from "../pages/Customer/Home";
+import Orders from "../pages/System/Orders";
 
 // archive
 import ArchiveHome from "../archive/pages/Home";
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/os/orders',
-        element: <>Orders</>
+        element: <Orders />,
       },
       {
         path: '/os/timeSetting',

@@ -5,6 +5,7 @@ export interface IOrder {
   name: string
   email: string
   phone: string
+  status: number
 }
 
 export interface ISeatSetting {
