@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { getDatabase, ref, get, child } from "firebase/database"
-import { IProfile } from "../interfaces/profile"
+import { useDispatch } from "react-redux"
+import { updateProfile } from "../reducers/profile"
 
-export const useProfile = ({ id }: { id: string }) => {
+export const useProfile = () => {
+  const dispatch = useDispatch()
   const [fetching, setFetching] = useState(false)
-  const [profile, setProfile] = useState<IProfile>()
 
-  const fetchProfile = () => {
+  const fetchProfile = (id?: string) => {
+    if (!id) return
     setFetching(true)
     const database = getDatabase()
     get(child(ref(database), `/profile/${id}`)).then((snapshot) => {
       if (snapshot.exists()) {
-        setProfile(snapshot.val());
+        dispatch(updateProfile(snapshot.val()))
       }
     }).catch((error) => {
       console.error(error);
@@ -20,12 +22,7 @@ export const useProfile = ({ id }: { id: string }) => {
     })
   }
 
-  useEffect(() => {
-    fetchProfile()
-  }, [id])
-
   return {
-    profile,
     fetching,
     fetchProfile
   }

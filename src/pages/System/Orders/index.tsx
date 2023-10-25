@@ -6,16 +6,16 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs, { Dayjs } from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProfile } from '../../../hooks/useProfile';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { IOrder } from '../../../interfaces/profile';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store';
 
 const Orders = () => {
   const navigate = useNavigate()
-  const [id, setId] = useState('')
   const [selectedStatus, setSelectedStatus] = useState(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
-  const { profile } = useProfile({ id })
+  const profile = useSelector((state: RootState) => state.profile.profile)
   const statuses = ['全部', '待處理', '聯繫中', '完成', '取消']
   
   const getDateOrders = (date: dayjs.Dayjs | null) => {
@@ -47,14 +47,10 @@ const Orders = () => {
     );
   }
 
-  useEffect(() => {
-    setId(localStorage.getItem('userAccount') || '')
-  }, [])
-
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <Typography variant='h4' className={styles.name}>{profile?.name} 你好</Typography>
+        <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
         <Typography variant='h6'>你的預訂</Typography>
         <div className={styles.status}>
           {statuses.map((status, index) => (

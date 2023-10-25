@@ -7,14 +7,17 @@ import facebookImg from '../../../images/facebook.png'
 import ExpandText from '../../../components/ExpandText'
 import Button from '../../../components/Button'
 import { useProfile } from '../../../hooks/useProfile'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getDatabase, ref, push, set } from "firebase/database"
 import { QRCodeSVG } from 'qrcode.react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../app/store'
 
 const Order = () => {
   const { id = '' } = useParams()
   const navigate = useNavigate()
-  const { profile, fetching } = useProfile({ id })
+  const { fetchProfile, fetching } = useProfile()
+  const profile = useSelector((state: RootState) => state.profile.profile)
   const [searchParams] = useSearchParams()
   const customerCount = searchParams.get('customerCount')
   const date = searchParams.get('date')
@@ -45,6 +48,10 @@ const Order = () => {
         setPostSuccess(true)
       });
   }
+
+  useEffect(() => {
+    fetchProfile(id)
+  }, [id])
 
   if (fetching || !profile) return <CircularProgress />
 

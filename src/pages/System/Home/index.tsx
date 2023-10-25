@@ -1,23 +1,21 @@
 import { useEffect, useRef, useState } from "react"
 import styles from './index.module.scss'
-import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { Close, Menu } from "@mui/icons-material"
 import { CircularProgress, Typography } from "@mui/material"
-// import { useProfile } from "../../../hooks/useProfile"
+import { useProfile } from "../../../hooks/useProfile"
 
 const Home = () => {
   const navigate = useNavigate()
-  // const { pathname } = useLocation()
   const menuRef = useRef<HTMLDivElement>(null)
-  const [id, setId] = useState('')
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  // const { profile, fetching, fetchProfile } = useProfile({ id })
+  const { fetching, fetchProfile } = useProfile()
 
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) return navigate('/os/login')
     navigate('/os/orders')
-    setId(localStorage.getItem('userAccount') || '')
-  }, [navigate])
+    fetchProfile(localStorage.getItem('userAccount') || '')
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -31,11 +29,7 @@ const Home = () => {
     };
   }, [menuRef]);
 
-  // useEffect(() => {
-  //   fetchProfile()
-  // }, [pathname])
-
-  // if (fetching) return <CircularProgress />
+  if (fetching) return <CircularProgress />
 
   return (
     <div className={styles.container}>

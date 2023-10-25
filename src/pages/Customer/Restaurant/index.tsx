@@ -10,11 +10,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import { useProfile } from '../../../hooks/useProfile'
 import { ITimePeriods } from "../../../interfaces/profile";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../app/store";
 
 const Restaurant = () => {
   const { id = '' } = useParams()
   const navigate = useNavigate()
-  const { fetching, profile } = useProfile({ id })
+  const { fetching, fetchProfile } = useProfile()
+  const profile = useSelector((state: RootState) => state.profile.profile)
   const [customerCount, setCustomerCount] = useState<number>(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
 
@@ -63,6 +66,10 @@ const Restaurant = () => {
     if ((profile.seatSetting.total - numberOfCustomer) < customerCount) return true
     return false
   }
+
+  useEffect(() => {
+    fetchProfile(id)
+  }, [])
 
   useEffect(() => {
     if (!profile) return
