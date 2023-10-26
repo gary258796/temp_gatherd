@@ -10,6 +10,7 @@ import { IOrder } from '../../../interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import OrderDetailView from './OrderDetailModal';
+import { getOrderStatus } from '../../../utils/Order';
 
 const Orders = () => {
   const [selectedStatus, setSelectedStatus] = useState(0)
@@ -88,7 +89,7 @@ const Orders = () => {
                     <div className={styles.orders}>
                       {selectedDateOrders.map((order) => (
                         <div key={`${order.date}-${order.period}-${order.name}`} className={styles.order} onClick={() => setSelectedOrder(order)}>
-                          <div className={styles[`bar${order.status}`]} />
+                          <div className={styles[`bar${getOrderStatus(order)}`]} />
                           <div>
                             <Typography variant='h6'>{order.name}</Typography>
                             <Typography>{order.customerCount}位 {order.period}</Typography>

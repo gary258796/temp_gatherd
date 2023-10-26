@@ -89,6 +89,11 @@
           border-radius: 4px;
         }
 
+        .bar0 {
+          @extend .bar;
+          background: red;
+        }
+
         .bar1 {
           @extend .bar;
           background: beige;
@@ -102,11 +107,6 @@
         .bar3 {
           @extend .bar;
           background: yellow;
-        }
-
-        .bar4 {
-          @extend .bar;
-          background: red;
         }
       }
     }
@@ -154,26 +154,6 @@
             width: 8px;
             height: 40px;
             border-radius: 4px;
-          }
-  
-          .bar1 {
-            @extend .bar;
-            background: beige;
-          }
-  
-          .bar2 {
-            @extend .bar;
-            background: green;
-          }
-  
-          .bar3 {
-            @extend .bar;
-            background: yellow;
-          }
-  
-          .bar4 {
-            @extend .bar;
-            background: red;
           }
         }
       }

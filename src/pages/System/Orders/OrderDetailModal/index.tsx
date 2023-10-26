@@ -7,6 +7,7 @@ import { Close } from '@mui/icons-material'
 import Button from '../../../../components/Button'
 import { useMemo, useState } from 'react'
 import { getDatabase, ref, set } from "firebase/database"
+import { getOrderStatus } from '../../../../utils/Order'
 
 const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => void }) => {
   const {
@@ -14,7 +15,6 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
     date,
     period,
     customerCount,
-    status,
     phone,
     email,
     memo,
@@ -22,6 +22,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
   } = order
   const [memoValue, setMemoValue] = useState(memo)
   const profile = useSelector((state: RootState) => state.profile.profile)
+  const status = getOrderStatus(order)
 
   const handleStatusRender = (status: number) => {
     return (

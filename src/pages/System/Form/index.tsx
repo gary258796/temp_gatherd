@@ -29,7 +29,7 @@ const Form = () => {
     const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
     const orderStatusRef = ref(db, `/profile/${user}/orders/${key}/status`);
-    set(orderStatusRef, 4).then(() => {
+    set(orderStatusRef, 0).then(() => {
       console.log('success')
     })
   }
