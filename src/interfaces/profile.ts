@@ -7,6 +7,7 @@ export interface IOrder {
   phone: string
   status: number
   memo: string
+  form?: { [key: string]: string }
 }
 
 export interface ISeatSetting {
@@ -26,7 +27,13 @@ export interface ITimeSetting {
   periods: ITimePeriods[]
 }
 
+export interface IFormSetting {
+  title: string
+  subtitle: string
+}
+
 export interface IProfile {
+  account: string
   image: string
   name: string
   type: string
@@ -48,5 +55,6 @@ export interface IProfile {
     youtube: string
     line: string
     website: string
-  }
+  },
+  formSetting: IFormSetting[]
 }

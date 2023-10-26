@@ -1,0 +1,79 @@
+@import "../../../styles/breakpoints.module.scss";
+
+.container {
+  margin: auto;
+  max-width: 1120px;
+  padding: 80px;
+
+  .orderInfo {
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .order {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      >div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        >div {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+    }
+  }
+
+  .forms {
+    .form {
+      padding: 12px 0;
+
+      textarea {
+        resize: none;
+        width: 100%;
+        height: 200px;
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    padding: 24px 16px;
+  
+    .orderInfo {
+      .order {
+        gap: 12px;
+        margin-bottom: 12px;
+  
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  
+    .forms {
+      .form {
+        textarea {
+          height: 150px;
+        }
+      }
+    }
+  }
+}

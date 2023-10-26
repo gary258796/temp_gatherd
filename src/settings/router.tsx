@@ -11,6 +11,7 @@ import ArchiveHome from "../archive/pages/Home";
 import AboutUs from "../archive/pages/AboutUs";
 import JoinUs from "../archive/pages/JoinUs";
 import Experience from "../archive/pages/Experience";
+import Form from "../pages/System/Form";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
   {
     path: "/os/login",
     element: <Login />
+  },
+  {
+    path: "/form/:account/:key",
+    element: <Form />
   },
   {
     path: "/restaurant/:id",

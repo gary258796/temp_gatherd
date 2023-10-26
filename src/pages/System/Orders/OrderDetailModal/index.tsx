@@ -62,7 +62,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
         <div className={styles.section}>
           <div className={styles.info}>
             <Typography>用餐表單</Typography>
-            <Typography>{window.location.origin}/form/{orderKey}</Typography>
+            <Typography>{window.location.origin}/form/{profile?.account}/{orderKey}</Typography>
           </div>
         </div>
         <div className={styles.section}>
