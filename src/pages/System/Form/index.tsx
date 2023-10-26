@@ -5,7 +5,7 @@ import { useProfile } from "../../../hooks/useProfile"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../app/store"
 import { Typography } from '@mui/material'
-import { ConfirmationNumber, Event, Person, Schedule } from '@mui/icons-material'
+import { ConfirmationNumber, Person, Schedule } from '@mui/icons-material'
 import { getDatabase, ref, set } from "firebase/database"
 import Button from '../../../components/Button'
 
@@ -19,8 +19,17 @@ const Form = () => {
   const handleSubmit = () => {
     const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
-    const memoRef = ref(db, `/profile/${user}/orders/${key}/form`);
-    set(memoRef, values).then(() => {
+    const formRef = ref(db, `/profile/${user}/orders/${key}/form`);
+    set(formRef, values).then(() => {
+      console.log('success')
+    })
+  }
+
+  const handleCancel = () => {
+    const user = localStorage.getItem('userAccount') || ''
+    const db = getDatabase();
+    const orderStatusRef = ref(db, `/profile/${user}/orders/${key}/status`);
+    set(orderStatusRef, 4).then(() => {
       console.log('success')
     })
   }
@@ -84,6 +93,7 @@ const Form = () => {
         ))}
       </div>
       <Button onClick={handleSubmit}>儲存</Button>
+      <Button onClick={handleCancel}>取消訂單</Button>
     </div>
   )
 }
