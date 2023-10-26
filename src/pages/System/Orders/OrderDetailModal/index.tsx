@@ -17,7 +17,8 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
     status,
     phone,
     email,
-    memo
+    memo,
+    form
   } = order
   const [memoValue, setMemoValue] = useState(memo)
   const profile = useSelector((state: RootState) => state.profile.profile)
@@ -77,10 +78,15 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
             <Typography>{email}</Typography>
           </div>
         </div>
-        {/* 做完表單再來處理 */}
-        {status === 3 && (
+        {form && (
           <div className={styles.section}>
             <Typography>用餐資訊</Typography>
+            {Object.keys(form).map((title) => (
+              <div key={title} className={styles.form}>
+                <Typography variant='caption'>{title}</Typography>
+                <Typography variant='caption'>{form[title]}</Typography>
+              </div>
+            ))}
           </div>
         )}
         <div className={styles.section}>
