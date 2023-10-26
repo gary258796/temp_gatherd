@@ -48,13 +48,13 @@ const Home = () => {
           </div>
           <div className={styles.options}>
             <div onClick={() => {
-              navigate('/orders')
+              navigate('/os/orders')
               setMenuIsOpen(false)
             }}>
               <Typography>你的預訂</Typography>
             </div>
             <div onClick={() => {
-              navigate('/timeSetting')
+              navigate('/os/timeSetting')
               setMenuIsOpen(false)
             }}>
               <Typography>設定日期</Typography>
@@ -64,7 +64,7 @@ const Home = () => {
             </div>
             <div className={styles.mobileHidden} onClick={() => {
               localStorage.setItem('accessToken', '')
-              navigate('/login')
+              navigate('/os/login')
             }}>
               <Typography>登出</Typography>
             </div>
