@@ -4,17 +4,17 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs, { Dayjs } from 'dayjs';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { IOrder } from '../../../interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
+import OrderDetailView from './OrderDetailModal';
 
 const Orders = () => {
-  const navigate = useNavigate()
   const [selectedStatus, setSelectedStatus] = useState(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
+  const [selectedOrder, setSelectedOrder] = useState<IOrder>()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const statuses = ['全部', '待處理', '聯繫中', '完成', '取消']
   
@@ -24,11 +24,6 @@ const Orders = () => {
           return order.date === date?.format('YYYY/MM/DD') && (selectedStatus ? selectedStatus === order.status : true)
         })
       : []
-  }
-
-  const getOrderKey = (selectedOrder: IOrder) => {
-    if (!profile) return undefined
-    return Object.keys(profile.orders).find((key) => JSON.stringify(profile.orders[key]) === JSON.stringify(selectedOrder))
   }
 
   const selectedDateOrders = getDateOrders(selectedDate)
@@ -92,7 +87,7 @@ const Orders = () => {
                   <>
                     <div className={styles.orders}>
                       {selectedDateOrders.map((order) => (
-                        <div className={styles.order} onClick={() => navigate(`./${getOrderKey(order)}`)}>
+                        <div key={`${order.date}-${order.period}-${order.name}`} className={styles.order} onClick={() => setSelectedOrder(order)}>
                           <div className={styles[`bar${order.status}`]} />
                           <div>
                             <Typography variant='h6'>{order.name}</Typography>
@@ -111,6 +106,7 @@ const Orders = () => {
           )
         }
       </div>
+      {selectedOrder && <OrderDetailView order={selectedOrder} onClose={() => setSelectedOrder(undefined)} />}
     </div>
   )
 }

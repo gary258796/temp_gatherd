@@ -20,7 +20,7 @@ const Login = () => {
         userCredential.user.getIdToken().then((response) => {
           localStorage.setItem('accessToken', response)
           localStorage.setItem('userAccount', email.split('@')[0])
-          navigate('..')
+          navigate('/os/orders')
         })
       })
       .catch((error) => {

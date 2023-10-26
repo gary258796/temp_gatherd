@@ -56,7 +56,7 @@ const Restaurant = () => {
   }
 
   const shuoldDisabledPeriod = (date: dayjs.Dayjs, period: string): boolean => {
-    if (!profile) return true
+    if (!profile?.orders) return false
     // 取得該時段所有訂單
     const orders = Object.values(profile.orders).filter((order) => order.date === date.format('YYYY/MM/DD') && order.period === period)
     // 當天該時段總人數

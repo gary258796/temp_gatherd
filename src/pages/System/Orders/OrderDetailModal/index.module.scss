@@ -1,0 +1,76 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .modal {
+    width: 80%;
+    height: 80%;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 24px;
+    background: white;
+    position: relative;
+    overflow: auto;
+
+    .close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 12px 0;
+      border-bottom: 1px solid gray;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .status {
+          padding: 8px 12px;
+          border-radius: 100px;
+        }
+
+        .status1 {
+          @extend .status;
+          background: beige;
+        }
+
+        .status2 {
+          @extend .status;
+          background: green;
+        }
+
+        .status3 {
+          @extend .status;
+          background: yellow;
+        }
+
+        .status4 {
+          @extend .status;
+          background: red;
+        }
+      }
+
+      textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+      }
+    }
+  }
+}

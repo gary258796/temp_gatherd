@@ -6,6 +6,7 @@ export interface IOrder {
   email: string
   phone: string
   status: number
+  memo: string
 }
 
 export interface ISeatSetting {
@@ -26,7 +27,6 @@ export interface ITimeSetting {
 }
 
 export interface IProfile {
-  id: number
   image: string
   name: string
   type: string
@@ -40,7 +40,7 @@ export interface IProfile {
   timeSetting: {
     basic: ITimeSetting[]
   },
-  orders: { [key: string]: IOrder }
+  orders?: { [key: string]: IOrder }
   externalLinks: {
     instagram: string
     facebook: string

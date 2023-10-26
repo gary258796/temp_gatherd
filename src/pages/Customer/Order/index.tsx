@@ -37,7 +37,8 @@ const Order = () => {
       name,
       phone,
       email,
-      status: 1
+      status: 1,
+      memo: ''
     }
     const db = getDatabase();
     const ordersRef = ref(db, `/profile/${id}/orders`);
