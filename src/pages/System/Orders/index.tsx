@@ -22,7 +22,7 @@ const Orders = () => {
   const getDateOrders = (date: dayjs.Dayjs | null) => {
     return profile?.orders
       ? Object.values(profile.orders).filter((order) => {
-          return order.date === date?.format('YYYY/MM/DD') && (selectedStatus ? selectedStatus === order.status : true)
+          return order.date === date?.format('YYYY/MM/DD') && (selectedStatus ? selectedStatus === getOrderStatus(order) : true)
         })
       : []
   }
