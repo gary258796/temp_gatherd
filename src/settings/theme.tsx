@@ -7,5 +7,8 @@ export const theme = createTheme({
     primary: {
       main: mainGreen
     }
+  },
+  typography: {
+    fontFamily: 'NotoSansTC-Regular'
   }
 });
