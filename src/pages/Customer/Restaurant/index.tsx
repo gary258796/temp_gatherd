@@ -101,72 +101,72 @@ const Restaurant = () => {
         <img src={image} alt="" />
       </div>
       <div className={styles.left}>
-        <Typography variant="h3">{name}</Typography>
-        <div className={styles.subtitle}>
-          <Typography variant="body1">{address}</Typography>
-          <Typography variant="body1">{type}</Typography>
-        </div>
-        <div className={styles.forms}>
-          <FormControl fullWidth className={styles.form}>
-            <InputLabel id="customerCount">人數</InputLabel>
-            <Select
-              labelId="customerCount"
-              value={customerCount}
-              label="人數"
-              onChange={(e) => {
-                setCustomerCount(Number(e.target.value))
-                setSelectedDate(null)
-              }}
-            >
-              {getCustomerCountOptions().map((option) => (
-                <MenuItem key={option} value={option}>{option}人</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth className={styles.datepicker}>
-            <DemoContainer components={['DatePicker']}>
-              <DatePicker
-                label="日期"
-                value={selectedDate}
-                onChange={setSelectedDate}
-                format="YYYY/MM/DD"
-                disablePast
-                shouldDisableDate={shuoldDisableDate}
-              />
-            </DemoContainer>
-          </FormControl>
-        </div>
-        {selectedDate && (
-          <div className={styles.time}>
-            {getTimePeriodsData()?.map((timePeriod) => (
-              <div key={timePeriod.title} className={styles.timePeriod}>
-                <Typography variant="caption">{timePeriod.title}</Typography>
-                <div className={styles.periods}>
-                  {timePeriod.list.map((period) => (
-                    <div
-                      key={period}
-                      className={shuoldDisabledPeriod(selectedDate, period) ? styles.disabled : ''}
-                      onClick={() => handlePeriodOnClick(period)}
-                    >
-                      <Typography variant="body1">{period}</Typography>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+        <div className={styles.order}>
+          <div className={styles.title}>{name}</div>
+          <div className={styles.subtitle}>
+            <div>{address}</div>
+            <div>{type}</div>
           </div>
-        )}
-        <div className={styles.notice}>
-          <Typography variant="h6">注意事項</Typography>
-          <ExpandText>
-            <ol>
-              {notices.map((notice) => <li key={notice}>{notice}</li>)}
-            </ol>
-          </ExpandText>
+          <div className={styles.forms}>
+            <FormControl fullWidth className={styles.form}>
+              <InputLabel id="customerCount">人數</InputLabel>
+              <Select
+                labelId="customerCount"
+                value={customerCount}
+                label="人數"
+                onChange={(e) => {
+                  setCustomerCount(Number(e.target.value))
+                  setSelectedDate(null)
+                }}
+              >
+                {getCustomerCountOptions().map((option) => (
+                  <MenuItem key={option} value={option}>{option}人</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl fullWidth className={styles.datepicker}>
+              <DemoContainer components={['DatePicker']}>
+                <DatePicker
+                  label="日期"
+                  value={selectedDate}
+                  onChange={setSelectedDate}
+                  format="YYYY/MM/DD"
+                  disablePast
+                  shouldDisableDate={shuoldDisableDate}
+                />
+              </DemoContainer>
+            </FormControl>
+          </div>
+          {selectedDate && (
+            <div className={styles.time}>
+              {getTimePeriodsData()?.map((timePeriod) => (
+                <div key={timePeriod.title} className={styles.timePeriod}>
+                  <div className={styles.periodTitle}>{timePeriod.title}</div>
+                  <div className={styles.periods}>
+                    {timePeriod.list.map((period) => (
+                      <div
+                        key={period}
+                        className={shuoldDisabledPeriod(selectedDate, period) ? styles.disabled : ''}
+                        onClick={() => handlePeriodOnClick(period)}
+                      >
+                        {period}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-        <div className={styles.about}>
-          <Typography variant="h6">關於 {name}</Typography>
-          <ExpandText>{about}</ExpandText>
+        <div className={styles.section}>
+          <div className={styles.title}>注意事項</div>
+          <ol>
+            {notices.map((notice) => <li key={notice}>{notice}</li>)}
+          </ol>
+        </div>
+        <div className={styles.section}>
+          <div className={styles.title}>關於 {name}</div>
+          <div>{about}</div>
         </div>
       </div>
       <div className={styles.right}>
@@ -178,9 +178,9 @@ const Restaurant = () => {
             <div dangerouslySetInnerHTML={{ __html: googleMap }} />
           </div>
           <div className={styles.content}>
-            <Typography variant="h6">{name}</Typography>
-            <Typography variant="body2">{address}</Typography>
-            <Typography variant="caption">{type}</Typography>
+            <div className={styles.name}>{name}</div>
+            <div className={styles.address}>{address}</div>
+            <div className={styles.address}>{type}</div>
             <div className={styles.media}>
               {externalLinks.facebook && (
                 <div onClick={() => window.open(externalLinks.facebook)}>
@@ -194,15 +194,21 @@ const Restaurant = () => {
               )}
             </div>
           </div>
-          <div className={styles.content}>
-            {phone}
-          </div>
-          <div className={styles.content}>
-            {email}
-          </div>
-          <div className={styles.content}>
-            {externalLinks.website}
-          </div>
+          {phone && (
+            <div className={styles.content} onClick={() => window.open(`tel:+886${phone}`)}>
+              {phone}
+            </div>
+          )}
+          {email && (
+            <div className={`${styles.content} ${styles.email}`} onClick={() => window.open(`mailto:${email}`)}>
+              {email}
+            </div>
+          )}
+          {externalLinks.website && (
+            <div className={`${styles.content} ${styles.email}`} onClick={() => window.open(externalLinks.website)}>
+              {externalLinks.website}
+            </div>
+          )}
         </div>
       </div>
     </div>

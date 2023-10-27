@@ -2,8 +2,8 @@
 
 .container {
   margin: auto;
-  max-width: 1440px;
-  padding: 48px;
+  max-width: 1120px;
+  padding: 80px;
   display: flex;
   gap: 48px;
 
@@ -14,22 +14,32 @@
   .left {
     flex: 2;
 
-    .subtitle {
-      color: rgb(181, 181, 181);
-      margin: 12px 0 36px;
-    }
+    .order {
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #ddd;
 
-    .forms {
-      margin-bottom: 48px;
-
-      .form {
+      .title {
+        font-size: 26px;
+        font-weight: 600;
         margin-bottom: 8px;
       }
+  
+      .subtitle {
+        font-size: 14px;
+        margin-bottom: 32px;
+      }
 
-      .datepicker {
-        >div {
+      .forms {
+        .form {
+          margin-bottom: 8px;
+        }
+  
+        .datepicker {
           >div {
-            width: 100%;
+            >div {
+              width: 100%;
+            }
           }
         }
       }
@@ -39,11 +49,13 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid rgb(181, 181, 181);
-      margin-bottom: 36px;
+      margin-top: 32px;
 
       .timePeriod {
+        .periodTitle {
+          font-size: 14px;
+        }
+
         .periods {
           margin-top: 8px;
           display: flex;
@@ -55,6 +67,8 @@
             background: #2b403a;
             color: white;
             cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
 
             &.disabled {
               background: gray;
@@ -65,12 +79,25 @@
       }
     }
 
-    .notice {
-      margin-bottom: 36px;
-    }
-
-    .about {
+    .section {
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #ddd;
       white-space: break-spaces;
+
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      ol {
+        padding-inline-start: 18px;
+
+        li {
+          margin-bottom: 4px;
+        }
+      }
     }
   }
 
@@ -117,10 +144,19 @@
       .content {
         padding: 12px;
         background: white;
-        border-bottom: 1px solid rgb(200, 200, 200);
+        border-bottom: 1px solid #ddd;
 
         &:last-child {
           border: none;
+        }
+
+        .name {
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
+
+        .address {
+          font-size: 12px;
         }
 
         .media {
@@ -133,6 +169,12 @@
             height: 24px;
             cursor: pointer;
           }
+        }
+
+        &.email {
+          text-decoration: underline;
+          color: blue;
+          cursor: pointer;
         }
       }
     }
