@@ -11,6 +11,12 @@ const Home = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const { fetching, fetchProfile } = useProfile()
 
+  const handleLogout = () => {
+    localStorage.setItem('accessToken', '')
+    localStorage.setItem('userAccount', '')
+    navigate('/os/login')
+  }
+
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) return navigate('/os/login')
     navigate('/os/orders')
@@ -62,16 +68,13 @@ const Home = () => {
             <div className={styles.mobileHidden}>
               <Typography>聯繫我們</Typography>
             </div>
-            <div className={styles.mobileHidden} onClick={() => {
-              localStorage.setItem('accessToken', '')
-              navigate('/os/login')
-            }}>
+            <div className={styles.mobileHidden} onClick={handleLogout}>
               <Typography>登出</Typography>
             </div>
           </div>
           <div className={styles.mobileShow}>
             <div className={styles.contact}>聯繫我們</div>
-            <div className={styles.logout}>登出</div>
+            <div className={styles.logout} onClick={handleLogout}>登出</div>
           </div>
         </div>
       )}
