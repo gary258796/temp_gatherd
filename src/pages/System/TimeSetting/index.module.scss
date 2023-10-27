@@ -1,0 +1,117 @@
+@import "../../../styles/breakpoints.module.scss";
+
+.container {
+  display: flex;
+  min-height: calc(100vh - 84px);
+
+  .left {
+    flex: 1;
+    padding: 48px;
+
+    .name {
+      margin-bottom: 12px;
+    }
+
+    .day {
+      width: calc(100% / 7);
+      display: flex;
+      justify-content: center;
+      position: relative;
+    
+      &.today {
+        button {
+          color: red;
+          border: none;
+        }
+      }
+    
+      .dot {
+        width: 4px;
+        height: 4px;
+        background: black;
+        position: absolute;
+        bottom: 2px;
+        left: calc(50% - 2px);
+        border-radius: 100px;
+
+        &.selected {
+          display: none;
+        }
+      }
+    }
+    
+    .calendar {
+      span {
+        width: calc(100% / 7);
+      }
+    }
+  }
+
+  .right {
+    width: 300px;
+    border-left: 1px solid gray;
+    padding: 24px;
+
+    .title {
+      margin-bottom: 24px;
+    }
+
+    .periodsContainer {
+      .periods {
+        .period {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    flex-direction: column;
+  
+    .left {
+      flex: none;
+      padding: 16px;
+      border-bottom: 1px solid gray;
+  
+      .status {
+        gap: 12px;
+        margin: 12px 0 36px;
+    
+        >div {
+          padding: 8px;
+        }
+      }
+    }
+  
+    .right {
+      width: 100%;
+      border-left: none;
+      padding: 16px;
+  
+      .title {
+        margin-bottom: 24px;
+      }
+  
+      .orders {
+        .order {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 0;
+          border-bottom: 1px solid gray;
+          cursor: pointer;
+  
+          .bar {
+            width: 8px;
+            height: 40px;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}

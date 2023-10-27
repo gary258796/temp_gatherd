@@ -5,13 +5,14 @@ import Restaurant from "../pages/Customer/Restaurant";
 import Order from "../pages/Customer/Order";
 import CustomerHome from "../pages/Customer/Home";
 import Orders from "../pages/System/Orders";
+import Form from "../pages/System/Form";
+import TimeSetting from "../pages/System/TimeSetting";
 
 // archive
 import ArchiveHome from "../archive/pages/Home";
 import AboutUs from "../archive/pages/AboutUs";
 import JoinUs from "../archive/pages/JoinUs";
 import Experience from "../archive/pages/Experience";
-import Form from "../pages/System/Form";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/os/timeSetting',
-        element: <>TimeSetting</>
+        element: <TimeSetting />
       }
     ]
   },

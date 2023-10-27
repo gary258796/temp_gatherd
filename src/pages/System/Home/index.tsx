@@ -19,7 +19,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) return navigate('/os/login')
-    navigate('/os/orders')
     fetchProfile(localStorage.getItem('userAccount') || '')
   }, [])
 

@@ -44,8 +44,7 @@ const Restaurant = () => {
     if (!profile) return true
     const daySetting = profile.timeSetting.basic[date.day()]
     if (daySetting.isGeneralHoliday) return true
-    // 如果有設定特定休假（等時間設定開發完再來處理）
-    // 如果當天所有時段都訂滿
+    // 如果當天所有時段都不能訂
     let result: boolean[] = []
     daySetting.periods.forEach(({ list }) => {
       list.forEach((period) => {
@@ -56,7 +55,12 @@ const Restaurant = () => {
   }
 
   const shuoldDisabledPeriod = (date: dayjs.Dayjs, period: string): boolean => {
-    if (!profile?.orders) return false
+    if (!profile) return false
+    // 如果有設定特定休假（等時間設定開發完再來處理）
+    const dateAdditionalTimeSetting = profile.timeSetting.additional?.find((additionalTimeSetting) => additionalTimeSetting.date === date.format('YYYY/MM/DD'))
+    if (dateAdditionalTimeSetting?.closePeriods.includes(period)) return true
+
+    if (!profile.orders) return false
     // 取得該時段所有訂單
     const orders = Object.values(profile.orders).filter((order) => order.date === date.format('YYYY/MM/DD') && order.period === period)
     // 當天該時段總人數

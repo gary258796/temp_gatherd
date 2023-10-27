@@ -28,6 +28,11 @@ export interface ITimeSetting {
   periods: ITimePeriods[]
 }
 
+export interface IAdditionalTimeSetting {
+  date: string
+  closePeriods: string[]
+}
+
 export interface IFormSetting {
   title: string
   subtitle: string
@@ -47,6 +52,7 @@ export interface IProfile {
   seatSetting: ISeatSetting
   timeSetting: {
     basic: ITimeSetting[]
+    additional?: IAdditionalTimeSetting[]
   },
   orders?: { [key: string]: IOrder }
   externalLinks: {
