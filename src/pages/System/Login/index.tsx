@@ -1,6 +1,6 @@
 import { AppBar, TextField, Toolbar, Typography } from "@mui/material"
 import styles from './index.module.scss';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../settings/firebase";
@@ -30,6 +30,10 @@ const Login = () => {
         setLoading(false)
       });
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('accessToken')) navigate('/os/orders')
+  }, [])
 
   return (
     <>
