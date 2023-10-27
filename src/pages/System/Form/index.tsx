@@ -15,23 +15,18 @@ const Form = () => {
   const [values, setValues] = useState<{ [key: string]: string }>({})
   const profile = useSelector((state: RootState) => state.profile.profile)
   const order = profile?.orders?.[key]
+  const isCancelled = order?.status === 0
 
   const handleSubmit = () => {
-    const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
-    const formRef = ref(db, `/profile/${user}/orders/${key}/form`);
-    set(formRef, values).then(() => {
-      console.log('success')
-    })
+    const formRef = ref(db, `/profile/${account}/orders/${key}/form`);
+    set(formRef, values).then(() => fetchProfile(account))
   }
 
   const handleCancel = () => {
-    const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
-    const orderStatusRef = ref(db, `/profile/${user}/orders/${key}/status`);
-    set(orderStatusRef, 0).then(() => {
-      console.log('success')
-    })
+    const orderStatusRef = ref(db, `/profile/${account}/orders/${key}/status`);
+    set(orderStatusRef, 0).then(() => fetchProfile(account))
   }
 
   useEffect(() => {
@@ -81,7 +76,7 @@ const Form = () => {
           <div className={styles.form} key={form.title}>
             <Typography variant='body1'>{form.title}</Typography>
             <Typography variant='caption'>{form.subtitle}</Typography>
-            <textarea value={values[form.title]} onChange={(e) => {
+            <textarea disabled={isCancelled} value={values[form.title]} onChange={(e) => {
               setValues((prev) => {
                 return {
                   ...prev,
@@ -92,8 +87,16 @@ const Form = () => {
           </div>
         ))}
       </div>
-      <Button onClick={handleSubmit}>儲存</Button>
-      <Button onClick={handleCancel}>取消訂單</Button>
+      {isCancelled
+        ? (
+          <Button disabled>訂單已取消</Button>
+        )
+        : (
+          <>
+            <Button onClick={handleSubmit}>儲存</Button>
+            <Button onClick={handleCancel}>取消訂單</Button>
+          </>
+        )}
     </div>
   )
 }

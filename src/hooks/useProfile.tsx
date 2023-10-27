@@ -8,10 +8,11 @@ export const useProfile = () => {
   const [fetching, setFetching] = useState(false)
 
   const fetchProfile = (id?: string) => {
-    if (!id) return
+    const account = id || localStorage.getItem('userAccount')
+    if (!account) return
     setFetching(true)
     const database = getDatabase()
-    get(child(ref(database), `/profile/${id}`)).then((snapshot) => {
+    get(child(ref(database), `/profile/${account}`)).then((snapshot) => {
       if (snapshot.exists()) {
         dispatch(updateProfile(snapshot.val()))
       }

@@ -62,7 +62,7 @@ const Restaurant = () => {
 
     if (!profile.orders) return false
     // 取得該時段所有訂單
-    const orders = Object.values(profile.orders).filter((order) => order.date === date.format('YYYY/MM/DD') && order.period === period)
+    const orders = Object.values(profile.orders).filter((order) => order.date === date.format('YYYY/MM/DD') && order.status !== 0)
     // 當天該時段總人數
     const numberOfCustomer = orders.reduce((a, b) => {
       return a + Number(b.customerCount);

@@ -19,7 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) return navigate('/os/login')
-    fetchProfile(localStorage.getItem('userAccount') || '')
+    fetchProfile()
   }, [])
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import Button from '../../../../components/Button'
 import { useMemo, useState } from 'react'
 import { getDatabase, ref, set } from "firebase/database"
 import { getOrderStatus } from '../../../../utils/Order'
+import { useProfile } from '../../../../hooks/useProfile'
 
 const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => void }) => {
   const {
@@ -21,6 +22,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
     form
   } = order
   const [memoValue, setMemoValue] = useState(memo)
+  const { fetchProfile } = useProfile()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const status = getOrderStatus(order)
 
@@ -41,9 +43,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
     const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
     const memoRef = ref(db, `/profile/${user}/orders/${orderKey}/memo`);
-    set(memoRef, memoValue).then(() => {
-      console.log('success')
-    })
+    set(memoRef, memoValue).then(() => fetchProfile())
   }
 
   return (

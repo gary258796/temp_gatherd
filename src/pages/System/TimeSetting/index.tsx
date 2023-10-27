@@ -9,10 +9,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { IAdditionalTimeSetting } from '../../../interfaces/profile'
 import Button from '../../../components/Button'
 import { getDatabase, ref, set } from "firebase/database"
+import { useProfile } from '../../../hooks/useProfile'
 
 const TimeSetting = () => {
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
   const [dateSetting, setDateSetting] = useState<IAdditionalTimeSetting>()
+  const { fetchProfile } = useProfile()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const dateString = selectedDate?.format('YYYY/MM/DD') || ''
 
@@ -76,16 +78,12 @@ const TimeSetting = () => {
     if (!userAddtionalSetting) {
       if (dateSetting?.closePeriods.length === 0) return
       const addtionalSettingRef = ref(db, `/profile/${user}/timeSetting/additional`);
-      set(addtionalSettingRef, [dateSetting]).then(() => {
-        console.log('success')
-      })
+      set(addtionalSettingRef, [dateSetting]).then(() => fetchProfile())
     } else {
       const closePeriodsIsEmpty = dateSetting?.closePeriods.length === 0
       const index = profile?.timeSetting.additional?.findIndex((addtionalSetting) => addtionalSetting.date === dateString)
       const addtionalSettingRef = ref(db, `/profile/${user}/timeSetting/additional/${index}`);
-      set(addtionalSettingRef, closePeriodsIsEmpty ? null : dateSetting).then(() => {
-        console.log('success')
-      })
+      set(addtionalSettingRef, closePeriodsIsEmpty ? null : dateSetting).then(() => fetchProfile())
     }
   }
 
