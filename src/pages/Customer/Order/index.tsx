@@ -60,7 +60,7 @@ const Order = () => {
   useEffect(() => {
     if (!profile?.orders) return
     const customers = getDateCustomers({ date: dayjs(date), orders: profile.orders })
-    if ((profile.seatSetting.total - customers) > Number(customerCount)) navigate(`/restaurant/${profile.account}`)
+    if ((profile.seatSetting.total - customers) < Number(customerCount)) navigate(`/restaurant/${profile.account}`)
   }, [profile])
 
   if (fetching || !profile) return <CircularProgress />
