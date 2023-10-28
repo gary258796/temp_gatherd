@@ -2,58 +2,91 @@
 
 .container {
   margin: auto;
-  max-width: 1440px;
-  padding: 48px;
+  max-width: 1120px;
+  padding: 80px;
 
   .header {
-    padding: 24px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-bottom: 1px solid gray;
-    margin-bottom: 36px;
-  
-    svg {
-      position: absolute;
-      left: 24px;
-      height: 24px;
-      width: 24px;
-      top: 50%;
-      transform: translate(0, -50%);
+    margin-bottom: 32px;
+
+    >div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
       cursor: pointer;
+
+      svg {
+        height: 24px;
+        width: 24px;
+      }
     }
   }
   
   .top {
     display: flex;
     gap: 48px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #ddd;
   
     .left {
       flex: 2;
 
       .orderInfo {
-        border-bottom: 1px solid gray;
-        padding-bottom: 24px;
-        margin-bottom: 36px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 32px;
+        margin-bottom: 32px;
 
-        >div {
+        .title {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 24px;
+        }
+
+        .detail {
           display: flex;
           align-items: center;
           gap: 12px;
-          margin: 12px 0;
-  
-          svg {
-            width: 24px;
-            height: 24px;
+
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+          }
+
+          >div {
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .info {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+      
+              svg {
+                width: 24px;
+                height: 24px;
+              }
+            }
           }
         }
       }
 
       .aboutYou {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+        .title {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 24px;
+        }
+
+        .forms {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
       }
     }
     
@@ -82,10 +115,19 @@
         .content {
           padding: 12px;
           background: white;
-          border-bottom: 1px solid rgb(200, 200, 200);
+          border-bottom: 1px solid #ddd;
     
           &:last-child {
             border: none;
+          }
+
+          .name {
+            font-size: 18px;
+            margin-bottom: 8px;
+          }
+  
+          .address {
+            font-size: 12px;
           }
     
           .media {
@@ -99,15 +141,35 @@
               cursor: pointer;
             }
           }
+
+          &.email {
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
+          }
         }
       }
     }
   }
 
   .notice {
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    ol {
+      padding-inline-start: 18px;
+
+      li {
+        margin-bottom: 4px;
+      }
+    }
+
     .button {
       width: 100%;
-      margin-top: 36px;
+      margin-top: 32px;
     }
   }
 
@@ -140,31 +202,56 @@
 
 @media screen and (max-width: $breakpoint_mobile) {
   .container {
-    padding: 0 0 36px;
-
+    padding: 0;
+  
     .header {
-      margin-bottom: 12px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
     }
     
     .top {
-      margin-bottom: 0;
-    
-      .left {
-        padding: 16px;
-  
-        .orderInfo {
-          padding-bottom: 12px;
-          margin-bottom: 24px;
-        }
-      }
+      margin: 16px 16px 24px;
+      padding-bottom: 24px;
+      flex-direction: column;
       
       .right {
         display: none;
       }
     }
-
+  
     .notice {
-      padding: 0 16px;
+      padding: 0 16px 32px;
+  
+      .button {
+        margin-top: 24px;
+      }
+    }
+  
+    .successCover {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+  
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+  
+        .title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     }
   }
 }

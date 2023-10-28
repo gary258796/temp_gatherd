@@ -27,6 +27,8 @@ const Order = () => {
   const [email, setEamil] = useState('')
   const [posting, setPosting] = useState(false)
   const [postSuccess, setPostSuccess] = useState(false)
+  const phoneIsError = !!phone && phone.slice(0, 2) !== '09'
+  const emailIsError = !!email && !email.includes('@')
 
   const handleConfirm = () => {
     setPosting(true)
@@ -61,37 +63,60 @@ const Order = () => {
     googleMap,
     type,
     externalLinks,
-    notices
+    notices,
+    image
   } = profile
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <ArrowBackIos onClick={() => navigate(-1)} />
-        <Typography variant='h6'>確認資訊</Typography>
+        <div onClick={() => navigate(-1)}>
+          <ArrowBackIos />返回
+        </div>
       </div>
       <div className={styles.top}>
         <div className={styles.left}>
           <div className={styles.orderInfo}>
-            <Typography variant='h5'>{profile.name}</Typography>
-            <div>
-              <Person />
-              <Typography variant='body1'>{customerCount}位</Typography>
-            </div>
-            <div>
-              <Event />
-              <Typography variant='body1'>{date}</Typography>
-            </div>
-            <div>
-              <Schedule />
-              <Typography variant='body1'>{period}</Typography>
+            <div className={styles.title}>確認 {profile.name} 訂位資訊</div>
+            <div className={styles.detail}>
+              <img src={image} alt='' />
+              <div>
+                <div className={styles.info}>
+                  <Person />
+                  <div>{customerCount}位</div>
+                </div>
+                <div className={styles.info}>
+                  <Event />
+                  <div>{date}</div>
+                </div>
+                <div className={styles.info}>
+                  <Schedule />
+                  <div>{period}</div>
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles.aboutYou}>
-            <Typography variant='h5'>關於你</Typography>
-            <TextField label="姓名" value={name} onChange={(e) => setName(e.target.value)} />
-            <TextField label="手機" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <TextField label="電子信箱" value={email} onChange={(e) => setEamil(e.target.value)} />
+            <div className={styles.title}>關於你</div>
+            <div className={styles.forms}>
+              <TextField
+                label="姓名"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <TextField
+                label="手機"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                error={phoneIsError}
+              />
+              <TextField
+                label="電子信箱"
+                value={email}
+                onChange={(e) => setEamil(e.target.value)}
+                error={emailIsError}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.right}>
@@ -100,9 +125,9 @@ const Order = () => {
               <div dangerouslySetInnerHTML={{ __html: googleMap }} />
             </div>
             <div className={styles.content}>
-              <Typography variant="h6">{profile.name}</Typography>
-              <Typography variant="body2">{address}</Typography>
-              <Typography variant="caption">{type}</Typography>
+              <div className={styles.name}>{profile.name}</div>
+              <div className={styles.address}>{address}</div>
+              <div className={styles.address}>{type}</div>
               <div className={styles.media}>
                 {externalLinks.facebook && (
                   <div onClick={() => window.open(externalLinks.facebook)}>
@@ -116,26 +141,30 @@ const Order = () => {
                 )}
               </div>
             </div>
-            <div className={styles.content}>
-              {profile.phone}
-            </div>
-            <div className={styles.content}>
-              {profile.email}
-            </div>
-            <div className={styles.content}>
-              {externalLinks.website}
-            </div>
+            {profile.phone && (
+              <div className={styles.content} onClick={() => window.open(`tel:+886${profile.phone}`)}>
+                {profile.phone}
+              </div>
+            )}
+            {profile.email && (
+              <div className={`${styles.content} ${styles.email}`} onClick={() => window.open(`mailto:${profile.email}`)}>
+                {profile.email}
+              </div>
+            )}
+            {externalLinks.website && (
+              <div className={`${styles.content} ${styles.email}`} onClick={() => window.open(externalLinks.website)}>
+                {externalLinks.website}
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className={styles.notice}>
-        <Typography variant="h6">注意事項</Typography>
-        <ExpandText>
-          <ol>
-            {notices.map((notice) => <li key={notice}>{notice}</li>)}
-          </ol>
-        </ExpandText>
-        <Button className={styles.button} onClick={handleConfirm} disabled={!name || !phone || !email} loading={posting}>
+        <div className={styles.title}>注意事項</div>
+        <ol>
+          {notices.map((notice) => <li key={notice}>{notice}</li>)}
+        </ol>
+        <Button className={styles.button} onClick={handleConfirm} disabled={!name || !phone || !email || phoneIsError || emailIsError} loading={posting}>
           預定
         </Button>
       </div>
@@ -148,6 +177,7 @@ const Order = () => {
             </div>
             <QRCodeSVG value={externalLinks.line} />
             <Button onClick={() => window.open(externalLinks.line)}>立即加入</Button>
+            <Button onClick={() => navigate(-1)}>返回</Button>
           </div>
         </div>
       )}
