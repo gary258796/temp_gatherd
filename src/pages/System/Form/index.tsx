@@ -8,6 +8,7 @@ import { Typography } from '@mui/material'
 import { ConfirmationNumber, Person, Schedule } from '@mui/icons-material'
 import { getDatabase, ref, set } from "firebase/database"
 import Button from '../../../components/Button'
+import { ORDER_STATUS } from '../../../utils/Order'
 
 const Form = () => {
   const { account = '', key = '' } = useParams()
@@ -15,7 +16,7 @@ const Form = () => {
   const [values, setValues] = useState<{ [key: string]: string }>({})
   const profile = useSelector((state: RootState) => state.profile.profile)
   const order = profile?.orders?.[key]
-  const isCancelled = order?.status === 0
+  const isCancelled = order?.status === ORDER_STATUS.CANCELLED
 
   const handleSubmit = () => {
     const db = getDatabase();
@@ -26,7 +27,7 @@ const Form = () => {
   const handleCancel = () => {
     const db = getDatabase();
     const orderStatusRef = ref(db, `/profile/${account}/orders/${key}/status`);
-    set(orderStatusRef, 0).then(() => fetchProfile(account))
+    set(orderStatusRef, ORDER_STATUS.CANCELLED).then(() => fetchProfile(account))
   }
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const Form = () => {
     } else {
       setValues(order.form)
     }
-    
   }, [order])
 
   return (

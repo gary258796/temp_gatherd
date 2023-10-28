@@ -10,29 +10,27 @@ import { IOrder } from '../../../interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import OrderDetailView from './OrderDetailModal';
-import { getOrderStatus } from '../../../utils/Order';
+import { ORDER_STATUS, getDateOrders, getOrderStatus } from '../../../utils/Order';
 
 const Orders = () => {
-  const [selectedStatus, setSelectedStatus] = useState(0)
+  const [selectedStatusIndex, setSelectedStatusIndex] = useState(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
   const [selectedOrder, setSelectedOrder] = useState<IOrder>()
   const profile = useSelector((state: RootState) => state.profile.profile)
-  const statuses = ['全部', '待處理', '聯繫中', '完成', '取消']
-  
-  const getDateOrders = (date: dayjs.Dayjs | null) => {
-    return profile?.orders
-      ? Object.values(profile.orders).filter((order) => {
-          return order.date === date?.format('YYYY/MM/DD') && (selectedStatus ? selectedStatus === getOrderStatus(order) : true)
-        })
-      : []
-  }
+  const statuses = [
+    { title: '全部', statuses: undefined },
+    { title: '待處理', statuses: [ORDER_STATUS.WAIT] },
+    { title: '聯繫中', statuses: [ORDER_STATUS.CONTACT] },
+    { title: '完成', statuses: [ORDER_STATUS.DONE] },
+    { title: '取消', statuses: [ORDER_STATUS.CANCELLED] }
+  ]
 
-  const selectedDateOrders = getDateOrders(selectedDate)
+  const selectedDateOrders = getDateOrders({ date: selectedDate, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
 
   const handleDateRender = (props: PickersDayProps<Dayjs>) => {
     const { day, today, selected } = props;
 
-    const orders = getDateOrders(day)
+    const orders = getDateOrders({ date: day, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
     const hasOrder = orders.length !== 0
 
     return (
@@ -51,11 +49,11 @@ const Orders = () => {
         <div className={styles.status}>
           {statuses.map((status, index) => (
             <div
-              key={status}
-              className={selectedStatus === index ? styles.selected : ''}
-              onClick={() => setSelectedStatus(index)}
+              key={status.title}
+              className={selectedStatusIndex === index ? styles.selected : ''}
+              onClick={() => setSelectedStatusIndex(index)}
             >
-              {status}
+              {status.title}
             </div>
           ))}
         </div>

@@ -12,6 +12,7 @@ import { useProfile } from '../../../hooks/useProfile'
 import { ITimePeriods } from "../../../interfaces/profile";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
+import { getDateCustomers } from "../../../utils/Order";
 
 const Restaurant = () => {
   const { id = '' } = useParams()
@@ -61,13 +62,8 @@ const Restaurant = () => {
     if (dateAdditionalTimeSetting?.closePeriods.includes(period)) return true
 
     if (!profile.orders) return false
-    // 取得該時段所有訂單
-    const orders = Object.values(profile.orders).filter((order) => order.date === date.format('YYYY/MM/DD') && order.status !== 0)
-    // 當天該時段總人數
-    const numberOfCustomer = orders.reduce((a, b) => {
-      return a + Number(b.customerCount);
-    }, 0);
-    if ((profile.seatSetting.total - numberOfCustomer) < customerCount) return true
+    const customers = getDateCustomers({ date, orders: profile.orders })
+    if ((profile.seatSetting.total - customers) < customerCount) return true
     return false
   }
 

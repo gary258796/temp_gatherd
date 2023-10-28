@@ -12,6 +12,8 @@ import { getDatabase, ref, push, set } from "firebase/database"
 import { QRCodeSVG } from 'qrcode.react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../app/store'
+import { getDateCustomers } from '../../../utils/Order'
+import dayjs from 'dayjs'
 
 const Order = () => {
   const { id = '' } = useParams()
@@ -55,6 +57,12 @@ const Order = () => {
   useEffect(() => {
     fetchProfile(id)
   }, [id])
+
+  useEffect(() => {
+    if (!profile?.orders) return
+    const customers = getDateCustomers({ date: dayjs(date), orders: profile.orders })
+    if ((profile.seatSetting.total - customers) > Number(customerCount)) navigate(`/restaurant/${profile.account}`)
+  }, [profile])
 
   if (fetching || !profile) return <CircularProgress />
 
