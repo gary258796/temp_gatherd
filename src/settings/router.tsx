@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "/form/:account/:key",
+    path: "/form/:uid/:key",
     element: <Form />
   },
   {

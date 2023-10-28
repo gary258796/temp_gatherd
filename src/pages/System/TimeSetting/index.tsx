@@ -73,16 +73,16 @@ const TimeSetting = () => {
   const saveTimeSetting = () => {
     const userAddtionalSetting = profile?.timeSetting.additional?.find((addtionalSetting) => addtionalSetting.date === dateString)
     if (JSON.stringify(userAddtionalSetting) === JSON.stringify(dateSetting)) return
-    const user = localStorage.getItem('userAccount') || ''
+    const uid = localStorage.getItem('uid') || ''
     const db = getDatabase();
     if (!userAddtionalSetting) {
       if (dateSetting?.closePeriods.length === 0) return
-      const addtionalSettingRef = ref(db, `/profile/${user}/timeSetting/additional`);
+      const addtionalSettingRef = ref(db, `/profile/${uid}/timeSetting/additional`);
       set(addtionalSettingRef, [dateSetting]).then(() => fetchProfile())
     } else {
       const closePeriodsIsEmpty = dateSetting?.closePeriods.length === 0
       const index = profile?.timeSetting.additional?.findIndex((addtionalSetting) => addtionalSetting.date === dateString)
-      const addtionalSettingRef = ref(db, `/profile/${user}/timeSetting/additional/${index}`);
+      const addtionalSettingRef = ref(db, `/profile/${uid}/timeSetting/additional/${index}`);
       set(addtionalSettingRef, closePeriodsIsEmpty ? null : dateSetting).then(() => fetchProfile())
     }
   }

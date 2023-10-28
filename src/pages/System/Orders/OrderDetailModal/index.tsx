@@ -25,6 +25,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
   const { fetchProfile } = useProfile()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const status = getOrderStatus(order)
+  const uid = localStorage.getItem('uid') || ''
 
   const handleStatusRender = (status: number) => {
     return (
@@ -40,9 +41,8 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
   }, [profile])
 
   const handleSaveMemo = () => {
-    const user = localStorage.getItem('userAccount') || ''
     const db = getDatabase();
-    const memoRef = ref(db, `/profile/${user}/orders/${orderKey}/memo`);
+    const memoRef = ref(db, `/profile/${uid}/orders/${orderKey}/memo`);
     set(memoRef, memoValue).then(() => fetchProfile())
   }
 
@@ -64,7 +64,7 @@ const OrderDetailModal = ({ order, onClose }:{ order: IOrder; onClose: () => voi
         <div className={styles.section}>
           <div className={styles.info}>
             <Typography>用餐表單</Typography>
-            <Typography>{window.location.origin}/form/{profile?.account}/{orderKey}</Typography>
+            <Typography>{window.location.origin}/form/{uid}/{orderKey}</Typography>
           </div>
         </div>
         <div className={styles.section}>

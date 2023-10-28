@@ -11,7 +11,7 @@ import { CircularProgress } from '@mui/material'
 import dayjs from 'dayjs'
 
 const Form = () => {
-  const { account = '', key = '' } = useParams()
+  const { uid = '', key = '' } = useParams()
   const { fetchProfile } = useProfile()
   const [values, setValues] = useState<{ [key: string]: string }>({})
   const profile = useSelector((state: RootState) => state.profile.profile)
@@ -33,19 +33,19 @@ const Form = () => {
 
   const handleSubmit = () => {
     const db = getDatabase();
-    const formRef = ref(db, `/profile/${account}/orders/${key}/form`);
-    set(formRef, values).then(() => fetchProfile(account))
+    const formRef = ref(db, `/profile/${uid}/orders/${key}/form`);
+    set(formRef, values).then(() => fetchProfile(uid))
   }
 
   const handleCancel = () => {
     const db = getDatabase();
-    const orderStatusRef = ref(db, `/profile/${account}/orders/${key}/status`);
-    set(orderStatusRef, ORDER_STATUS.CANCELLED).then(() => fetchProfile(account))
+    const orderStatusRef = ref(db, `/profile/${uid}/orders/${key}/status`);
+    set(orderStatusRef, ORDER_STATUS.CANCELLED).then(() => fetchProfile(uid))
   }
 
   useEffect(() => {
-    fetchProfile(account)
-  }, [account])
+    fetchProfile(uid)
+  }, [uid])
 
   useEffect(() => {
     if (!order?.form) {

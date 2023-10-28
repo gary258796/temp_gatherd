@@ -13,7 +13,7 @@ const Home = () => {
 
   const handleLogout = () => {
     localStorage.setItem('accessToken', '')
-    localStorage.setItem('userAccount', '')
+    localStorage.setItem('uid', '')
     navigate('/os/login')
   }
 
