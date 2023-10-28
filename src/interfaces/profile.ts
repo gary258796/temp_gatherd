@@ -33,10 +33,15 @@ export interface IAdditionalTimeSetting {
   closePeriods: string[]
 }
 
-export interface IFormSetting {
+export interface IFormQuestion {
   title: string
   subtitle: string
   optional?: boolean
+}
+
+export interface IFormSetting {
+  questions: IFormQuestion[]
+  lastEdit: number
 }
 
 export interface IProfile {
@@ -64,5 +69,5 @@ export interface IProfile {
     line: string
     website: string
   },
-  formSetting: IFormSetting[]
+  formSetting: IFormSetting
 }

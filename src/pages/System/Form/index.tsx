@@ -7,6 +7,8 @@ import { RootState } from "../../../app/store"
 import { getDatabase, ref, set } from "firebase/database"
 import Button from '../../../components/Button'
 import { ORDER_STATUS } from '../../../utils/Order'
+import { CircularProgress } from '@mui/material'
+import dayjs from 'dayjs'
 
 const Form = () => {
   const { account = '', key = '' } = useParams()
@@ -15,10 +17,12 @@ const Form = () => {
   const profile = useSelector((state: RootState) => state.profile.profile)
   const order = profile?.orders?.[key]
   const isCancelled = order?.status === ORDER_STATUS.CANCELLED
+  const lastEditDate = dayjs(order?.date).add(-(profile?.formSetting.lastEdit || 0), 'day')
+  const isOverLastEdit = dayjs(lastEditDate, 'YYYY/MM/DD').diff(dayjs(), 'day', true) < 0
 
   const formsAreFilled = () => {
     let filled = true
-    profile?.formSetting.every((setting) => {
+    profile?.formSetting.questions.every((setting) => {
       if (!setting.optional && !values[setting.title]) {
         filled = false
         return false
@@ -46,7 +50,7 @@ const Form = () => {
   useEffect(() => {
     if (!order?.form) {
       let initialFormValues: { [key: string]: string } = {}
-      profile?.formSetting.forEach((form) => {
+      profile?.formSetting.questions.forEach((form) => {
         initialFormValues[form.title] = ''
       })
       setValues(initialFormValues)
@@ -55,26 +59,29 @@ const Form = () => {
     }
   }, [order])
 
+  if (!profile || !order) return <CircularProgress />
+
   return (
     <div className={styles.container}>
       <div className={styles.orderInfo}>
         <div className={styles.title}>
           <div>用餐資訊表單</div>
-          <div>{profile?.name}</div>
+          <div>{profile.name}</div>
         </div>
         <div className={styles.order}>
-          <img src={profile?.image} alt='' />
+          <img src={profile.image} alt='' />
           <div>
-            <div>姓名： {order?.name}</div>
-            <div>人數： {order?.customerCount}位</div>
-            <div>時間： {order?.date} {order?.period}</div>
-            <div>手機： {order?.phone}</div>
-            <div>電子信箱： {order?.email}</div>
+            <div>姓名： {order.name}</div>
+            <div>人數： {order.customerCount}位</div>
+            <div>時間： {order.date} {order.period}</div>
+            <div>手機： {order.phone}</div>
+            <div>電子信箱： {order.email}</div>
+            <div>最後編輯時間： {dayjs(lastEditDate).format('YYYY/MM/DD HH:mm')}</div>
           </div>
         </div>
       </div>
       <div className={styles.forms}>
-        {profile?.formSetting.map((form) => (
+        {profile.formSetting.questions.map((form) => (
           <div className={styles.form} key={form.title}>
             <div>
               <div className={styles.title}>
@@ -82,7 +89,7 @@ const Form = () => {
               </div>
               {form.subtitle && <div className={styles.subtitle}>{form.subtitle}</div>}
             </div>
-            <textarea disabled={isCancelled} value={values[form.title]} onChange={(e) => {
+            <textarea disabled={isCancelled || isOverLastEdit} value={values[form.title]} onChange={(e) => {
               setValues((prev) => {
                 return {
                   ...prev,
@@ -95,15 +102,15 @@ const Form = () => {
       </div>
       <div className={styles.buttons}>
         {isCancelled
-          ? (
-            <Button disabled>訂單已取消</Button>
-          )
-          : (
-            <>
-              <Button onClick={handleSubmit} disabled={!formsAreFilled()}>儲存</Button>
-              <Button onClick={handleCancel}>取消訂單</Button>
-            </>
-          )
+          ? <Button disabled>訂單已取消</Button>
+          : isOverLastEdit 
+            ? <Button disabled>已過最後編輯時間</Button>
+            : (
+              <>
+                <Button onClick={handleSubmit} disabled={!formsAreFilled()}>儲存</Button>
+                <Button onClick={handleCancel}>取消訂單</Button>
+              </>
+            )
         }
       </div>
     </div>
