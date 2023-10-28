@@ -1,9 +1,8 @@
-import { CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material"
+import { CircularProgress, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import styles from "./index.module.scss"
 import { useEffect, useState } from "react"
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import ExpandText from "../../../components/ExpandText";
 import instagramImg from '../../../images/instagram.png'
 import facebookImg from '../../../images/facebook.png'
 import { useNavigate, useParams } from "react-router-dom";

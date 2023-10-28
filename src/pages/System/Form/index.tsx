@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom"
 import { useProfile } from "../../../hooks/useProfile"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../app/store"
-import { Typography } from '@mui/material'
-import { ConfirmationNumber, Person, Schedule } from '@mui/icons-material'
 import { getDatabase, ref, set } from "firebase/database"
 import Button from '../../../components/Button'
 import { ORDER_STATUS } from '../../../utils/Order'
@@ -20,8 +18,11 @@ const Form = () => {
 
   const formsAreFilled = () => {
     let filled = true
-    profile?.formSetting.forEach((setting) => {
-      if (!setting.optional && !values[setting.title]) filled = false
+    profile?.formSetting.every((setting) => {
+      if (!setting.optional && !values[setting.title]) {
+        filled = false
+        return false
+      }
     })
     return filled
   }
@@ -58,33 +59,29 @@ const Form = () => {
     <div className={styles.container}>
       <div className={styles.orderInfo}>
         <div className={styles.title}>
-          <Typography variant='h6'>用餐資訊</Typography>
-          <Typography variant='body1'>{profile?.name}</Typography>
+          <div>用餐資訊表單</div>
+          <div>{profile?.name}</div>
         </div>
         <div className={styles.order}>
           <img src={profile?.image} alt='' />
           <div>
-            <div>
-              <ConfirmationNumber />
-              <Typography variant='subtitle1'>{order?.name}</Typography>
-            </div>
-            <div>
-              <Person />
-              <Typography variant='subtitle1'>{order?.customerCount}位</Typography>
-            </div>
-            <div>
-              <Schedule />
-              <Typography variant='subtitle1'>{order?.date} {order?.period}</Typography>
-            </div>
+            <div>姓名： {order?.name}</div>
+            <div>人數： {order?.customerCount}位</div>
+            <div>時間： {order?.date} {order?.period}</div>
+            <div>手機： {order?.phone}</div>
+            <div>電子信箱： {order?.email}</div>
           </div>
         </div>
       </div>
       <div className={styles.forms}>
         {profile?.formSetting.map((form) => (
           <div className={styles.form} key={form.title}>
-            <Typography variant='body1'>{form.title}</Typography>
-            <Typography variant='h6'>{!form.optional ? '非必填' : ''}</Typography>
-            <Typography variant='caption'>{form.subtitle}</Typography>
+            <div>
+              <div className={styles.title}>
+                {form.title}<p>{form.optional ? '非必填' : ''}</p>
+              </div>
+              {form.subtitle && <div className={styles.subtitle}>{form.subtitle}</div>}
+            </div>
             <textarea disabled={isCancelled} value={values[form.title]} onChange={(e) => {
               setValues((prev) => {
                 return {
@@ -96,16 +93,19 @@ const Form = () => {
           </div>
         ))}
       </div>
-      {isCancelled
-        ? (
-          <Button disabled>訂單已取消</Button>
-        )
-        : (
-          <>
-            <Button onClick={handleSubmit} disabled={!formsAreFilled()}>儲存</Button>
-            <Button onClick={handleCancel}>取消訂單</Button>
-          </>
-        )}
+      <div className={styles.buttons}>
+        {isCancelled
+          ? (
+            <Button disabled>訂單已取消</Button>
+          )
+          : (
+            <>
+              <Button onClick={handleSubmit} disabled={!formsAreFilled()}>儲存</Button>
+              <Button onClick={handleCancel}>取消訂單</Button>
+            </>
+          )
+        }
+      </div>
     </div>
   )
 }

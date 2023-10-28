@@ -10,17 +10,26 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 32px;
+      font-size: 22px;
+
+      div:first-child {
+        font-size: 28px;
+        font-weight: 600;
+      }
     }
 
     .order {
       display: flex;
       gap: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #ddd;
 
       img {
         width: 100px;
         height: 100px;
+        border-radius: 8px;
       }
 
       >div {
@@ -28,27 +37,54 @@
         flex-direction: column;
         justify-content: center;
         gap: 8px;
-
-        >div {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
       }
     }
   }
 
   .forms {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
     .form {
-      padding: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .title {
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        p {
+          font-size: 16px;
+          color: #bbb;
+        }
+      }
+
+      .subtitle {
+        font-size: 12px;
+        margin-top: 8px;
+      }
 
       textarea {
         resize: none;
         width: 100%;
         height: 200px;
-        margin-top: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        padding: 12px;
+        font-size: 16px;
       }
     }
+  }
+
+  .buttons {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
   }
 }
 
@@ -57,22 +93,43 @@
     padding: 24px 16px;
   
     .orderInfo {
+      .title {
+        margin-bottom: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+  
       .order {
-        gap: 12px;
-        margin-bottom: 12px;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        flex-direction: column;
   
         img {
-          width: 100px;
-          height: 100px;
+          width: 100%;
+          height: 100%;
         }
       }
     }
   
     .forms {
       .form {
+        gap: 12px;
+  
+        .subtitle {
+          margin-top: 4px;
+        }
+  
         textarea {
           height: 150px;
         }
+      }
+    }
+  
+    .buttons {
+      button {
+        flex: 1;
       }
     }
   }
