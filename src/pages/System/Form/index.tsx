@@ -18,6 +18,14 @@ const Form = () => {
   const order = profile?.orders?.[key]
   const isCancelled = order?.status === ORDER_STATUS.CANCELLED
 
+  const formsAreFilled = () => {
+    let filled = true
+    profile?.formSetting.forEach((setting) => {
+      if (!setting.optional && !values[setting.title]) filled = false
+    })
+    return filled
+  }
+
   const handleSubmit = () => {
     const db = getDatabase();
     const formRef = ref(db, `/profile/${account}/orders/${key}/form`);
@@ -75,6 +83,7 @@ const Form = () => {
         {profile?.formSetting.map((form) => (
           <div className={styles.form} key={form.title}>
             <Typography variant='body1'>{form.title}</Typography>
+            <Typography variant='h6'>{!form.optional ? '非必填' : ''}</Typography>
             <Typography variant='caption'>{form.subtitle}</Typography>
             <textarea disabled={isCancelled} value={values[form.title]} onChange={(e) => {
               setValues((prev) => {
@@ -93,7 +102,7 @@ const Form = () => {
         )
         : (
           <>
-            <Button onClick={handleSubmit}>儲存</Button>
+            <Button onClick={handleSubmit} disabled={!formsAreFilled()}>儲存</Button>
             <Button onClick={handleCancel}>取消訂單</Button>
           </>
         )}

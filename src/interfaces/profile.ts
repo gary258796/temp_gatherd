@@ -36,6 +36,7 @@ export interface IAdditionalTimeSetting {
 export interface IFormSetting {
   title: string
   subtitle: string
+  optional?: boolean
 }
 
 export interface IProfile {
