@@ -44,6 +44,11 @@ export interface IFormSetting {
   lastEdit: number
 }
 
+export interface IOrderSetting {
+  contactMessage: string,
+  contactLink: string
+}
+
 export interface IProfile {
   account: string
   image: string
@@ -69,5 +74,6 @@ export interface IProfile {
     line: string
     website: string
   },
-  formSetting: IFormSetting
+  formSetting: IFormSetting,
+  orderSetting: IOrderSetting
 }

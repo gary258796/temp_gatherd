@@ -31,6 +31,8 @@ const Order = () => {
   const phoneIsError = !!phone && phone.slice(0, 2) !== '09'
   const emailIsError = !!email && !email.includes('@')
 
+  const goBackToRestaurantPage = () => navigate(`/restaurant/${profile?.account}`)
+
   const handleConfirm = () => {
     setPosting(true)
     const params = {
@@ -60,7 +62,7 @@ const Order = () => {
   useEffect(() => {
     if (!profile?.orders) return
     const customers = getDateCustomers({ date: dayjs(date), orders: profile.orders })
-    if ((profile.seatSetting.total - customers) < Number(customerCount)) navigate(`/restaurant/${profile.account}`)
+    if ((profile.seatSetting.total - customers) < Number(customerCount)) goBackToRestaurantPage()
   }, [profile])
 
   if (fetching || !profile) return <CircularProgress />
@@ -71,13 +73,14 @@ const Order = () => {
     type,
     externalLinks,
     notices,
-    image
+    image,
+    orderSetting
   } = profile
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div onClick={() => navigate(-1)}>
+        <div onClick={goBackToRestaurantPage}>
           <ArrowBackIos />返回
         </div>
       </div>
@@ -178,13 +181,13 @@ const Order = () => {
       {postSuccess && (
         <div className={styles.successCover}>
           <div>
-            <div className={styles.title}>
-              <Typography variant="h6">請加入 {profile.name} 官方LINE</Typography>
-              <Typography variant="h6">我們會與你確認更多預訂內容</Typography>
+            <div className={styles.title}>感謝你的預訂</div>
+            <div className={styles.subtitle}>{orderSetting.contactMessage}</div>
+            <QRCodeSVG value={orderSetting.contactLink} />
+            <div className={styles.buttons}>
+              <Button onClick={() => window.open(orderSetting.contactLink)}>立即加入</Button>
+              <Button onClick={goBackToRestaurantPage}>返回</Button>
             </div>
-            <QRCodeSVG value={externalLinks.line} />
-            <Button onClick={() => window.open(externalLinks.line)}>立即加入</Button>
-            <Button onClick={() => navigate(-1)}>返回</Button>
           </div>
         </div>
       )}
