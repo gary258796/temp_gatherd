@@ -37,14 +37,12 @@ const Login = () => {
 
   return (
     <>
-      <AppBar component="nav">
-        <Toolbar>
-          <Typography>Gatherd OS</Typography>
-        </Toolbar>
-      </AppBar>
+      <div className={styles.header}>
+        Gatherd OS
+      </div>
       <div className={styles.container}>
         <div className={styles.box}>
-          <Typography>歡迎使用 Gatherd OS</Typography>
+          <div className={styles.title}>歡迎使用 Gatherd OS</div>
           <TextField
             label="電子信箱"
             variant="outlined"
