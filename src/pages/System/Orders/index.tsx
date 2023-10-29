@@ -28,7 +28,7 @@ const Orders = () => {
   const selectedDateOrders = getDateOrders({ date: selectedDate, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
 
   const handleDateRender = (props: PickersDayProps<Dayjs>) => {
-    const { day, today, selected } = props;
+    const { day, today, selected, outsideCurrentMonth } = props;
 
     const orders = getDateOrders({ date: day, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
     const hasOrder = orders.length !== 0
@@ -36,7 +36,7 @@ const Orders = () => {
     return (
       <div className={`${styles.day} ${today && styles.today}`}>
         <PickersDay {...props} />
-        {hasOrder && <div className={`${styles.dot} ${selected && styles.selected}`} />}
+        {!outsideCurrentMonth && hasOrder && <div className={`${styles.dot} ${selected && styles.selected}`} />}
       </div>
     );
   }

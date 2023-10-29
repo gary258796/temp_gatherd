@@ -19,13 +19,13 @@ const TimeSetting = () => {
   const dateString = selectedDate?.format('YYYY/MM/DD') || ''
 
   const handleDateRender = (props: PickersDayProps<Dayjs>) => {
-    const { today, day, selected } = props;
+    const { today, day, selected, outsideCurrentMonth } = props;
     const hasSetting = profile?.timeSetting.additional?.find((setting) => setting.date === day.format('YYYY/MM/DD'))
 
     return (
       <div className={`${styles.day} ${today && styles.today}`}>
         <PickersDay {...props} />
-        {hasSetting && <div className={`${styles.dot} ${selected && styles.selected}`} />}
+        {!outsideCurrentMonth && hasSetting && <div className={`${styles.dot} ${selected && styles.selected}`} />}
       </div>
     );
   }
