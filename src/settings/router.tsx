@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/System/Login";
-import Home from "../pages/System/Home";
 import Restaurant from "../pages/Customer/Restaurant";
 import Order from "../pages/Customer/Order";
 import CustomerHome from "../pages/Customer/Home";
@@ -20,22 +19,16 @@ export const router = createBrowserRouter([
     element: <CustomerHome />
   },
   {
-    path: "/os",
-    element: <Home />,
-    children: [
-      {
-        path: '/os/orders',
-        element: <Orders />,
-      },
-      {
-        path: '/os/timeSetting',
-        element: <TimeSetting />
-      }
-    ]
-  },
-  {
     path: "/os/login",
     element: <Login />
+  },
+  {
+    path: "/os/orders",
+    element: <Orders />
+  },
+  {
+    path: "/os/timeSetting",
+    element: <TimeSetting />
   },
   {
     path: "/form/:uid/:key",

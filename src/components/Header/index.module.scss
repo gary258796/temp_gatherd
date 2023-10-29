@@ -1,0 +1,140 @@
+@import "../../styles/breakpoints.module.scss";
+
+.container {
+  padding: 24px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  .logo {
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .options {
+    flex: 1;
+    display: flex;
+    gap: 24px;
+
+    .option {
+      cursor: pointer;
+      position: relative;
+
+      .bar {
+        display: none;
+        position: absolute;
+        bottom: -8px;
+        right: 50%;
+        transform: translate(50%, 0);
+        width: 24px;
+        height: 4px;
+        border-radius: 100px;
+        background: black;
+      }
+
+      &.selected {
+        font-weight: 600;
+        cursor: initial;
+
+        .bar {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .setting {
+    border-radius: 100px;
+    background: #2b403a;
+    padding: 8px 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    position: relative;
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      padding: 12px;
+      background: white;
+      color: black;
+      border-radius: 8px;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+
+      .option {
+        padding: 8px;
+      }
+    }
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .container {
+    padding: 16px;
+  
+    .logo {
+      flex: 1;
+    }
+  
+    .options {
+      display: none;
+    }
+  
+    .setting {
+      display: none;
+    }
+
+    .mobileMenu {
+      display: block;
+
+      svg {
+        cursor: pointer;
+      }
+
+      .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        z-index: 99;
+        padding: 16px;
+
+        svg {
+          position: absolute;
+          right: 16px;
+          top: 16px;
+        }
+
+        p {
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 16px;
+        }
+
+        .option {
+          padding: 12px 0;
+          border-bottom: 1px solid #ddd;
+        }
+      }
+    }
+  }
+}

@@ -1,22 +1,28 @@
-import { Typography } from '@mui/material'
+import { CircularProgress, Typography } from '@mui/material'
 import styles from './index.module.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs, { Dayjs } from 'dayjs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { IOrder } from '../../../interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import OrderDetailView from './OrderDetailModal';
 import { ORDER_STATUS, getDateOrders, getOrderStatus } from '../../../utils/Order';
+import Header from '../../../components/Header';
+import { useNavigate } from 'react-router-dom';
+import { useProfile } from '../../../hooks/useProfile';
 
 const Orders = () => {
+  const navigate = useNavigate()
+  const { fetching, fetchProfile } = useProfile()
   const [selectedStatusIndex, setSelectedStatusIndex] = useState(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
   const [selectedOrder, setSelectedOrder] = useState<IOrder>()
   const profile = useSelector((state: RootState) => state.profile.profile)
+  
   const statuses = [
     { title: '全部', statuses: undefined },
     { title: '待處理', statuses: [ORDER_STATUS.WAIT] },
@@ -41,71 +47,81 @@ const Orders = () => {
     );
   }
 
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) return navigate('/os/login')
+    fetchProfile()
+  }, [])
+
+  if (fetching) return <CircularProgress />
+
   return (
     <div className={styles.container}>
-      <div className={styles.left}>
-        <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
-        <Typography variant='h6'>你的預訂</Typography>
-        <div className={styles.status}>
-          {statuses.map((status, index) => (
-            <div
-              key={status.title}
-              className={selectedStatusIndex === index ? styles.selected : ''}
-              onClick={() => setSelectedStatusIndex(index)}
-            >
-              {status.title}
-            </div>
-          ))}
+      <Header />
+      <div className={styles.content}>
+        <div className={styles.left}>
+          <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
+          <Typography variant='h6'>你的預訂</Typography>
+          <div className={styles.status}>
+            {statuses.map((status, index) => (
+              <div
+                key={status.title}
+                className={selectedStatusIndex === index ? styles.selected : ''}
+                onClick={() => setSelectedStatusIndex(index)}
+              >
+                {status.title}
+              </div>
+            ))}
+          </div>
+          <div className={styles.calendar}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                onChange={setSelectedDate}
+                slots={{
+                  day: handleDateRender
+                }}
+                sx={{
+                  width: '100%'
+                }}
+              />
+            </LocalizationProvider>
+          </div>
         </div>
-        <div className={styles.calendar}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar
-              onChange={setSelectedDate}
-              slots={{
-                day: handleDateRender
-              }}
-              sx={{
-                width: '100%'
-              }}
-            />
-          </LocalizationProvider>
-        </div>
-      </div>
-      <div className={styles.right}>
-        {selectedDate
-          ? (
-            <>
-              <Typography variant='h5' className={styles.title}>
-                {selectedDate.format('YYYY/MM/DD')}
-              </Typography>
-              {selectedDateOrders.length === 0
-                ? (
-                  <>選擇日期無預訂</>
-                )
-                : (
-                  <>
-                    <div className={styles.orders}>
-                      {selectedDateOrders.map((order) => (
-                        <div key={`${order.date}-${order.period}-${order.name}`} className={styles.order} onClick={() => setSelectedOrder(order)}>
-                          <div className={styles[`bar${getOrderStatus(order)}`]} />
-                          <div>
-                            <Typography variant='h6'>{order.name}</Typography>
-                            <Typography>{order.customerCount}位 {order.period}</Typography>
+        <div className={styles.right}>
+          {selectedDate
+            ? (
+              <>
+                <Typography variant='h5' className={styles.title}>
+                  {selectedDate.format('YYYY/MM/DD')}
+                </Typography>
+                {selectedDateOrders.length === 0
+                  ? (
+                    <>選擇日期無預訂</>
+                  )
+                  : (
+                    <>
+                      <div className={styles.orders}>
+                        {selectedDateOrders.map((order) => (
+                          <div key={`${order.date}-${order.period}-${order.name}`} className={styles.order} onClick={() => setSelectedOrder(order)}>
+                            <div className={styles[`bar${getOrderStatus(order)}`]} />
+                            <div>
+                              <Typography variant='h6'>{order.name}</Typography>
+                              <Typography>{order.customerCount}位 {order.period}</Typography>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )
-              }
-            </>
-          )
-          : (
-            <>尚未選擇日期</>
-          )
-        }
+                        ))}
+                      </div>
+                    </>
+                  )
+                }
+              </>
+            )
+            : (
+              <>尚未選擇日期</>
+            )
+          }
+        </div>
+        {selectedOrder && <OrderDetailView order={selectedOrder} onClose={() => setSelectedOrder(undefined)} />}
       </div>
-      {selectedOrder && <OrderDetailView order={selectedOrder} onClose={() => setSelectedOrder(undefined)} />}
     </div>
   )
 }

@@ -4,17 +4,20 @@ import dayjs, { Dayjs } from 'dayjs'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../app/store'
 import { DateCalendar, LocalizationProvider, PickersDay, PickersDayProps } from '@mui/x-date-pickers'
-import { Switch, Typography } from '@mui/material'
+import { CircularProgress, Switch, Typography } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { IAdditionalTimeSetting } from '../../../interfaces/profile'
 import Button from '../../../components/Button'
 import { getDatabase, ref, set } from "firebase/database"
 import { useProfile } from '../../../hooks/useProfile'
+import Header from '../../../components/Header'
+import { useNavigate } from 'react-router-dom'
 
 const TimeSetting = () => {
+  const navigate = useNavigate()
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
   const [dateSetting, setDateSetting] = useState<IAdditionalTimeSetting>()
-  const { fetchProfile } = useProfile()
+  const { fetching, fetchProfile } = useProfile()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const dateString = selectedDate?.format('YYYY/MM/DD') || ''
 
@@ -93,53 +96,63 @@ const TimeSetting = () => {
     setDateSetting(selectedDateSetting)
   }, [selectedDate])
 
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) return navigate('/os/login')
+    fetchProfile()
+  }, [])
+
+  if (fetching) return <CircularProgress />
+
   return (
     <div className={styles.container}>
-      <div className={styles.left}>
-        <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
-        <Typography variant='h6'>日期設定</Typography>
-        <div className={styles.calendar}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar
-              onChange={setSelectedDate}
-              slots={{
-                day: handleDateRender
-              }}
-              sx={{
-                width: '100%'
-              }}
-              shouldDisableDate={shuoldDisableDate}
-            />
-          </LocalizationProvider>
+      <Header />
+      <div className={styles.content}>
+        <div className={styles.left}>
+          <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
+          <Typography variant='h6'>日期設定</Typography>
+          <div className={styles.calendar}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                onChange={setSelectedDate}
+                slots={{
+                  day: handleDateRender
+                }}
+                sx={{
+                  width: '100%'
+                }}
+                shouldDisableDate={shuoldDisableDate}
+              />
+            </LocalizationProvider>
+          </div>
         </div>
-      </div>
-      <div className={styles.right}>
-        {selectedDate
-          ? (
-            <>
-              <Typography variant='h5' className={styles.title}>
-                {dateString}
-              </Typography>
-              {getDatePeriods(selectedDate).map((period) => (
-                <div key={period.title} className={styles.periodsContainer}>
-                  <Typography>{period.title}</Typography>
-                  <div className={styles.periods}>
-                    {period.list.map((time) => (
-                      <div key={time} className={styles.period}>
-                        <Typography>{time}</Typography>
-                        <Switch checked={switchIsChecked(time)} onChange={(e) => handleSwitchOnChange(e.target.checked, dateString, time)} />
-                      </div>
-                    ))}
+        <div className={styles.right}>
+          {selectedDate
+            ? (
+              <>
+                <Typography variant='h5' className={styles.title}>
+                  {dateString}
+                </Typography>
+                {getDatePeriods(selectedDate).map((period) => (
+                  <div key={period.title} className={styles.periodsContainer}>
+                    <Typography>{period.title}</Typography>
+                    <div className={styles.periods}>
+                      {period.list.map((time) => (
+                        <div key={time} className={styles.period}>
+                          <Typography>{time}</Typography>
+                          <Switch checked={switchIsChecked(time)} onChange={(e) => handleSwitchOnChange(e.target.checked, dateString, time)} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-              <Button onClick={saveTimeSetting}>儲存</Button>
-            </>
-          )
-          : (
-            <>尚未選擇日期</>
-          )
-        }
+                ))}
+                <Button onClick={saveTimeSetting}>儲存</Button>
+              </>
+            )
+            : (
+              <>尚未選擇日期</>
+            )
+          }
+        </div>
       </div>
     </div>
   )
