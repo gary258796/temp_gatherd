@@ -15,26 +15,9 @@
     flex: 1;
     padding: 48px;
 
-    .name {
-      margin-bottom: 12px;
-    }
-
-    .status {
-      display: flex;
-      gap: 24px;
-      margin: 12px 0 36px;
-  
-      >div {
-        padding: 12px 24px;
-        border: 1px solid gray;
-        border-radius: 100px;
-        cursor: pointer;
-  
-        &.selected {
-          background: #2b403a;
-          color: white;
-        }
-      }
+    .title {
+      font-size: 22px;
+      margin-bottom: 16px;
     }
 
     .day {
@@ -66,6 +49,8 @@
     }
     
     .calendar {
+      margin-top: 16px;
+      
       span {
         width: calc(100% / 7);
       }
@@ -74,11 +59,12 @@
 
   .right {
     width: 300px;
-    border-left: 1px solid gray;
+    border-left: 1px solid #ddd;
     padding: 24px;
 
     .title {
-      margin-bottom: 24px;
+      font-size: 22px;
+      margin-bottom: 16px;
     }
 
     .orders {
@@ -86,8 +72,8 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 8px 0;
-        border-bottom: 1px solid gray;
+        padding: 12px 0;
+        border-bottom: 1px solid #ddd;
         cursor: pointer;
 
         .bar {
@@ -115,6 +101,18 @@
           @extend .bar;
           background: yellow;
         }
+
+        p {
+          font-weight: 600;
+          font-size: 16px;
+          color: black;
+          margin-bottom: 4px;
+        }
+        
+        div {
+          font-size: 14px;
+          color: #aaa;
+        }
       }
     }
   }
@@ -127,16 +125,7 @@
     .left {
       flex: none;
       padding: 16px;
-      border-bottom: 1px solid gray;
-  
-      .status {
-        gap: 12px;
-        margin: 12px 0 36px;
-    
-        >div {
-          padding: 8px;
-        }
-      }
+      border-bottom: 1px solid #ddd;
     }
   
     .right {
@@ -144,17 +133,11 @@
       border-left: none;
       padding: 16px;
   
-      .title {
-        margin-bottom: 24px;
-      }
-  
       .orders {
         .order {
           display: flex;
           align-items: center;
-          gap: 12px;
-          padding: 8px 0;
-          border-bottom: 1px solid gray;
+          gap: 16px;
           cursor: pointer;
   
           .bar {

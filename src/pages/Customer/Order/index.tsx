@@ -31,7 +31,7 @@ const Order = () => {
   const phoneIsError = !!phone && phone.slice(0, 2) !== '09'
   const emailIsError = !!email && !email.includes('@')
 
-  const goBackToRestaurantPage = () => navigate(`/restaurant/${profile?.account}`)
+  const goBackToRestaurantPage = () => navigate(`/restaurant/${id}`)
 
   const handleConfirm = () => {
     setPosting(true)

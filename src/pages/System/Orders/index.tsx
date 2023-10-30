@@ -1,4 +1,4 @@
-import { CircularProgress, Typography } from '@mui/material'
+import { Chip, CircularProgress, Stack } from '@mui/material'
 import styles from './index.module.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -6,11 +6,10 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs, { Dayjs } from 'dayjs';
 import { useEffect, useState } from 'react';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
-import { IOrder } from '../../../interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import OrderDetailView from './OrderDetailModal';
-import { ORDER_STATUS, getDateOrders, getOrderStatus } from '../../../utils/Order';
+import { ORDER_STATUS, getDateOrdersKeys, getOrderStatus } from '../../../utils/Order';
 import Header from '../../../components/Header';
 import { useNavigate } from 'react-router-dom';
 import { useProfile } from '../../../hooks/useProfile';
@@ -20,7 +19,7 @@ const Orders = () => {
   const { fetching, fetchProfile } = useProfile()
   const [selectedStatusIndex, setSelectedStatusIndex] = useState(0)
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null)
-  const [selectedOrder, setSelectedOrder] = useState<IOrder>()
+  const [selectedOrderKey, setSelectedOrderKey] = useState<string>()
   const profile = useSelector((state: RootState) => state.profile.profile)
   
   const statuses = [
@@ -31,13 +30,13 @@ const Orders = () => {
     { title: '取消', statuses: [ORDER_STATUS.CANCELLED] }
   ]
 
-  const selectedDateOrders = getDateOrders({ date: selectedDate, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
+  const selectedDateOrdersKeys = getDateOrdersKeys({ date: selectedDate, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
 
   const handleDateRender = (props: PickersDayProps<Dayjs>) => {
     const { day, today, selected, outsideCurrentMonth } = props;
 
-    const orders = getDateOrders({ date: day, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
-    const hasOrder = orders.length !== 0
+    const ordersKeys = getDateOrdersKeys({ date: day, orders: profile?.orders, statuses: statuses[selectedStatusIndex].statuses })
+    const hasOrder = ordersKeys.length !== 0
 
     return (
       <div className={`${styles.day} ${today && styles.today}`}>
@@ -59,19 +58,18 @@ const Orders = () => {
       <Header />
       <div className={styles.content}>
         <div className={styles.left}>
-          <Typography variant='h4' className={styles.name}>{profile?.name} 你好!</Typography>
-          <Typography variant='h6'>你的預訂</Typography>
-          <div className={styles.status}>
+          <div className={styles.title}>我的預訂</div>
+          <Stack direction="row" spacing={1}>
             {statuses.map((status, index) => (
-              <div
+              <Chip
                 key={status.title}
-                className={selectedStatusIndex === index ? styles.selected : ''}
+                label={status.title}
                 onClick={() => setSelectedStatusIndex(index)}
-              >
-                {status.title}
-              </div>
+                variant={selectedStatusIndex === index ? 'outlined' : 'filled'}
+                color='primary'
+              />
             ))}
-          </div>
+          </Stack>
           <div className={styles.calendar}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
@@ -90,25 +88,30 @@ const Orders = () => {
           {selectedDate
             ? (
               <>
-                <Typography variant='h5' className={styles.title}>
+                <div className={styles.title}>
                   {selectedDate.format('YYYY/MM/DD')}
-                </Typography>
-                {selectedDateOrders.length === 0
+                </div>
+                {selectedDateOrdersKeys.length === 0
                   ? (
                     <>選擇日期無預訂</>
                   )
                   : (
                     <>
                       <div className={styles.orders}>
-                        {selectedDateOrders.map((order) => (
-                          <div key={`${order.date}-${order.period}-${order.name}`} className={styles.order} onClick={() => setSelectedOrder(order)}>
-                            <div className={styles[`bar${getOrderStatus(order)}`]} />
-                            <div>
-                              <Typography variant='h6'>{order.name}</Typography>
-                              <Typography>{order.customerCount}位 {order.period}</Typography>
+                        {selectedDateOrdersKeys.map((key) => {
+                          const order = profile?.orders?.[key]
+                          if (!order) return <></>
+                          const { date, period, name, customerCount } = order
+                          return (
+                            <div key={`${date}-${period}-${name}`} className={styles.order} onClick={() => setSelectedOrderKey(key)}>
+                              <div className={styles[`bar${getOrderStatus(order)}`]} />
+                              <div>
+                                <p>{name}</p>
+                                <div>{customerCount}位 {period}</div>
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          )
+                        })}
                       </div>
                     </>
                   )
@@ -116,11 +119,17 @@ const Orders = () => {
               </>
             )
             : (
-              <>尚未選擇日期</>
+              <div className={styles.title}>尚未選擇日期</div>
             )
           }
         </div>
-        {selectedOrder && <OrderDetailView order={selectedOrder} onClose={() => setSelectedOrder(undefined)} />}
+        {profile?.orders && selectedOrderKey && (
+          <OrderDetailView
+            order={profile.orders[selectedOrderKey]}
+            orderKey={selectedOrderKey}
+            onClose={() => setSelectedOrderKey(undefined)}
+          />
+        )}
       </div>
     </div>
   )

@@ -9,11 +9,12 @@ import Button from '../../../components/Button'
 import { ORDER_STATUS } from '../../../utils/Order'
 import { CircularProgress } from '@mui/material'
 import dayjs from 'dayjs'
+import { IOrderForm } from '../../../interfaces/profile'
 
 const Form = () => {
   const { uid = '', key = '' } = useParams()
   const { fetchProfile } = useProfile()
-  const [values, setValues] = useState<{ [key: string]: string }>({})
+  const [values, setValues] = useState<IOrderForm[]>()
   const profile = useSelector((state: RootState) => state.profile.profile)
   const order = profile?.orders?.[key]
   const isCancelled = order?.status === ORDER_STATUS.CANCELLED
@@ -22,8 +23,8 @@ const Form = () => {
 
   const formsAreFilled = () => {
     let filled = true
-    profile?.formSetting.questions.every((setting) => {
-      if (!setting.optional && !values[setting.title]) {
+    profile?.formSetting.questions.every(({ title, optional }) => {
+      if (!optional && !values?.find((value) => value.title === title)?.answer) {
         filled = false
         return false
       }
@@ -49,13 +50,12 @@ const Form = () => {
 
   useEffect(() => {
     if (!order?.form) {
-      let initialFormValues: { [key: string]: string } = {}
-      profile?.formSetting.questions.forEach((form) => {
-        initialFormValues[form.title] = ''
+      const initialFormValues = profile?.formSetting.questions.map(({ title }) => {
+        return { title, answer: '' }
       })
       setValues(initialFormValues)
     } else {
-      setValues(order.form)
+      setValues([...order.form])
     }
   }, [order])
 
@@ -81,22 +81,26 @@ const Form = () => {
         </div>
       </div>
       <div className={styles.forms}>
-        {profile.formSetting.questions.map((form) => (
-          <div className={styles.form} key={form.title}>
+        {profile.formSetting.questions.map(({ title, subtitle, optional }) => (
+          <div className={styles.form} key={title}>
             <div>
               <div className={styles.title}>
-                {form.title}<p>{form.optional ? '非必填' : ''}</p>
+                {title}<p>{optional ? '非必填' : ''}</p>
               </div>
-              {form.subtitle && <div className={styles.subtitle}>{form.subtitle}</div>}
+              {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
             </div>
-            <textarea disabled={isCancelled || isOverLastEdit} value={values[form.title]} onChange={(e) => {
-              setValues((prev) => {
-                return {
-                  ...prev,
-                  [form.title]: e.target.value
-                }
-              })
-            }} />
+            <textarea
+              disabled={isCancelled || isOverLastEdit}
+              value={values?.find((value) => value.title === title)?.answer || ''}
+              onChange={(e) => {
+                if (!values) return
+                const index = values.findIndex((value) => value.title === title)
+                if (index === -1) return
+                const cloneValues = JSON.parse(JSON.stringify(values))
+                cloneValues[index].answer = e.target.value
+                setValues(cloneValues)
+              }}
+            />
           </div>
         ))}
       </div>

@@ -20,17 +20,19 @@ export const getOrderStatus = (order: IOrder) => {
   return ORDER_STATUS.WAIT
 }
 
-export const getDateOrders = ({ date, orders = {}, statuses = [] }:{ date?: dayjs.Dayjs | null, orders?: { [key: string]: IOrder }, statuses?: number[] }) => {
+export const getDateOrdersKeys = ({ date, orders = {}, statuses = [] }:{ date?: dayjs.Dayjs | null, orders?: { [key: string]: IOrder }, statuses?: number[] }) => {
   if (!date) return []
-  return Object.values(orders).filter((order) => {
-    if (order.date !== date.format('YYYY/MM/DD')) return false
-    if (statuses.length > 0 && !statuses.includes(getOrderStatus(order))) return false
+  return Object.keys(orders).filter((key) => {
+    if (orders[key].date !== date.format('YYYY/MM/DD')) return false
+    if (statuses.length > 0 && !statuses.includes(getOrderStatus(orders[key]))) return false
     return true
   })
 }
 
 export const getDateCustomers = ({ date, orders }: { date: dayjs.Dayjs, orders: { [key: string]: IOrder } }) => {
-  const dateOrders = getDateOrders({ date, orders, statuses: [ORDER_STATUS.WAIT, ORDER_STATUS.CONTACT] })
+  const dateOrders = getDateOrdersKeys({ date, orders, statuses: [ORDER_STATUS.WAIT, ORDER_STATUS.CONTACT] }).map((key) => {
+    return orders[key]
+  })
   const customers = dateOrders.reduce((a, b) => {
     return a + Number(b.customerCount);
   }, 0);

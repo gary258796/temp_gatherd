@@ -1,3 +1,8 @@
+export interface IOrderForm {
+  title: string
+  answer: string
+}
+
 export interface IOrder {
   date: string
   period: string
@@ -8,7 +13,7 @@ export interface IOrder {
   /** 訂單狀態（0:已取消, 1:訂單） */
   status: 0 | 1
   memo: string
-  form?: { [key: string]: string }
+  form?: IOrderForm[];
 }
 
 export interface ISeatSetting {
